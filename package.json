@@ -1,0 +1,59 @@
+{
+  "name": "@icomo/icons",
+  "version": "0.1.0",
+  "description": "IcoMo — 380 SVG icons as tree-shakeable React components, TypeScript definitions, and SVG sprite",
+  "keywords": [
+    "icons",
+    "svg",
+    "react",
+    "icon-library",
+    "design-system",
+    "tree-shakeable",
+    "typescript"
+  ],
+  "homepage": "https://github.com/zainadeel/icomo#readme",
+  "bugs": "https://github.com/zainadeel/icomo/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zainadeel/icomo.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./icons/*": {
+      "import": "./dist/icons/*.mjs",
+      "types": "./dist/icons/*.d.ts"
+    },
+    "./sprite": "./dist/sprite.svg",
+    "./createIcon": {
+      "import": "./dist/createIcon.mjs",
+      "types": "./dist/createIcon.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --watch",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0"
+  },
+  "devDependencies": {
+    "chokidar": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "sideEffects": false
+}

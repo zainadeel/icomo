@@ -1,0 +1,13 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 9H6V8H4V9Z" fill="black" style="fill:black;fill-opacity:1;"/>
+<path d="M4 11H6V10H4V11Z" fill="black" style="fill:black;fill-opacity:1;"/>
+<path d="M9 4V5H10V4H9Z" fill="black" style="fill:black;fill-opacity:1;"/>
+<path d="M11 4V5H12V4H11Z" fill="black" style="fill:black;fill-opacity:1;"/>
+<path d="M9 6V7H10V6H9Z" fill="black" style="fill:black;fill-opacity:1;"/>
+<path d="M11 6V7H12V6H11Z" fill="black" style="fill:black;fill-opacity:1;"/>
+<path d="M9 8V9H10V8H9Z" fill="black" style="fill:black;fill-opacity:1;"/>
+<path d="M11 8V9H12V8H11Z" fill="black" style="fill:black;fill-opacity:1;"/>
+<path d="M9 10V11H10V10H9Z" fill="black" style="fill:black;fill-opacity:1;"/>
+<path d="M11 10V11H12V10H11Z" fill="black" style="fill:black;fill-opacity:1;"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7 2H14V14H2V6H7V2ZM7 7H3V13H4.5V12H5.5V13H7V7ZM13 3V13H11V12H10V13H8V3H13Z" fill="black" style="fill:black;fill-opacity:1;"/>
+</svg>
