@@ -8,11 +8,12 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ### Breaking changes
 
-**10 icons renamed** — the `UI` suffix has been dropped from a set of utility icons to align with the updated Figma source. Update any existing imports accordingly.
+**11 icons renamed** — the `UI` suffix has been dropped to align with the updated Figma source. Update any existing imports accordingly.
 
 | Old name | New name |
 |---|---|
 | `CheckDoubleUI` | `CheckDouble` |
+| `CheckUI` | `Check` |
 | `ChevronUpDownUI` | `ChevronUpDown` |
 | `CrossUI` | `Cross` |
 | `MinimizeUI` | `Minimize` |
@@ -23,15 +24,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 | `VolumeUI` | `Volume` |
 | `VolumeUIFilled` | `VolumeFilled` |
 
-**3 icons removed** with no replacement:
+**2 icons removed** with no replacement:
 
 - `ArrowDownUI`
 - `ArrowUpUI`
-- `CheckUI`
 
 ### Updated
 
-SVG paths updated for 9 icons (visual refresh from Figma):
+SVG paths updated for 8 icons (visual refresh from Figma):
 
 - `AI`
 - `ArrowDown`
@@ -41,7 +41,6 @@ SVG paths updated for 9 icons (visual refresh from Figma):
 - `BellExclamation`
 - `BellRinging`
 - `BellWifi`
-- `Check`
 
 ### Summary
 
