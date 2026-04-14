@@ -31,7 +31,7 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ### Updated
 
-SVG paths updated for 8 icons (visual refresh from Figma):
+SVG paths updated for 9 icons (visual refresh from Figma):
 
 - `AI`
 - `ArrowDown`
@@ -41,6 +41,7 @@ SVG paths updated for 8 icons (visual refresh from Figma):
 - `BellExclamation`
 - `BellRinging`
 - `BellWifi`
+- `Check` _(visual replaced by the former `CheckUI` design — existing `Check` imports continue to work)_
 
 ### Summary
 
