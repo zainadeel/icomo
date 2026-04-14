@@ -44,6 +44,7 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
+    "build:docs": "node scripts/build-docs.mjs",
     "dev": "node scripts/build.mjs --watch",
     "clean": "rm -rf dist"
   },
