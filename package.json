@@ -1,6 +1,6 @@
 {
   "name": "@ds-mo/icons",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "IcoMo — 380 SVG icons as tree-shakeable React components, TypeScript definitions, and SVG sprite",
   "keywords": [
     "icons",

@@ -176,18 +176,18 @@ Please confirm these — I guessed from name alone:
 - `Email` → `mail`, `envelope`, `message`
 - `Engine` → `motor`, `machinery`, `powertrain`
 - `Enter` → `submit`, `return`, `go`
-- `EntityAsset` → `asset`, `equipment`, `tracked-item`
-- `EntityAssetFilled` → `asset-filled`, `equipment-solid`, `asset-selected`
-- `EntityDriver` → `driver`, `operator`, `trucker`
-- `EntityDriverFilled` → `driver-filled`, `operator-solid`, `driver-selected`
-- `EntityTravelGroup` → `trip-group`, `convoy`, `travel-party`
-- `EntityTravelGroupFilled` → `convoy-filled`, `trip-group-solid`, `travel-group-selected`
-- `EntityVehicle` → `vehicle`, `truck`, `car`
-- `EntityVehicleCharging` → `ev-charging`, `electric-charge`, `vehicle-plug`
-- `EntityVehicleChargingFilled` → `ev-charging-filled`, `electric-solid`, `charging-selected`
-- `EntityVehicleFilled` → `vehicle-filled`, `truck-solid`, `vehicle-selected`
-- `EntityVehicleImmobilized` → `stopped-vehicle`, `disabled-car`, `immobilized`
-- `EntityVehicleImmobilizedFilled` → `immobilized-filled`, `stopped-solid`, `immobilized-selected`
+- `EntityAsset` → `asset`, `equipment`, `tracked-item`, `marker`
+- `EntityAssetFilled` → `asset-filled`, `equipment-solid`, `asset-selected`, `marker`
+- `EntityDriver` → `driver`, `operator`, `trucker`, `marker`
+- `EntityDriverFilled` → `driver-filled`, `operator-solid`, `driver-selected`, `marker`
+- `EntityTravelGroup` → `trip-group`, `convoy`, `travel-party`, `marker`
+- `EntityTravelGroupFilled` → `convoy-filled`, `trip-group-solid`, `travel-group-selected`, `marker`
+- `EntityVehicle` → `vehicle`, `truck`, `car`, `marker`
+- `EntityVehicleCharging` → `ev-charging`, `electric-charge`, `vehicle-plug`, `marker`
+- `EntityVehicleChargingFilled` → `ev-charging-filled`, `electric-solid`, `charging-selected`, `marker`
+- `EntityVehicleFilled` → `vehicle-filled`, `truck-solid`, `vehicle-selected`, `marker`
+- `EntityVehicleImmobilized` → `stopped-vehicle`, `disabled-car`, `immobilized`, `marker`
+- `EntityVehicleImmobilizedFilled` → `immobilized-filled`, `stopped-solid`, `immobilized-selected`, `marker`
 - `ErrorTriangle` → `warning`, `caution`, `alert-triangle`
 - `ErrorTriangleFilled` → `warning-filled`, `caution-solid`, `alert-selected`
 - `ErrorTriangleSimpleFilled` → `warning-simple`, `basic-alert`, `simple-caution`

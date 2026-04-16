@@ -2,6 +2,7 @@
   "aliases": [
     "asset",
     "equipment",
-    "tracked-item"
+    "tracked-item",
+    "marker"
   ]
 }
