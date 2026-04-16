@@ -1,6 +1,6 @@
 {
   "name": "@ds-mo/icons",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "IcoMo — 380 SVG icons as tree-shakeable React components, TypeScript definitions, and SVG sprite",
   "keywords": [
     "icons",
@@ -32,6 +32,14 @@
     "./icons/*": {
       "import": "./dist/icons/*.mjs",
       "types": "./dist/icons/*.d.ts"
+    },
+    "./svg": {
+      "import": "./dist/svg/index.mjs",
+      "types": "./dist/svg/index.d.ts"
+    },
+    "./svg/*": {
+      "import": "./dist/svg/*.mjs",
+      "types": "./dist/svg/*.d.ts"
     },
     "./sprite": "./dist/sprite.svg",
     "./meta": {

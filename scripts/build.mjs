@@ -45,7 +45,11 @@ function build() {
   console.log('  → Generating SVG sprite...');
   execSync('node scripts/generate-sprite.mjs', { cwd: PKG_ROOT, stdio: 'inherit' });
 
-  // Step 5: Generate meta manifest (aliases + kebab names) for agents / docs
+  // Step 5: Generate raw SVG string exports for framework-agnostic consumers
+  console.log('  → Generating SVG string exports...');
+  execSync('node scripts/generate-svg-strings.mjs', { cwd: PKG_ROOT, stdio: 'inherit' });
+
+  // Step 6: Generate meta manifest (aliases + kebab names) for agents / docs
   console.log('  → Generating meta manifest...');
   execSync('node scripts/generate-meta.mjs', { cwd: PKG_ROOT, stdio: 'inherit' });
 
