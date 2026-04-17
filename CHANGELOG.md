@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [0.7.1](https://github.com/zainadeel/icomo/compare/v0.7.0...v0.7.1) (2026-04-17)
+
+
+### Fixed
+
+* use JSON.stringify for code-gen string escaping in svg-parser ([4f19585](https://github.com/zainadeel/icomo/commit/4f19585efccb7def3244ae77f7d04ec072e838a2))
+* use JSON.stringify for code-gen string escaping in svg-parser ([c150a52](https://github.com/zainadeel/icomo/commit/c150a5282b614f182ce38d4388e522f5ebe81168))
+
 ## [0.7.0](https://github.com/zainadeel/icomo/compare/v0.6.0...v0.7.0) (2026-04-17)
 
 
