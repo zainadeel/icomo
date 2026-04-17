@@ -4,6 +4,24 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [0.7.0](https://github.com/zainadeel/icomo/compare/v0.6.0...v0.7.0) (2026-04-17)
+
+
+### Fixed
+
+* keep release-please tags as v0.7.0 not icons-v0.7.0 ([364b56f](https://github.com/zainadeel/icomo/commit/364b56facf399d7edfce7f876e61e583dee08463))
+* keep release-please tags as v0.7.0 not icons-v0.7.0 ([115ba66](https://github.com/zainadeel/icomo/commit/115ba66ff7854aab79a5e896bce7956f86940e69))
+
+
+### Documentation
+
+* add AGENTS.md and CLAUDE.md for agent onboarding ([#16](https://github.com/zainadeel/icomo/issues/16)) ([05d1178](https://github.com/zainadeel/icomo/commit/05d1178ff865bb2dce2e8e42b31d33617ea0cc7d))
+
+
+### Miscellaneous
+
+* release 0.7.0 ([9968b8f](https://github.com/zainadeel/icomo/commit/9968b8f6bd1bbb479319b716ab8211c522103847))
+
 ## [0.6.0] — 2026-04-17
 
 ### Breaking changes
