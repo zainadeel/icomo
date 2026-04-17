@@ -4,6 +4,48 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [0.6.0] — 2026-04-17
+
+### Breaking changes
+
+**6 icons renamed** — update any existing imports:
+
+| Old name | New name |
+|---|---|
+| `MenuExpand` | `LeftExpand` |
+| `MenuExpandB` | `LeftExpandB` |
+| `MenuCollapse` | `LeftCollapse` |
+| `MenuCollapseB` | `LeftCollapseB` |
+| `Circle` | `Dot` |
+| `CircleFilled` | `DotFilled` |
+
+**`Circle` and `CircleFilled` names reclaimed for a new visual.** The old small ring/disc icons now live as `Dot` / `DotFilled`; the reclaimed `Circle` / `CircleFilled` are a different (larger, general-purpose) shape. Consumers importing `{ Circle }` or `{ CircleFilled }` by name will render a different icon at 0.6.0 than at 0.5.0.
+
+### Added
+
+**13 new icons:**
+
+- `Circle`, `CircleFilled` — new general-purpose circle shape (distinct from the old small ring, which is now `Dot` / `DotFilled`)
+- `RightExpand`, `RightExpandB`, `RightCollapse`, `RightCollapseB` — right-side mirrors of the `Left*` sidebar toggles
+- `Pin`, `ParagraphCheck`
+- `SquareCheckFilled`, `SquareDollar`, `SquareFilled`, `SquareSubtractFilled`, `SubtractCircleFilled` — filled variants
+
+Alias doc convention for direction-paired icons documented in `ICON_ALIASES_REVIEW.md` (e.g. `LeftExpand` has `expand-left`, `RightExpand` has `expand-right`). `Dot` ↔ `Circle` cross-aliases added so search matches both terms.
+
+### Updated
+
+SVG paths updated for 6 icons (visual refresh from Figma):
+
+- `LeftExpand` (arrow shifted; existing imports continue to work)
+- `Logout`
+- `Volume`, `VolumeFilled`, `VolumeMute`, `VolumeMuteFilled`
+
+### Summary
+
+**422** icons total (390 system + 32 flag) — previously 409.
+
+---
+
 ## [0.5.0] — 2026-04-16
 
 ### Added

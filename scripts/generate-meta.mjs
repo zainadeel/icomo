@@ -8,10 +8,10 @@
  *
  * Output shape (meta.json):
  * {
- *   "version": "0.5.0",
- *   "count": 409,
+ *   "version": "0.6.0",
+ *   "count": 422,
  *   "categories": {
- *     "system": { "count": 377, "themeable": true },
+ *     "system": { "count": 390, "themeable": true },
  *     "flag":   { "count": 32,  "themeable": false }
  *   },
  *   "icons": [
