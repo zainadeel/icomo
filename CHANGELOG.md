@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [0.7.2](https://github.com/zainadeel/icomo/compare/v0.7.1...v0.7.2) (2026-04-17)
+
+
+### Fixed
+
+* upgrade npm in publish workflow to support OIDC trusted publishing ([ca1a16f](https://github.com/zainadeel/icomo/commit/ca1a16faf3be86cd9a24c18b45a14bedd4ae5a04))
+* upgrade npm in publish workflow to support OIDC trusted publishing ([173415e](https://github.com/zainadeel/icomo/commit/173415e706d3274632a3dc9a71118863d221131c))
+
 ## [0.7.1](https://github.com/zainadeel/icomo/compare/v0.7.0...v0.7.1) (2026-04-17)
 
 
