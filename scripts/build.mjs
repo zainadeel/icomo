@@ -32,6 +32,7 @@ function build() {
   clean();
   mkdirSync(DIST_DIR, { recursive: true });
   mkdirSync(path.join(DIST_DIR, 'icons'), { recursive: true });
+  mkdirSync(path.join(DIST_DIR, 'flags'), { recursive: true });
 
   // Step 2: Generate React components from SVG sources
   console.log('  → Generating React components from SVGs...');
@@ -68,6 +69,8 @@ if (isWatch) {
     [
       path.join(SRC_DIR, 'icons', '*.svg'),
       path.join(SRC_DIR, 'icons', '*.json'),
+      path.join(SRC_DIR, 'flags', '*.svg'),
+      path.join(SRC_DIR, 'flags', '*.json'),
     ],
     { ignoreInitial: true }
   );

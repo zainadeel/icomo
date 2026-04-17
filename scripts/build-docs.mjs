@@ -7,65 +7,46 @@
  *   3. Inlining the icon manifest (replaces /* @@ICONS_DATA@@ *\/)
  *   4. Writing docs/index.html — no external assets needed
  *
+ * Icon metadata comes from dist/meta.json so categories (system/flag) and
+ * aliases stay in a single source of truth with the published package.
+ *
  * Run after `npm run build`:
  *   npm run build && npm run build:docs
  */
 
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
-import { join, basename } from 'node:path';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const root = join(__dirname, '..');
-const iconsDir = join(root, 'src', 'icons');
 const distDir = join(root, 'dist');
 const docsDir = join(root, 'docs');
 
-// ── Helpers ────────────────────────────────────────────────────────────────
-
-function toKebabCase(name) {
-  return name
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
-    .toLowerCase();
-}
-
-// ── Ensure docs/ exists ────────────────────────────────────────────────────
-
 mkdirSync(docsDir, { recursive: true });
 
-// ── Icon manifest ──────────────────────────────────────────────────────────
+// ── Icon manifest (from dist/meta.json) ─────────────────────────────────────
 
-const { readdirSync } = await import('node:fs');
+const meta = JSON.parse(readFileSync(join(distDir, 'meta.json'), 'utf8'));
 
-const icons = readdirSync(iconsDir)
-  .filter(f => f.endsWith('.svg'))
-  .sort()
-  .map(f => {
-    const pascal = basename(f, '.svg');
-    const kebab = toKebabCase(pascal);
+// Docs shape: { pascal, kebab, aliases, category }
+const icons = meta.icons.map(i => ({
+  pascal: i.name,
+  kebab: i.kebab,
+  aliases: i.aliases,
+  category: i.category,
+}));
 
-    // Pull aliases from sidecar JSON if present (src/icons/<Pascal>.json).
-    let aliases = [];
-    const sidecar = join(iconsDir, `${pascal}.json`);
-    try {
-      const parsed = JSON.parse(readFileSync(sidecar, 'utf8'));
-      if (Array.isArray(parsed.aliases)) aliases = parsed.aliases;
-    } catch {
-      // missing or malformed sidecar — fine, just no aliases
-    }
+const categories = meta.categories;
 
-    return { pascal, kebab, aliases };
-  });
+const iconsDataJs = `const ICONS = ${JSON.stringify(icons)};
+const CATEGORIES = ${JSON.stringify(categories)};`;
 
-const iconsDataJs = `const ICONS = ${JSON.stringify(icons)};`;
-
-console.log(`  ✓ icon manifest   (${icons.length} icons)`);
+console.log(`  ✓ icon manifest   (${icons.length} icons across ${Object.keys(categories).length} categories)`);
 
 // ── Sprite ─────────────────────────────────────────────────────────────────
 
 const spriteContent = readFileSync(join(distDir, 'sprite.svg'), 'utf8');
-// Wrap in a hidden container for inline use
 const inlineSprite = `<div aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none">\n${spriteContent}\n</div>`;
 
 console.log(`  ✓ sprite inlined  (${Math.round(spriteContent.length / 1024)}KB)`);
@@ -73,7 +54,6 @@ console.log(`  ✓ sprite inlined  (${Math.round(spriteContent.length / 1024)}KB
 // ── Generate HTML ──────────────────────────────────────────────────────────
 
 let html = readFileSync(join(__dirname, 'docs-template.html'), 'utf8');
-
 html = html.replace('/* @@ICONS_DATA@@ */', iconsDataJs);
 html = html.replace('<!-- @@SPRITE@@ -->', inlineSprite);
 

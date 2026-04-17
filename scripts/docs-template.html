@@ -127,6 +127,38 @@
       flex-shrink: 0;
     }
 
+    /* ── Sub-toolbar (category tabs) ─────────────────────────────────────── */
+    .sub-toolbar {
+      position: sticky;
+      top: 48px;
+      z-index: 19;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 40px;
+      padding: 0 20px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--divider);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .sub-toolbar::-webkit-scrollbar { display: none; }
+    .sub-toolbar.searching { display: none; }
+
+    .tab {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: inherit;
+      color: var(--fg-muted);
+      line-height: 1;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .tab.active { color: var(--fg); }
+
     /* ── Grid ────────────────────────────────────────────────────────────── */
     .grid {
       display: grid;
@@ -279,6 +311,9 @@
   </div>
 </nav>
 
+<!-- Sub-toolbar (category filter) -->
+<nav class="sub-toolbar" id="sub-toolbar" role="group" aria-label="Icon category"></nav>
+
 <main>
   <div class="grid" id="grid" role="list">
     <div class="loading">Loading icons…</div>
@@ -292,12 +327,22 @@
 
 let spriteReady = false;
 let query = '';
+let activeCategory = localStorage.getItem('icomo-category') || 'all';
 let iconSize = Number(localStorage.getItem('icomo-size')) || 24;
 let theme = localStorage.getItem('icomo-theme') || 'light';
+
+// Config for the category tabs. The 'all' tab is always first; the rest
+// come from the CATEGORIES manifest in the same order as the build.
+const TAB_CONFIG = [
+  { id: 'all',    label: 'All' },
+  { id: 'system', label: 'System' },
+  { id: 'flag',   label: 'Flags' },
+];
 
 // ── Refs ─────────────────────────────────────────────────────────────────────
 
 const grid          = document.getElementById('grid');
+const subToolbar    = document.getElementById('sub-toolbar');
 const searchEl      = document.getElementById('search');
 const searchCount   = document.getElementById('search-count');
 const toast         = document.getElementById('toast');
@@ -364,8 +409,41 @@ applySize(iconSize);
 searchEl.addEventListener('input', e => {
   query = e.target.value.trim().toLowerCase();
   syncSearchWidth();
+  // When searching, hide category tabs and search across everything
+  subToolbar.classList.toggle('searching', Boolean(query));
   if (spriteReady) render();
 });
+
+// ── Category tabs ────────────────────────────────────────────────────────────
+
+function renderTabs() {
+  // Only show tabs for categories that actually have icons
+  const tabs = TAB_CONFIG.filter(t => {
+    if (t.id === 'all') return true;
+    return CATEGORIES[t.id] && CATEGORIES[t.id].count > 0;
+  });
+
+  subToolbar.innerHTML = tabs.map(t => {
+    const isActive = t.id === activeCategory;
+    return `<button
+      class="tab${isActive ? ' active' : ''}"
+      data-category="${t.id}"
+      role="tab"
+      aria-selected="${isActive}"
+    >${t.label}</button>`;
+  }).join('');
+
+  subToolbar.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeCategory = btn.dataset.category;
+      localStorage.setItem('icomo-category', activeCategory);
+      renderTabs();
+      if (spriteReady) render();
+    });
+  });
+}
+
+renderTabs();
 
 // ── Sprite injection ──────────────────────────────────────────────────────────
 // Sprite is inlined by build-docs.mjs — see @@SPRITE@@ in <body>
@@ -375,12 +453,18 @@ render();
 // ── Render ────────────────────────────────────────────────────────────────────
 
 function render() {
-  const filtered = query
-    ? ICONS.filter(i =>
-        i.pascal.toLowerCase().includes(query) ||
-        (i.aliases && i.aliases.some(a => a.includes(query)))
-      )
-    : ICONS;
+  // Search is global across categories; when no query, narrow by active tab.
+  let filtered;
+  if (query) {
+    filtered = ICONS.filter(i =>
+      i.pascal.toLowerCase().includes(query) ||
+      (i.aliases && i.aliases.some(a => a.includes(query)))
+    );
+  } else if (activeCategory === 'all') {
+    filtered = ICONS;
+  } else {
+    filtered = ICONS.filter(i => i.category === activeCategory);
+  }
 
   if (query) {
     searchCount.textContent = `${filtered.length}/${ICONS.length}`;

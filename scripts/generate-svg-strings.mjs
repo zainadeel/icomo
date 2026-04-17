@@ -1,71 +1,98 @@
 /**
  * Generate raw SVG string exports for framework-agnostic consumption.
  *
- * Reads src/icons/*.svg and produces:
- *   dist/svg/<Pascal>.mjs   — `export const <Pascal> = '<svg ...>...</svg>';`
- *   dist/svg/<Pascal>.d.ts  — `export const <Pascal>: string;`
- *   dist/svg/index.mjs      — barrel re-export of all icons
- *   dist/svg/index.d.ts     — barrel types
+ * Emits:
+ *   dist/svg/<Pascal>.mjs            — system icons (currentColor-themed)
+ *   dist/svg/flags/<FlagPascal>.mjs  — flags (colors preserved, P3-aware)
+ *   dist/svg/index.mjs               — barrel re-exporting everything
+ *   dist/svg/flags/index.mjs         — flag-only barrel
  *
  * Purpose: lets non-React consumers (Angular directives, Vue components,
- * vanilla JS, web components, Liquid templates, etc.) inject SVG markup
- * directly without pulling React as a peer dep.
+ * vanilla JS, web components, Liquid templates) inject SVG markup directly
+ * without pulling React as a peer dep.
+ *
+ * Category normalization rules are applied from scripts/utils/categories.mjs:
+ * flags keep all fills and `style="fill:color(display-p3 ...)"` so wide-gamut
+ * displays render the authored color. System icons still use `currentColor`
+ * so `color: red` in the consumer's CSS drives the icon.
  *
  * Usage:
- *   import { ArrowRight, Trash } from '@ds-mo/icons/svg';
- *   // ArrowRight === '<svg width="16" ...>...</svg>'
- *
- * Tree-shakeable per-icon import also supported:
- *   import { ArrowRight } from '@ds-mo/icons/svg/ArrowRight';
+ *   import { ArrowRight } from '@ds-mo/icons/svg';          // system
+ *   import { FlagFrance } from '@ds-mo/icons/svg';          // flag (prefixed)
+ *   import { FlagFrance } from '@ds-mo/icons/svg/flags';    // flag-only barrel
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getIconManifest } from './utils/naming.mjs';
+import { getCategoryManifest, CATEGORY_LIST } from './utils/naming.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PKG_ROOT = path.resolve(__dirname, '..');
-const SRC_ICONS = path.join(PKG_ROOT, 'src', 'icons');
 const DIST_SVG = path.join(PKG_ROOT, 'dist', 'svg');
 
 mkdirSync(DIST_SVG, { recursive: true });
 
-const manifest = getIconManifest(SRC_ICONS);
-
-const barrelMjs = [];
-const barrelDts = [];
-
-for (const { filename, pascal } of manifest) {
-  // Read raw SVG and normalise for clean, CSS-color-friendly output:
-  //   1. Collapse whitespace between tags (cosmetic, compact string)
-  //   2. Strip Figma's inline `style="fill:...;"` artifacts
-  //   3. Replace hardcoded `fill="black"` with `currentColor` so the icon
-  //      inherits from CSS `color` in consuming frameworks
-  //   Same transforms the sprite pipeline applies — keep them in sync.
-  const raw = readFileSync(path.join(SRC_ICONS, filename), 'utf8')
-    .replace(/>\s+</g, '><')
-    .replace(/\s*style="[^"]*"/g, '')
-    .replace(/fill="black"/g, 'fill="currentColor"')
-    .trim();
-
-  // JSON.stringify handles all JS string escaping (quotes, backslashes, unicode).
-  const escaped = JSON.stringify(raw);
-
-  writeFileSync(
-    path.join(DIST_SVG, `${pascal}.mjs`),
-    `export const ${pascal} = ${escaped};\n`
-  );
-  writeFileSync(
-    path.join(DIST_SVG, `${pascal}.d.ts`),
-    `export declare const ${pascal}: string;\n`
-  );
-
-  barrelMjs.push(`export { ${pascal} } from './${pascal}.mjs';`);
-  barrelDts.push(`export { ${pascal} } from './${pascal}.mjs';`);
+/**
+ * Apply category-aware normalization to the entire SVG source string
+ * (root <svg> tag included — we want the root too for string consumers).
+ */
+function normalizeSvg(raw, normalize) {
+  let out = raw;
+  if (normalize.collapseWhitespace) out = out.replace(/>\s+</g, '><');
+  if (normalize.stripStyle) out = out.replace(/\s*style="[^"]*"/g, '');
+  if (normalize.blackToCurrentColor) out = out.replace(/fill="black"/g, 'fill="currentColor"');
+  return out.trim();
 }
 
-writeFileSync(path.join(DIST_SVG, 'index.mjs'), barrelMjs.join('\n') + '\n');
-writeFileSync(path.join(DIST_SVG, 'index.d.ts'), barrelDts.join('\n') + '\n');
+const topBarrelMjs = [];
+const topBarrelDts = [];
+let total = 0;
 
-console.log(`    Generated ${manifest.length} SVG string exports`);
+for (const category of CATEGORY_LIST) {
+  const manifest = getCategoryManifest(PKG_ROOT, category);
+  if (!manifest.length) continue;
+
+  // System icons live flat in dist/svg/, flags (and future categories) nest.
+  const isDefault = category.id === 'system';
+  const outDir = isDefault ? DIST_SVG : path.join(DIST_SVG, category.distDir);
+  mkdirSync(outDir, { recursive: true });
+
+  const catBarrelMjs = [];
+  const catBarrelDts = [];
+
+  for (const { filename, pascal } of manifest) {
+    const raw = readFileSync(path.join(PKG_ROOT, 'src', category.dir, filename), 'utf8');
+    const normalized = normalizeSvg(raw, category.normalize);
+    const escaped = JSON.stringify(normalized);
+
+    writeFileSync(
+      path.join(outDir, `${pascal}.mjs`),
+      `export const ${pascal} = ${escaped};\n`
+    );
+    writeFileSync(
+      path.join(outDir, `${pascal}.d.ts`),
+      `export declare const ${pascal}: string;\n`
+    );
+
+    const subpath = isDefault ? `./${pascal}.mjs` : `./${category.distDir}/${pascal}.mjs`;
+    topBarrelMjs.push(`export { ${pascal} } from '${subpath}';`);
+    topBarrelDts.push(`export { ${pascal} } from '${subpath}';`);
+
+    catBarrelMjs.push(`export { ${pascal} } from './${pascal}.mjs';`);
+    catBarrelDts.push(`export { ${pascal} } from './${pascal}.mjs';`);
+    total++;
+  }
+
+  // Per-category barrel (dist/svg/flags/index.mjs)
+  if (!isDefault) {
+    writeFileSync(path.join(outDir, 'index.mjs'), catBarrelMjs.join('\n') + '\n');
+    writeFileSync(path.join(outDir, 'index.d.ts'), catBarrelDts.join('\n') + '\n');
+  }
+}
+
+// Top-level barrel (dist/svg/index.mjs) — includes flags with Flag* prefix
+writeFileSync(path.join(DIST_SVG, 'index.mjs'), topBarrelMjs.join('\n') + '\n');
+writeFileSync(path.join(DIST_SVG, 'index.d.ts'), topBarrelDts.join('\n') + '\n');
+
+console.log(`    Generated ${total} SVG string exports`);

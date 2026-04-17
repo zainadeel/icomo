@@ -1,6 +1,6 @@
 # @ds-mo/icons
 
-IcoMo — 377 SVG icons as tree-shakeable React components, TypeScript definitions, and SVG sprite.
+IcoMo — **409 SVG icons** (377 system icons + 32 country flags) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
 
 Part of the **ds-mo design system trilogy**: [@ds-mo/tokens](https://www.npmjs.com/package/@ds-mo/tokens) → **@ds-mo/icons** → [@ds-mo/ui](https://www.npmjs.com/package/@ds-mo/ui) (CompoMo).
 
@@ -14,106 +14,166 @@ npm install @ds-mo/icons
 pnpm add @ds-mo/icons
 ```
 
-React is a peer dependency — make sure it's installed in your project.
+React is a peer dependency for the React entry points — vanilla SVG / sprite consumers don't need it.
 
 ## Icon browser
 
-Browse and search all icons at the [GitHub Pages icon browser](https://zainadeel.github.io/icomo/). Includes a live search, size slider, and click-to-copy import statements.
+Browse and search all icons at the [GitHub Pages icon browser](https://zainadeel.github.io/icomo/). Live search (includes aliases), size toggle, light/dark theme, category tabs, click-to-copy imports.
+
+## Categories
+
+Icons are grouped into **categories** so the pipeline can treat them differently:
+
+| Category | Count | Themeable | Description |
+|---|---|---|---|
+| `system` | 377 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
+| `flag` | 32 | ❌ preserved | Multi-color country flags — hex + P3 wide-gamut colors kept verbatim |
+
+Flag component names are prefixed with `Flag` (e.g. `FlagFrance`, `FlagUnitedStates`) so every export is globally unique.
 
 ## Usage
 
 ### React components
 
 ```tsx
-import { ArrowRight, CheckCircle, Gear } from '@ds-mo/icons';
+import { ArrowRight, CheckCircle, FlagFrance, FlagUnitedStates } from '@ds-mo/icons';
 
-// Default: 20px, currentColor
-<ArrowRight />
-
-// Custom size
+// System icon — themeable
+<ArrowRight />                                    // 20px, currentColor
 <ArrowRight size={24} />
-
-// Custom size and color
 <ArrowRight size={24} color="red" />
-
-// With CSS variables
 <ArrowRight size="var(--dimension-size-400)" color="var(--color-icon-primary)" />
 
-// With a ref
-import { useRef } from 'react';
-const ref = useRef<SVGSVGElement>(null);
-<ArrowRight ref={ref} />
+// Flag icon — colors preserved, no `color` prop
+<FlagFrance />
+<FlagUnitedStates size={32} />
 ```
 
-All standard SVG attributes are forwarded, plus:
+All standard SVG attributes are forwarded. Category-specific props:
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `size` | `number \| string` | `20` | Width and height |
-| `color` | `string` | `'currentColor'` | Fill color |
-| `className` | `string` | — | CSS class |
+| Prop | System | Flag | Default | Description |
+|---|---|---|---|---|
+| `size` | ✅ | ✅ | `20` | Width and height |
+| `color` | ✅ | — | `'currentColor'` | Fill color (system only) |
+| `className` | ✅ | ✅ | — | CSS class |
 
-### Direct imports
+### Direct / subpath imports
 
-For guaranteed tree-shaking in environments where barrel imports aren't optimised:
+For guaranteed tree-shaking or category-only bundles:
 
 ```tsx
+// Single system icon
 import { ArrowRight } from '@ds-mo/icons/icons/ArrowRight';
+
+// Single flag
+import { FlagFrance } from '@ds-mo/icons/flags/FlagFrance';
+
+// Flag-only barrel
+import { FlagFrance, FlagGermany } from '@ds-mo/icons/flags';
 ```
 
-### SVG sprite (non-React)
+### Framework-agnostic SVG strings
 
-Include the sprite in your HTML, then reference icons by kebab-case name:
+For Angular, Vue, Svelte, web components, Liquid, vanilla JS — any consumer that wants raw SVG markup without React:
+
+```ts
+import { ArrowRight } from '@ds-mo/icons/svg';            // system
+import { FlagFrance } from '@ds-mo/icons/svg';            // flag (prefixed)
+import { FlagFrance } from '@ds-mo/icons/svg/flags';      // flag-only
+
+// ArrowRight === '<svg ...>...</svg>' with fill="currentColor"
+// FlagFrance === '<svg ...>...</svg>' with hex fills + P3 color(display-p3 ...)
+element.innerHTML = ArrowRight;
+```
+
+### SVG sprite
+
+Drop the sprite into your HTML and reference by kebab-case name:
 
 ```html
 <svg width="20" height="20"><use href="/sprite.svg#arrow-right"/></svg>
-<svg width="20" height="20"><use href="/sprite.svg#check-circle"/></svg>
-<svg width="20" height="20"><use href="/sprite.svg#gear"/></svg>
+<svg width="20" height="20"><use href="/sprite.svg#flag-france"/></svg>
+<svg width="20" height="20"><use href="/sprite.svg#flag-united-states"/></svg>
+```
+
+Sprite path: `node_modules/@ds-mo/icons/dist/sprite.svg` (or via the `./sprite` subpath export).
+
+### Metadata manifest
+
+Machine-readable icon list (for docs, agents, search indexes):
+
+```ts
+import meta from '@ds-mo/icons/meta';
+
+meta.version      // "0.5.0"
+meta.count        // 409
+meta.categories   // { system: {count:377,themeable:true}, flag: {count:32,themeable:false} }
+meta.icons        // [{ name, category, kebab, aliases }, ...]
 ```
 
 ## CompoMo integration
 
-IcoMo icons are designed to work with [CompoMo (@ds-mo/ui)](https://www.npmjs.com/package/@ds-mo/ui) components via the `icon` prop pattern. CompoMo components accept any React component that matches:
+IcoMo icons work with [CompoMo (@ds-mo/ui)](https://www.npmjs.com/package/@ds-mo/ui) components via the `icon` prop pattern:
 
 ```ts
 icon?: React.ComponentType<{ size?: number | string }>
 ```
 
-All IcoMo icons satisfy this interface, so you can pass them directly:
+Both system and flag components satisfy this interface:
 
 ```tsx
 import { Button } from '@ds-mo/ui';
-import { ArrowRight, CheckCircle } from '@ds-mo/icons';
+import { ArrowRight, CheckCircle, FlagFrance } from '@ds-mo/icons';
 
 <Button icon={ArrowRight}>Continue</Button>
 <Button icon={CheckCircle} variant="success">Done</Button>
+<Button icon={FlagFrance}>Français</Button>
 ```
 
-## Icon names
+## Why flags keep their own colors
 
-All icons are PascalCase in React, kebab-case in the sprite:
+Flag SVGs ship with two color sources per element:
+
+- `fill="#BE2A2C"` — standard hex, rendered on every browser
+- `style="fill:color(display-p3 0.7451 0.1647 0.1725)"` — wide-gamut P3 for modern displays
+
+The build preserves **both**: modern browsers use the P3 style; older browsers fall back to the hex attribute via SVG's native attribute-vs-style cascade. No pipeline transform touches `fill="black"` or strips `style=` for the flag category.
+
+## Naming
 
 | React | Sprite |
 |---|---|
 | `ArrowRight` | `arrow-right` |
 | `CheckCircle` | `check-circle` |
 | `EntityVehicleFilled` | `entity-vehicle-filled` |
+| `FlagFrance` | `flag-france` |
+| `FlagUnitedStates` | `flag-united-states` |
 
 ## Adding or updating icons
 
-1. Export SVGs from Figma as 16×16, fill-based, with `fill="black"`
-2. Drop into `src/icons/` — filenames must be PascalCase (e.g. `MyNewIcon.svg`)
-3. Run the build:
+### System icons
 
-```bash
-node scripts/build.mjs
-```
+1. Export SVG from Figma as 16×16, fill-based, with `fill="black"` (or no fill)
+2. Drop into `src/icons/` — filename must be PascalCase (e.g. `MyNewIcon.svg`)
+3. Optional: add `src/icons/MyNewIcon.json` with `{ "aliases": ["alt-name"] }`
+4. Run the build
+
+### Flag icons
+
+1. Export SVG from Figma as 16×16 with all fill colors baked in
+2. Drop into `src/flags/` — filename is the country name in PascalCase (e.g. `NewZealand.svg` → exports as `FlagNewZealand`)
+3. Run the build
+
+### Adding a new category
+
+Add a config entry to `scripts/utils/categories.mjs` with its own `dir`, `prefix`, and `normalize` rules. Drop SVGs into `src/<dir>/`.
 
 ## Dev
 
 ```bash
-node scripts/build.mjs          # full build
-node scripts/build.mjs --watch  # watch mode (rebuilds on SVG changes)
+npm run build         # full build (React + sprite + SVG strings + meta)
+npm run build:docs    # regenerate docs/index.html
+npm run dev           # watch mode
 ```
 
 ## License
