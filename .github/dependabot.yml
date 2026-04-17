@@ -1,24 +1,47 @@
 version: 2
 updates:
-  # Keep GitHub Actions fresh (actions/checkout, setup-node, etc.)
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "monthly"
-    commit-message:
-      prefix: "ci"
+      interval: monthly
     labels:
-      - "dependencies"
-      - "github-actions"
+      - dependencies
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      github-actions:
+        patterns:
+          - "*"
 
-  # Keep npm devDependencies fresh
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: npm
+    directory: /
     schedule:
-      interval: "monthly"
-    commit-message:
-      prefix: "chore"
+      interval: monthly
     labels:
-      - "dependencies"
-      - "npm"
-    open-pull-requests-limit: 5
+      - dependencies
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      vite:
+        patterns:
+          - "vite"
+          - "@vitejs/*"
+          - "vite-plugin-*"
+      storybook:
+        patterns:
+          - "storybook"
+          - "@storybook/*"
+      types:
+        patterns:
+          - "@types/*"
+        exclude-patterns:
+          - "@types/react"
+          - "@types/react-dom"
