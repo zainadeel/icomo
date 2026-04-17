@@ -65,9 +65,10 @@ function styleAttrToJsxObject(styleValue) {
 
   const parts = Array.from(map, ([k, v]) => {
     if (/^-?\d+(\.\d+)?$/.test(v)) return `${k}: ${v}`;
-    // Escape single quotes inside values (rare for color strings but safe)
-    const escaped = v.replace(/'/g, "\\'");
-    return `${k}: '${escaped}'`;
+    // JSON.stringify produces a valid JS string literal with complete escaping
+    // (backslashes, quotes, control chars). Using a manual replace here was
+    // incomplete — it missed backslashes (CodeQL js/incomplete-sanitization).
+    return `${k}: ${JSON.stringify(v)}`;
   });
   return `{ ${parts.join(', ')} }`;
 }
@@ -109,10 +110,11 @@ function parseAttributes(attrString, normalize) {
 function propsToString(props, styleJsx, keyValue) {
   const entries = Object.entries(props).map(([k, v]) => {
     if (/^-?\d+(\.\d+)?$/.test(v)) return `${k}: ${v}`;
-    return `${k}: '${v}'`;
+    // JSON.stringify ensures complete escaping of backslashes, quotes, etc.
+    return `${k}: ${JSON.stringify(v)}`;
   });
   if (styleJsx) entries.push(`style: ${styleJsx}`);
-  entries.push(`key: '${keyValue}'`);
+  entries.push(`key: ${JSON.stringify(keyValue)}`);
   return `{ ${entries.join(', ')} }`;
 }
 
