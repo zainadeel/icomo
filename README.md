@@ -1,7 +1,7 @@
 # @ds-mo/icons
 
 <!-- x-release-please-start-version -->
-[![npm version](https://img.shields.io/badge/npm-0.7.3-blue)](https://www.npmjs.com/package/@ds-mo/icons/v/0.7.3)
+[![npm version](https://img.shields.io/badge/npm-1.0.0)](https://www.npmjs.com/package/@ds-mo/icons/v/0.7.3)
 <!-- x-release-please-end-version -->
 
 IcoMo — **422 SVG icons** (390 system icons + 32 country flags) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
