@@ -105,7 +105,7 @@ Machine-readable icon list (for docs, agents, search indexes):
 ```ts
 import meta from '@ds-mo/icons/meta';
 
-meta.version      // "0.5.0"
+meta.version      // e.g. "0.7.3" — matches package version
 meta.count        // 422
 meta.categories   // { system: {count:390,themeable:true}, flag: {count:32,themeable:false} }
 meta.icons        // [{ name, category, kebab, aliases }, ...]
