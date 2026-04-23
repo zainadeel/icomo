@@ -4,7 +4,6 @@
   "packages": {
     ".": {
       "package-name": "@ds-mo/icons",
-      "extra-files": ["README.md"],
       "changelog-path": "CHANGELOG.md",
       "include-v-in-tag": true,
       "include-component-in-tag": false,
