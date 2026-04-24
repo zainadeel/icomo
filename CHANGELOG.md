@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [1.1.0](https://github.com/zainadeel/icomo/compare/v1.0.1...v1.1.0) (2026-04-24)
+
+
+### Added
+
+* **docs:** add per-icon action menu with png/svg downloads ([#37](https://github.com/zainadeel/icomo/issues/37)) ([efdb6fc](https://github.com/zainadeel/icomo/commit/efdb6fc8d3564416eb9a2e0bd32c1db4f005fd93))
+
 ## [1.0.1](https://github.com/zainadeel/icomo/compare/v1.0.0...v1.0.1) (2026-04-23)
 
 
