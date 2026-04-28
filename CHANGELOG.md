@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [Unreleased]
+
+### Added
+
+* **DVR** — DVR device icon (423 system icons total)
+
+---
+
 ## [1.1.0](https://github.com/zainadeel/icomo/compare/v1.0.1...v1.1.0) (2026-04-24)
 
 
