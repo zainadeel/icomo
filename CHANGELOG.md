@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [1.2.0](https://github.com/zainadeel/icomo/compare/v1.1.0...v1.2.0) (2026-04-28)
+
+
+### Added
+
+* **icons:** add DVR icon ([#39](https://github.com/zainadeel/icomo/issues/39)) ([8fbf99e](https://github.com/zainadeel/icomo/commit/8fbf99e138d83a90ba2401c1c4f2464aacaaea98))
+
 ## [Unreleased]
 
 ### Added
