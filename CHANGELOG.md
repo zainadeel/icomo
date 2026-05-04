@@ -22,24 +22,6 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 * **icons:** add DVR icon ([#39](https://github.com/zainadeel/icomo/issues/39)) ([8fbf99e](https://github.com/zainadeel/icomo/commit/8fbf99e138d83a90ba2401c1c4f2464aacaaea98))
 
-## [Unreleased]
-
-### Added
-
-* **DVR** — DVR device icon (423 system icons total)
-* **CursorPointerPlus** — cursor pointer with plus badge (424 icons total)
-* **CursorPointerMinus** — cursor pointer with minus badge
-
-### Updated
-
-* **CursorPointer** — refreshed geometry from latest Figma export
-
-### Breaking
-
-* **PaperplaneMarker** — removed (use `PaperplaneSend` or `LocationPin` instead)
-
----
-
 ## [1.1.0](https://github.com/zainadeel/icomo/compare/v1.0.1...v1.1.0) (2026-04-24)
 
 
