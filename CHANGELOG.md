@@ -4,6 +4,17 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [2.0.0](https://github.com/zainadeel/icomo/compare/v1.2.0...v2.0.0) (2026-05-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **icons:** add cursor-pointer plus/minus, refresh cursor-pointer, drop paperplane-marker ([#42](https://github.com/zainadeel/icomo/issues/42))
+
+### Added
+
+* **icons:** add cursor-pointer plus/minus, refresh cursor-pointer, drop paperplane-marker ([#42](https://github.com/zainadeel/icomo/issues/42)) ([f1aca2b](https://github.com/zainadeel/icomo/commit/f1aca2bfb5ea916b1db66a79c695c55c27919e34))
+
 ## [1.2.0](https://github.com/zainadeel/icomo/compare/v1.1.0...v1.2.0) (2026-04-28)
 
 
