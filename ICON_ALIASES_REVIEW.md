@@ -33,7 +33,7 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (390 icons)
+## Full list (392 icons)
 
 ### A
 
@@ -149,6 +149,8 @@ Please confirm these — I guessed from name alone:
 - `Cube` → `3d`, `box`, `package`
 - `Cup` → `drink`, `coffee`, `beverage`
 - `CursorPointer` → `click`, `mouse`, `select`
+- `CursorPointerMinus` → `click-remove`, `cursor-remove`, `select-remove`
+- `CursorPointerPlus` → `click-add`, `cursor-add`, `select-add`
 
 ### D
 
@@ -330,7 +332,6 @@ Please confirm these — I guessed from name alone:
 - `PanelCollapse` → `collapse-panel`, `close-panel`, `hide-panel`
 - `PanelExpand` → `expand-panel`, `open-panel`, `show-panel`
 - `Paperclip` → `attach`, `attachment`, `clip`
-- `PaperplaneMarker` → `send-location`, `send-marker`, `location-send`
 - `PaperplaneSend` → `send`, `submit`, `deliver`
 - `Paragraph` → `text-block`, `pilcrow`, `paragraph-mark`
 - `ParagraphCheck` → `text-verified`, `content-approved`, `paragraph-verified`

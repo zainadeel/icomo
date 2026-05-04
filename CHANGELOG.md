@@ -16,6 +16,16 @@ All notable changes to `@ds-mo/icons` are documented here.
 ### Added
 
 * **DVR** — DVR device icon (423 system icons total)
+* **CursorPointerPlus** — cursor pointer with plus badge (424 icons total)
+* **CursorPointerMinus** — cursor pointer with minus badge
+
+### Updated
+
+* **CursorPointer** — refreshed geometry from latest Figma export
+
+### Breaking
+
+* **PaperplaneMarker** — removed (use `PaperplaneSend` or `LocationPin` instead)
 
 ---
 
