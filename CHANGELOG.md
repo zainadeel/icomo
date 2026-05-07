@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [2.0.1](https://github.com/zainadeel/icomo/compare/v2.0.0...v2.0.1) (2026-05-07)
+
+
+### Fixed
+
+* **icons:** refresh chevron-up-down paths ([#46](https://github.com/zainadeel/icomo/issues/46)) ([1ff0e3e](https://github.com/zainadeel/icomo/commit/1ff0e3e540b9a0c502523ca9ee2d5f575142b671))
+
 ## [Unreleased]
 
 ### Updated
