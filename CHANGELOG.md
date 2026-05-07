@@ -9,6 +9,7 @@ All notable changes to `@ds-mo/icons` are documented here.
 ### Updated
 
 * **icons:** refresh ChevronUpDown paths
+* **icons:** refresh Devices paths
 
 ## [2.0.0](https://github.com/zainadeel/icomo/compare/v1.2.0...v2.0.0) (2026-05-04)
 
