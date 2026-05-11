@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [2.0.2](https://github.com/zainadeel/icomo/compare/v2.0.1...v2.0.2) (2026-05-11)
+
+
+### Fixed
+
+* **icons:** refresh dot and dotfilled to smaller circle geometry ([#48](https://github.com/zainadeel/icomo/issues/48)) ([0210db2](https://github.com/zainadeel/icomo/commit/0210db2b236b42f0a2d6fe1e0fe40a139f070134))
+
 ## [2.0.1](https://github.com/zainadeel/icomo/compare/v2.0.0...v2.0.1) (2026-05-07)
 
 
