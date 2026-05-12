@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [2.1.0](https://github.com/zainadeel/icomo/compare/v2.0.2...v2.1.0) (2026-05-12)
+
+
+### Added
+
+* **icons:** add KeyShift and KeyCmd keyboard modifier key icons ([#50](https://github.com/zainadeel/icomo/issues/50)) ([0eb64f6](https://github.com/zainadeel/icomo/commit/0eb64f6161d2a08244c550fe2d24e787af0e8fba))
+
 ## [Unreleased]
 
 ### Added
