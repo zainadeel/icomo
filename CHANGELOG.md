@@ -4,6 +4,17 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [3.0.0](https://github.com/zainadeel/icomo/compare/v2.1.0...v3.0.0) (2026-05-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **icons:** rename MapA→MapPin, MapB→MapPage, remove MapBBeta icons ([#52](https://github.com/zainadeel/icomo/issues/52))
+
+### Added
+
+* **icons:** rename MapA→MapPin, MapB→MapPage, remove MapBBeta icons ([#52](https://github.com/zainadeel/icomo/issues/52)) ([6ca0e34](https://github.com/zainadeel/icomo/commit/6ca0e3486fb6ec5f97fad33c8c0c6171d3a61d8f))
+
 ## [Unreleased]
 
 ### Breaking
