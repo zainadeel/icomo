@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [Unreleased]
+
+### Added
+
+* **icons:** add KeyShift and KeyCmd keyboard modifier key icons
+
+---
+
 ## [2.0.2](https://github.com/zainadeel/icomo/compare/v2.0.1...v2.0.2) (2026-05-11)
 
 
@@ -17,14 +25,6 @@ All notable changes to `@ds-mo/icons` are documented here.
 ### Fixed
 
 * **icons:** refresh chevron-up-down paths ([#46](https://github.com/zainadeel/icomo/issues/46)) ([1ff0e3e](https://github.com/zainadeel/icomo/commit/1ff0e3e540b9a0c502523ca9ee2d5f575142b671))
-
-## [Unreleased]
-
-### Updated
-
-* **icons:** refresh ChevronUpDown paths
-* **icons:** refresh Devices paths
-* **icons:** refresh Dot and DotFilled to smaller circle geometry
 
 ## [2.0.0](https://github.com/zainadeel/icomo/compare/v1.2.0...v2.0.0) (2026-05-04)
 

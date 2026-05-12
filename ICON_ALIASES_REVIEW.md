@@ -33,7 +33,7 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (392 icons)
+## Full list (394 icons)
 
 ### A
 
@@ -260,6 +260,8 @@ Please confirm these — I guessed from name alone:
 
 - `KeyA` → `key`, `password`, `access`
 - `KeyB` → `key-alt`, `secondary-key`, `password-variant`
+- `KeyCmd` → `command`, `cmd`, `keyboard-command`, `modifier-command`
+- `KeyShift` → `shift`, `keyboard-shift`, `modifier-shift`, `uppercase`
 
 ### L
 
