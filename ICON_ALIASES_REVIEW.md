@@ -74,6 +74,8 @@ Please confirm these — I guessed from name alone:
 - `BlackWhite` → `contrast`, `monochrome`, `grayscale`
 - `BlankUI` → `empty-state`, `placeholder`, `no-content`
 - `Bluetooth` → `wireless`, `bt`, `pairing`
+- `Bolt` → `lightning`, `fast`, `power`
+- `BoltFilled` → `lightning-filled`, `fast-solid`, `lightning-selected`
 - `Bookmark` → `save`, `favorite`, `ribbon`
 - `Box` → `package`, `container`, `carton`
 - `Braces` → `code`, `curly-brackets`, `json`
@@ -274,8 +276,6 @@ Please confirm these — I guessed from name alone:
 - `License` → `credential`, `permit`, `certification`
 - `LicensePlate` → `plate`, `registration`, `car-plate`
 - `Lifebuoy` → `help`, `support`, `rescue`
-- `Lightning` → `bolt`, `fast`, `power`
-- `LightningFilled` → `bolt-filled`, `fast-solid`, `lightning-selected`
 - `Link` → `url`, `hyperlink`, `chain`
 - `List` → `ul`, `items`, `lines`
 - `Loads` → `cargo`, `freight`, `shipments`
