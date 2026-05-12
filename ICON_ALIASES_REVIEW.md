@@ -22,8 +22,7 @@ Please confirm these — I guessed from name alone:
 - **`LED`** — `light`, `indicator`, `signal`
 - **`Omnicam`** — `360-camera`, `side-camera`, `all-around-cam`
 - **`PunchCard`** — `timesheet`, `attendance`, `punch-clock`
-- **`KeyA` / `KeyB`**, **`CameraA` / `CameraB`**, **`MapA` / `MapB`**, **`WorkflowA` / `WorkflowB`** — Visual variants only
-- **`MapBBetaBottom` / `MapBBetaTop`** — what does "Beta Bottom/Top" mean? Where the beta modifier is in the icon
+- **`KeyA` / `KeyB`**, **`CameraA` / `CameraB`**, **`WorkflowA` / `WorkflowB`** — Visual variants only
 - **`DocumentInverted`** — It's the shape inverted but its mainly used for 'Notes' or 'Sticky note' like design uses
 - **`LetterB` / `LetterC` / `LetterI`** — are these letter labels for something specific generic letters
 - **`SpeedometerLeft` / `SpeedometerRight`** — directional slow/fast, or just visual variants? fast/slow yes.
@@ -33,7 +32,7 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (394 icons)
+## Full list (392 icons)
 
 ### A
 
@@ -297,10 +296,8 @@ Please confirm these — I guessed from name alone:
 - `MagnifyingGlassGraph` → `search-analytics`, `inspect-graph`, `data-search`
 - `MagnifyingGlassZoomIn` → `zoom-in`, `enlarge`, `plus-zoom`
 - `MagnifyingGlassZoomOut` → `zoom-out`, `reduce`, `minus-zoom`
-- `MapA` → `map`, `navigation`, `atlas`
-- `MapB` → `map-alt`, `map-variant`, `navigation-b`
-- `MapBBetaBottom` → `map-beta-bottom`, `beta-map-bottom`, `experimental-map-bottom`
-- `MapBBetaTop` → `map-beta-top`, `beta-map-top`, `experimental-map-top`
+- `MapPage` → `map-b`, `map-alt`, `map-variant`, `navigation-b`
+- `MapPin` → `map-a`, `map`, `navigation`, `atlas`
 - `MapNavigation` → `directions`, `navigate`, `route-map`
 - `MarkRead` → `read`, `seen`, `envelope-open`
 - `Match` → `matching`, `equal`, `linked`
