@@ -4,6 +4,17 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [4.0.0](https://github.com/zainadeel/icomo/compare/v3.0.0...v4.0.0) (2026-05-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **icons:** rename lightning to bolt, update svg paths ([#54](https://github.com/zainadeel/icomo/issues/54))
+
+### Added
+
+* **icons:** rename lightning to bolt, update svg paths ([#54](https://github.com/zainadeel/icomo/issues/54)) ([cf3f70e](https://github.com/zainadeel/icomo/commit/cf3f70e50e2e2340266d1b0906dbab73de627f15))
+
 ## [3.0.0](https://github.com/zainadeel/icomo/compare/v2.1.0...v3.0.0) (2026-05-12)
 
 
