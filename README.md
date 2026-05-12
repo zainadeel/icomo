@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@ds-mo/icons.svg)](https://www.npmjs.com/package/@ds-mo/icons)
 
-IcoMo — **424 SVG icons** (392 system icons + 32 country flags) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
+IcoMo — **426 SVG icons** (394 system icons + 32 country flags) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
 
 Part of the **ds-mo design system trilogy**: [@ds-mo/tokens](https://www.npmjs.com/package/@ds-mo/tokens) → **@ds-mo/icons** → [@ds-mo/ui](https://www.npmjs.com/package/@ds-mo/ui) (CompoMo).
 
@@ -28,7 +28,7 @@ Icons are grouped into **categories** so the pipeline can treat them differently
 
 | Category | Count | Themeable | Description |
 |---|---|---|---|
-| `system` | 392 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
+| `system` | 394 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
 | `flag` | 32 | ❌ preserved | Multi-color country flags — hex + P3 wide-gamut colors kept verbatim |
 
 Flag component names are prefixed with `Flag` (e.g. `FlagFrance`, `FlagUnitedStates`) so every export is globally unique.
