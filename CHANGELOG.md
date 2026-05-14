@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [4.1.0](https://github.com/zainadeel/icomo/compare/v4.0.0...v4.1.0) (2026-05-14)
+
+
+### Added
+
+* **icons:** add HandOpen and SquareDottedMinus icons, update MessageBubble ([#56](https://github.com/zainadeel/icomo/issues/56)) ([29c5bd8](https://github.com/zainadeel/icomo/commit/29c5bd8828fd683ff281ca9e9c7f76cad2d8b452))
+
 ## [4.0.0](https://github.com/zainadeel/icomo/compare/v3.0.0...v4.0.0) (2026-05-12)
 
 
