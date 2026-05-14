@@ -28,6 +28,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ## [Unreleased]
 
+### Added
+
+* **icons:** add HandOpen and SquareDottedMinus icons
+
+### Changed
+
+* **icons:** update MessageBubble svg path
+
 ### Breaking
 
 * **icons:** rename `MapA` → `MapPin`, `MapB` → `MapPage`; remove `MapBBetaBottom` and `MapBBetaTop`; update `MapPage` SVG — old names seeded as aliases
