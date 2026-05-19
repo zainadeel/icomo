@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [4.3.0](https://github.com/zainadeel/icomo/compare/v4.2.0...v4.3.0) (2026-05-19)
+
+
+### Added
+
+* **icons:** add SquareArrowTopRight icon ([#60](https://github.com/zainadeel/icomo/issues/60)) ([875471f](https://github.com/zainadeel/icomo/commit/875471f2deaf4d2915bdf71a29577e9c6eff330d))
+
 ## [4.2.0](https://github.com/zainadeel/icomo/compare/v4.1.0...v4.2.0) (2026-05-19)
 
 
