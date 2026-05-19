@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [4.2.0](https://github.com/zainadeel/icomo/compare/v4.1.0...v4.2.0) (2026-05-19)
+
+
+### Added
+
+* **icons:** add BellFilled icon ([#58](https://github.com/zainadeel/icomo/issues/58)) ([4011a19](https://github.com/zainadeel/icomo/commit/4011a192ff701bd7487e93715523b4c9d6724979))
+
 ## [Unreleased]
 
 ### Added
