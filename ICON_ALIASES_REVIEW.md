@@ -69,6 +69,7 @@ Please confirm these — I guessed from name alone:
 - `Bell` → `notification`, `alert`, `alarm`
 - `BellCircle` → `alert-circle`, `notification-round`, `circle-bell`
 - `BellExclamation` → `alert-warning`, `urgent-notification`, `important`
+- `BellFilled` → `bell-filled`, `notification-filled`, `alert-solid`, `alarm-solid`
 - `BellRinging` → `active-alert`, `ringing`, `alarm-on`
 - `BellWifi` → `wireless-alert`, `connected-notification`, `network-bell`
 - `BlackWhite` → `contrast`, `monochrome`, `grayscale`
