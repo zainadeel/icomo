@@ -16,6 +16,7 @@ All notable changes to `@ds-mo/icons` are documented here.
 ### Added
 
 * **icons:** add BellFilled icon
+* **icons:** add SquareArrowTopRight icon
 
 ## [4.1.0](https://github.com/zainadeel/icomo/compare/v4.0.0...v4.1.0) (2026-05-14)
 

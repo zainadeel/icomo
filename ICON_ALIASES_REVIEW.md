@@ -417,10 +417,12 @@ Please confirm these — I guessed from name alone:
 - `SpikeCirclePercentage` → `spike-percent`, `surge`, `anomaly-percent`
 - `SpikeCirclePercentageFilled` → `spike-percent-filled`, `surge-solid`, `anomaly-selected`
 - `Square` → `rectangle`, `box-outline`, `quadrilateral`
+- `SquareArrowTopRight` → `external-link-box`, `open-in-new`, `launch-box`, `arrow-up-right-box`
 - `SquareCheck` → `checkbox-checked`, `tick-box`, `square-tick`
 - `SquareCheckFilled` → `checkbox-checked-filled`, `tick-box-solid`, `square-tick-filled`
 - `SquareDollar` → `dollar-box`, `money-square`, `price-outline`
 - `SquareDollarFilled` → `dollar-square`, `money-box`, `price-box`
+- `SquareDottedMinus` → `dashed-square-minus`, `dotted-minus`, `remove-dashed-box`
 - `SquareFilled` → `rectangle-filled`, `box-solid`, `filled-box`
 - `SquareGrid` → `grid`, `apps`, `squares`
 - `SquarePencil` → `edit-box`, `text-edit-square`, `compose`
