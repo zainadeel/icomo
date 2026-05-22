@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [4.3.1](https://github.com/zainadeel/icomo/compare/v4.3.0...v4.3.1) (2026-05-22)
+
+
+### Documentation
+
+* **agents:** document meta.json as the fast icon lookup index ([#62](https://github.com/zainadeel/icomo/issues/62)) ([d5d7f61](https://github.com/zainadeel/icomo/commit/d5d7f61702fe23a5f8ac8ed91ac5244cd7e6345e))
+
 ## [4.3.0](https://github.com/zainadeel/icomo/compare/v4.2.0...v4.3.0) (2026-05-19)
 
 
