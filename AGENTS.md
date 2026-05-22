@@ -20,6 +20,45 @@ It's part of the **ds-mo** design-system trilogy: `@ds-mo/tokens` → `@ds-mo/ic
 
 ---
 
+## Icon index — instant lookup for AI agents
+
+`dist/meta.json` (already emitted by `npm run build`, exported at `@ds-mo/icons/meta.json`) is the single file to read for any icon lookup — no directory listing or grepping needed.
+
+Shape:
+```json
+{
+  "version": "4.2.0",
+  "count": 426,
+  "categories": {
+    "system": { "count": 394, "themeable": true },
+    "flag":   { "count": 32,  "themeable": false }
+  },
+  "icons": [
+    { "name": "ArrowRight", "category": "system", "kebab": "arrow-right", "aliases": ["next", "forward"] },
+    { "name": "FlagFrance", "category": "flag",   "kebab": "flag-france", "aliases": ["fr", "france"] }
+  ]
+}
+```
+
+**Lookup patterns:**
+
+```js
+import meta from '@ds-mo/icons/meta.json';
+
+// All icon names
+const names = meta.icons.map(i => i.name);
+
+// Find icon by concept / alias
+const match = meta.icons.find(i => i.aliases.includes('forward') || i.kebab === 'forward');
+
+// All system icons only
+const system = meta.icons.filter(i => i.category === 'system');
+```
+
+**Key point:** aliases are semantic synonyms (lowercase, hyphenated). Search them when the exact component name isn't known — e.g. searching `"expand"` will surface `LeftExpand` and `RightExpand`.
+
+---
+
 ## Directory map
 
 ```
