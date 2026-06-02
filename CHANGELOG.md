@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [4.4.0](https://github.com/zainadeel/icomo/compare/v4.3.1...v4.4.0) (2026-06-02)
+
+
+### Added
+
+* **build:** add iOS PDF export (dist/pdf/) ([#64](https://github.com/zainadeel/icomo/issues/64)) ([e79e93a](https://github.com/zainadeel/icomo/commit/e79e93a51b938b7b61afb32190c497a55f247b5d))
+
 ## [4.3.1](https://github.com/zainadeel/icomo/compare/v4.3.0...v4.3.1) (2026-05-22)
 
 
