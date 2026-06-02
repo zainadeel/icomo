@@ -60,6 +60,7 @@
       "types": "./dist/svg/*.d.ts"
     },
     "./sprite": "./dist/sprite.svg",
+    "./pdf/*": "./dist/pdf/*.pdf",
     "./meta": {
       "import": "./dist/meta.mjs",
       "types": "./dist/meta.d.ts",
@@ -81,6 +82,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:docs": "node scripts/build-docs.mjs",
+    "build:pdf": "node scripts/generate-pdfs.mjs",
     "dev": "node scripts/build.mjs --watch",
     "clean": "rm -rf dist"
   },
@@ -88,7 +90,9 @@
     "react": ">=17.0.0"
   },
   "devDependencies": {
-    "chokidar": "^5.0.0"
+    "chokidar": "^5.0.0",
+    "pdfkit": "^0.18.0",
+    "svg-to-pdfkit": "^0.1.8"
   },
   "engines": {
     "node": ">=20.19.0"
