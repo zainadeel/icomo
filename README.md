@@ -100,6 +100,37 @@ Drop the sprite into your HTML and reference by kebab-case name:
 
 Sprite path: `node_modules/@ds-mo/icons/dist/sprite.svg` (or via the `./sprite` subpath export).
 
+### iOS / Xcode asset catalog
+
+Generate a flat folder of vector PDFs — one per icon — for use in Xcode asset catalogs:
+
+```bash
+npm run build        # required first — generates dist/
+npm run build:pdf    # outputs dist/pdf/<Name>.pdf (428 files)
+```
+
+**Adding to Xcode:**
+
+1. Drag `dist/pdf/` into your `.xcassets` asset catalog in Xcode.
+2. For each icon, set **Scales → Single Scale** in the Attributes inspector — iOS scales the vector at runtime.
+3. For **system icons** (monochrome, e.g. `ArrowRight.pdf`): set **Render As → Template Image** so the icon responds to tint color.
+4. For **flag icons** (e.g. `FlagFrance.pdf`): set **Render As → Original Image** to preserve their colors.
+
+Then use in SwiftUI or UIKit:
+
+```swift
+// SwiftUI
+Image("ArrowRight")
+    .renderingMode(.template)
+    .foregroundColor(.accentColor)
+
+Image("FlagFrance")
+    .renderingMode(.original)
+
+// UIKit
+UIImage(named: "ArrowRight")?.withRenderingMode(.alwaysTemplate)
+```
+
 ### Metadata manifest
 
 Machine-readable icon list (for docs, agents, search indexes):
@@ -175,6 +206,7 @@ Add a config entry to `scripts/utils/categories.mjs` with its own `dir`, `prefix
 ```bash
 npm run build         # full build (React + sprite + SVG strings + meta)
 npm run build:docs    # regenerate docs/index.html
+npm run build:pdf     # iOS PDF export → dist/pdf/ (run after build)
 npm run dev           # watch mode
 ```
 
