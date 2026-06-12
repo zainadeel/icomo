@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [5.0.1](https://github.com/zainadeel/icomo/compare/v5.0.0...v5.0.1) (2026-06-12)
+
+
+### Documentation
+
+* **agents:** add downstream coordination rules for CompoMo and apps ([#68](https://github.com/zainadeel/icomo/issues/68)) ([884da82](https://github.com/zainadeel/icomo/commit/884da8262e3408986fddad5eff98af6bd7a8b5a9))
+
 ## [5.0.0](https://github.com/zainadeel/icomo/compare/v4.4.0...v5.0.0) (2026-06-12)
 
 
