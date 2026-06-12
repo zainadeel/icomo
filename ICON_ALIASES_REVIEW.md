@@ -20,7 +20,7 @@ Please confirm these — I guessed from name alone:
 
 - **`PicmanFilled`** — guessed `picman`, `google-street-view`, `street-view`
 - **`LED`** — `light`, `indicator`, `signal`
-- **`Omnicam`** — `360-camera`, `side-camera`, `all-around-cam`
+- **`DeviceOmnicam`** — `360-camera`, `side-camera`, `all-around-cam`
 - **`PunchCard`** — `timesheet`, `attendance`, `punch-clock`
 - **`KeyA` / `KeyB`**, **`CameraA` / `CameraB`**, **`WorkflowA` / `WorkflowB`** — Visual variants only
 - **`DocumentInverted`** — It's the shape inverted but its mainly used for 'Notes' or 'Sticky note' like design uses
@@ -32,13 +32,12 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (392 icons)
+## Full list (393 icons)
 
 ### A
 
 - `AI` → `artificial-intelligence`, `smart`, `ml`
 - `AIChip` → `ai-processor`, `neural-chip`, `smart-chip`
-- `AIDashcamPlus` → `smart-camera`, `ai-camera`, `intelligent-dashcam`
 - `AINew` → `new-ai`, `ai-badge`, `ai-feature`
 - `AISparkle` → `ai-magic`, `ai-shine`, `smart-sparkle`
 - `AUX` → `auxiliary`, `extra`, `secondary`
@@ -53,7 +52,6 @@ Please confirm these — I guessed from name alone:
 - `ArrowsDiff` → `swap`, `exchange`, `compare`
 - `ArrowsDiffDisabled` → `swap-off`, `no-exchange`, `compare-disabled`
 - `ArrowsVertical` → `sort`, `reorder`, `up-down`
-- `AssetTracker` → `gps-tracker`, `asset-device`, `tracker`
 - `AtSign` → `at`, `email-symbol`, `mention`
 - `Avatar` → `profile`, `user-photo`, `portrait`
 
@@ -157,8 +155,16 @@ Please confirm these — I guessed from name alone:
 ### D
 
 - `Dashboard` → `overview`, `home`, `panel`
-- `Dashcam` → `car-camera`, `vehicle-camera`, `in-car-cam`
-- `DashcamLiveStream` → `live-camera`, `live-feed`, `stream`
+- `DeviceAIDashcamPlus` → `ai-dashcam-plus`, `smart-camera`, `ai-camera`, `intelligent-dashcam`
+- `DeviceAssetTracker` → `asset-tracker`, `gps-tracker`, `asset-device`, `tracker`
+- `DeviceDashcam` → `dashcam`, `car-camera`, `vehicle-camera`, `in-car-cam`
+- `DeviceDashcamLiveStream` → `dashcam-live-stream`, `live-camera`, `live-feed`, `stream`
+- `DeviceDVR` → `dvr`, `digital-video-recorder`, `video-recorder`, `recorder`, `dashcam-recorder`
+- `DeviceMobile` → `mobile`, `phone`, `smartphone`, `cellular`
+- `DeviceOmnicam` → `omnicam`, `360-camera`, `side-camera`, `all-around-cam`
+- `DeviceSensor` → `sensor`, `detector`, `probe`, `monitor-sensor`
+- `DeviceTablet` → `tablet`, `ipad`, `device-tablet`
+- `DeviceVehicleGateway` → `vehicle-gateway`, `telematics-gateway`, `vehicle-hub`, `fleet-gateway`
 - `Devices` → `screens`, `gadgets`, `hardware`
 - `Document` → `file`, `page`, `doc`
 - `DocumentArrow` → `file-move`, `file-transfer`, `file-arrow`
@@ -312,7 +318,6 @@ Please confirm these — I guessed from name alone:
 - `Mic` → `microphone`, `record`, `audio`
 - `MicMute` → `mic-off`, `muted-mic`, `no-audio`
 - `Minimize` → `collapse`, `reduce`, `shrink`
-- `Mobile` → `phone`, `smartphone`, `cellular`
 - `Monitor` → `screen`, `display`, `desktop`
 
 ### N
@@ -324,7 +329,6 @@ Please confirm these — I guessed from name alone:
 
 - `OctagonSubtract` → `stop`, `restricted`, `prohibited`
 - `Odometer` → `mileage`, `distance`, `odo`
-- `Omnicam` → `360-camera`, `side-camera`, `all-around-cam`
 - `OverviewAI` → `ai-overview`, `smart-summary`, `ai-dashboard`
 
 ### P
@@ -393,7 +397,6 @@ Please confirm these — I guessed from name alone:
 - `Scope` → `target`, `crosshair`, `aim`
 - `Seatbelt` → `safety-belt`, `buckle-up`, `restraint`
 - `SeatbeltBuckle` → `buckle`, `belt-fastener`, `belt-clip`
-- `Sensor` → `detector`, `probe`, `monitor-sensor`
 - `Shapes` → `geometry`, `forms`, `primitives`
 - `ShareCircles` → `share`, `social-share`, `distribute`
 - `ShareCirclesFilled` → `share-filled`, `social-share-solid`, `share-selected`
@@ -467,7 +470,6 @@ Please confirm these — I guessed from name alone:
 
 ### V
 
-- `VehicleGateway` → `telematics-gateway`, `vehicle-hub`, `fleet-gateway`
 - `VehicleTrailer` → `trailer`, `container-trailer`, `truck-trailer`
 - `VehicleTruck` → `truck`, `lorry`, `semi`
 - `VehicleTruckMagnifyingGlass` → `truck-search`, `find-truck`, `inspect-vehicle`

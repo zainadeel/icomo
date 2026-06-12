@@ -11,6 +11,20 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 * **build:** add iOS PDF export (dist/pdf/) ([#64](https://github.com/zainadeel/icomo/issues/64)) ([e79e93a](https://github.com/zainadeel/icomo/commit/e79e93a51b938b7b61afb32190c497a55f247b5d))
 
+## [Unreleased]
+
+### Added
+
+* **icons:** add DeviceTablet icon
+
+### Changed
+
+* **icons:** refresh device icon SVG paths (`Devices` and renamed device icons)
+
+### Breaking
+
+* **icons:** rename device icons with `Device` prefix — `AIDashcamPlus` → `DeviceAIDashcamPlus`, `AssetTracker` → `DeviceAssetTracker`, `Dashcam` → `DeviceDashcam`, `DashcamLiveStream` → `DeviceDashcamLiveStream`, `DVR` → `DeviceDVR`, `Mobile` → `DeviceMobile`, `Omnicam` → `DeviceOmnicam`, `Sensor` → `DeviceSensor`, `VehicleGateway` → `DeviceVehicleGateway`; old names seeded as aliases
+
 ## [4.3.1](https://github.com/zainadeel/icomo/compare/v4.3.0...v4.3.1) (2026-05-22)
 
 
