@@ -4,6 +4,17 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [5.0.0](https://github.com/zainadeel/icomo/compare/v4.4.0...v5.0.0) (2026-06-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **icons:** rename device icons with Device prefix, add DeviceTablet ([#66](https://github.com/zainadeel/icomo/issues/66))
+
+### Added
+
+* **icons:** rename device icons with Device prefix, add DeviceTablet ([#66](https://github.com/zainadeel/icomo/issues/66)) ([73c70d2](https://github.com/zainadeel/icomo/commit/73c70d2132df6a5505f934fc4a9a34d0a6d9ba24))
+
 ## [4.4.0](https://github.com/zainadeel/icomo/compare/v4.3.1...v4.4.0) (2026-06-02)
 
 
