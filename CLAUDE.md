@@ -2,7 +2,7 @@
 
 Project guidance for Claude Code (and any other coding agent) working on IcoMo.
 
-**The canonical onboarding doc is [`AGENTS.md`](./AGENTS.md)** — read it first. It covers architecture, commands, the build pipeline, categories, alias conventions, commit/PR rules, and the release flow.
+**The canonical onboarding doc is [`AGENTS.md`](./AGENTS.md)** — read it first. It covers architecture, commands, the build pipeline, categories, alias conventions, commit/PR rules, release flow, and downstream coordination (CompoMo / apps).
 
 This file exists so Claude Code auto-loads project context, but it intentionally stays thin — everything below either summarizes `AGENTS.md` or adds a Claude-specific note. If these two files ever conflict, `AGENTS.md` wins; update it and leave this file as a pointer.
 
@@ -22,6 +22,7 @@ This file exists so Claude Code auto-loads project context, but it intentionally
 - When the user says "do the needful" with a folder of SVGs, follow the Figma re-export recipe in `AGENTS.md` (diff → copy new/modified → update aliases + counts + CHANGELOG → build → verify browser).
 - When the user asks to "bump" or "ship" a version, use the release-please flow (see `AGENTS.md` → Release flow). Push a `Release-As:` empty commit only when CI-only commits have accumulated with no `feat:` / `fix:` to bump from.
 - Ask before deleting icons. A missing file in a Figma export is not an implicit delete signal.
+- Icon renames/removes: follow `AGENTS.md` → **Downstream coordination** — alias old names, `BREAKING CHANGE:` footer, CompoMo peer bump checklist.
 
 ## Context this agent should load
 

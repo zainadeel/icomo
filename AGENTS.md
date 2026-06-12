@@ -83,6 +83,7 @@ scripts/
 docs/
   index.html        # Built GitHub Pages browser (do NOT edit by hand — regenerate)
 .github/
+  pull_request_template.md  # PR checklist incl. downstream impact (CompoMo / apps)
   workflows/
     build.yml          # PR: npm ci, build, build:docs, verify artifacts + src unchanged
     codeql.yml         # JS/TS security scan — PR + push + weekly Sunday cron
@@ -233,6 +234,53 @@ Release-please handles all three automatically when it opens a release PR.
 
 ---
 
+## Downstream coordination (CompoMo & apps)
+
+IcoMo (`@ds-mo/icons`) is consumed at runtime by CompoMo's `ds-icon` (after CompoMo externalizes icons). Consumers install `@ds-mo/tokens`, `@ds-mo/icons`, and `@ds-mo/ui` separately.
+
+### When IcoMo changes require a CompoMo update
+
+| Change type | CompoMo action needed? | What to do |
+|---|---|---|
+| **Add** new icon (new PascalCase export) | **No** (once CompoMo externalizes icons) | Ship IcoMo only. Apps bump `@ds-mo/icons` to get the new name. |
+| **Rename** icon (remove old PascalCase export) | **Yes** — bump CompoMo `peerDependencies["@ds-mo/icons"]` minimum | Breaking for `ds-icon name="OldName"`. Document in IcoMo CHANGELOG + trigger CompoMo PR. |
+| **Alias-only** (old name in sidecar `aliases`, export unchanged) | **No** | Prefer aliases before removing exports. |
+| **Major** IcoMo release (5.x → 6.x) | **Yes** — CompoMo peer floor → `^6.0.0` | Even if no renames, peer range should track major. |
+| **SVG path refresh** (same export names) | **No** | Visual tweak only. |
+| CompoMo stories/docs reference renamed icon | **Yes** — update CompoMo story icon strings | Can be same PR as peer bump or follow-up. |
+
+### Agent checklist — run on every IcoMo PR that touches `src/icons/` or `src/flags/`
+
+1. **Classify the change:** add | rename | alias | remove | path-only
+2. **If any PascalCase export was removed or renamed:**
+   - Ensure `src/icons/<NewName>.json` aliases include the old kebab/lowercase names
+   - Add a `BREAKING CHANGE:` footer to the commit / note in CHANGELOG:
+     ```
+     BREAKING CHANGE: <OldName> renamed to <NewName>. Consumers using ds-icon must update icon names.
+     DOWNSTREAM: bump @ds-mo/ui peerDependency @ds-mo/icons to >=<this-release-version>.
+     ```
+   - Add a PR checklist item: "Open CompoMo PR to raise `@ds-mo/icons` peer to `^X.Y.Z` and fix any story/icon prop strings"
+3. **If only adding icons:** no CompoMo release required (post-externalization)
+4. **Update `CHANGELOG.md` [Unreleased]** with a **Downstream** bullet when CompoMo/apps must act
+5. **Search CompoMo** (`~/Documents/Dev/CompoMo`) for the old icon name in stories, registry, and PanelNav samples — list hits in PR description
+
+### Release version → CompoMo peer mapping
+
+Maintain manually in CompoMo; reference rule here (not a live sync table):
+
+- CompoMo `peerDependencies["@ds-mo/icons"]` should be `^<major>.0.0` matching IcoMo's current major after any breaking rename release
+- Example: IcoMo **5.0.0** device renames → CompoMo peer `^5.0.0`
+
+### What NOT to assume
+
+- Bumping IcoMo does **not** auto-release CompoMo (separate repo, separate release-please)
+- IcoMo `meta.json` aliases are **lowercase/kebab** — `ds-icon` uses PascalCase `name` unless CompoMo adds alias resolution
+- Apps installing `@ds-mo/icons` alone is insufficient if CompoMo still bundles icons (pre-migration); after externalization, app icon version is authoritative
+
+PRs use the **Downstream impact** checklist in [`.github/pull_request_template.md`](./.github/pull_request_template.md).
+
+---
+
 ## CI workflows
 
 | Workflow | Trigger | Purpose |
@@ -274,3 +322,4 @@ Release-please handles all three automatically when it opens a release PR.
 | Icon browser styling / layout | `scripts/docs-template.html` + `scripts/build-docs.mjs` |
 | Release changelog sections | `release-please-config.json` |
 | PR title rules | `.github/workflows/pr-title.yml` |
+| Downstream / CompoMo coordination | This file → **Downstream coordination**; PR template |
