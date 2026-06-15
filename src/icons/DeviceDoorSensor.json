@@ -2,6 +2,7 @@
   "aliases": [
     "door",
     "entry-sensor",
-    "access-sensor"
+    "access-sensor",
+    "door-sensor"
   ]
 }

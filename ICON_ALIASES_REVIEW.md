@@ -159,8 +159,10 @@ Please confirm these — I guessed from name alone:
 - `DeviceAssetTracker` → `asset-tracker`, `gps-tracker`, `asset-device`, `tracker`
 - `DeviceDashcam` → `dashcam`, `car-camera`, `vehicle-camera`, `in-car-cam`
 - `DeviceDashcamLiveStream` → `dashcam-live-stream`, `live-camera`, `live-feed`, `stream`
+- `DeviceDoorSensor` → `door`, `entry-sensor`, `access-sensor`, `door-sensor`
 - `DeviceDVR` → `dvr`, `digital-video-recorder`, `video-recorder`, `recorder`, `dashcam-recorder`
 - `DeviceMobile` → `mobile`, `phone`, `smartphone`, `cellular`
+- `DeviceMobileTwo` → `multi-device`, `dual-screen`, `two-screens`, `two-devices`
 - `DeviceOmnicam` → `omnicam`, `360-camera`, `side-camera`, `all-around-cam`
 - `DeviceSensor` → `sensor`, `detector`, `probe`, `monitor-sensor`
 - `DeviceTablet` → `tablet`, `ipad`, `device-tablet`
@@ -177,7 +179,6 @@ Please confirm these — I guessed from name alone:
 - `DocumentQuestion` → `doc-help`, `unknown-file`, `file-query`
 - `DocumentReceipt` → `receipt`, `invoice`, `proof-of-purchase`
 - `DocumentStacked` → `files`, `document-list`, `multiple-docs`
-- `DoorSensor` → `door`, `entry-sensor`, `access-sensor`
 - `Dot` → `ring`, `round`, `bullet`, `circle`
 - `DotFilled` → `solid-dot`, `bullet`, `marker`, `circle-filled`
 - `DotPath` → `route`, `trail`, `breadcrumb`
@@ -460,7 +461,6 @@ Please confirm these — I guessed from name alone:
 - `Trophy` → `award`, `winner`, `achievement`
 - `TurnSignal` → `blinker`, `indicator`, `signal-light`
 - `TurnSignalFilled` → `blinker-filled`, `indicator-solid`, `signal-selected`
-- `TwoDevices` → `multi-device`, `dual-screen`, `two-screens`
 
 ### U
 
