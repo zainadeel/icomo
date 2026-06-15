@@ -4,6 +4,17 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.0.0](https://github.com/zainadeel/icomo/compare/v5.0.1...v6.0.0) (2026-06-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **icons:** rename DoorSensor → DeviceDoorSensor, TwoDevices → DeviceMobileTwo ([#71](https://github.com/zainadeel/icomo/issues/71))
+
+### Added
+
+* **icons:** rename DoorSensor → DeviceDoorSensor, TwoDevices → DeviceMobileTwo ([#71](https://github.com/zainadeel/icomo/issues/71)) ([31ac5d2](https://github.com/zainadeel/icomo/commit/31ac5d2cc5c0434e93b4412804f370fb76aef71e))
+
 ## [5.0.1](https://github.com/zainadeel/icomo/compare/v5.0.0...v5.0.1) (2026-06-12)
 
 
