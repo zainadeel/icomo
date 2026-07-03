@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.0.1](https://github.com/zainadeel/icomo/compare/v6.0.0...v6.0.1) (2026-07-03)
+
+
+### Fixed
+
+* **ci:** deploy icon browser to Pages only after successful npm publish ([#75](https://github.com/zainadeel/icomo/issues/75)) ([5b51537](https://github.com/zainadeel/icomo/commit/5b5153798ac6c79c68276bf5488796f4ab049761))
+
 ## [6.0.0](https://github.com/zainadeel/icomo/compare/v5.0.1...v6.0.0) (2026-06-15)
 
 
