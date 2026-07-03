@@ -8,7 +8,7 @@ Keep this file as the single source of truth for project conventions. Update it 
 
 ## What this project is
 
-IcoMo is an npm package (`@ds-mo/icons`) that ships **422 SVG icons** (390 system + 32 country flags) as:
+IcoMo is an npm package (`@ds-mo/icons`) that ships **429 SVG icons** (397 system + 32 country flags) as:
 
 - Tree-shakeable React components
 - Framework-agnostic SVG strings (for Angular/Vue/Svelte/vanilla/etc.)
@@ -27,10 +27,10 @@ It's part of the **ds-mo** design-system trilogy: `@ds-mo/tokens` → `@ds-mo/ic
 Shape:
 ```json
 {
-  "version": "4.2.0",
-  "count": 426,
+  "version": "6.0.1",
+  "count": 429,
   "categories": {
-    "system": { "count": 394, "themeable": true },
+    "system": { "count": 397, "themeable": true },
     "flag":   { "count": 32,  "themeable": false }
   },
   "icons": [
@@ -208,7 +208,7 @@ See `release-please-config.json` for the type → changelog section mapping.
 
 ## Versioning
 
-Pre-1.0: breaking renames ship as **minor** bumps (e.g. `0.5.0` → `0.6.0` carried a `MenuExpand` → `LeftExpand` rename). Once we hit `1.0.0`, renames go behind majors.
+Breaking icon renames require a **major** semver bump and downstream coordination (see **Downstream coordination**).
 
 Current version lives in three places — keep them in sync for releases not driven by release-please:
 - `package.json` `"version"`

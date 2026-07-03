@@ -28,7 +28,7 @@ Icons are grouped into **categories** so the pipeline can treat them differently
 
 | Category | Count | Themeable | Description |
 |---|---|---|---|
-| `system` | 396 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
+| `system` | 397 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
 | `flag` | 32 | ❌ preserved | Multi-color country flags — hex + P3 wide-gamut colors kept verbatim |
 
 Flag component names are prefixed with `Flag` (e.g. `FlagFrance`, `FlagUnitedStates`) so every export is globally unique.
@@ -106,7 +106,7 @@ Generate a flat folder of vector PDFs — one per icon — for use in Xcode asse
 
 ```bash
 npm run build        # required first — generates dist/
-npm run build:pdf    # outputs dist/pdf/<Name>.pdf (428 files)
+npm run build:pdf    # outputs dist/pdf/<Name>.pdf (429 files)
 ```
 
 **Adding to Xcode:**
@@ -138,9 +138,9 @@ Machine-readable icon list (for docs, agents, search indexes):
 ```ts
 import meta from '@ds-mo/icons/meta';
 
-meta.version      // e.g. "0.7.3" — matches package version
-meta.count        // 428
-meta.categories   // { system: {count:396,themeable:true}, flag: {count:32,themeable:false} }
+meta.version      // matches package version (e.g. "6.0.1")
+meta.count        // 429
+meta.categories   // { system: {count:397,themeable:true}, flag: {count:32,themeable:false} }
 meta.icons        // [{ name, category, kebab, aliases }, ...]
 ```
 

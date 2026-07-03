@@ -10,7 +10,7 @@ This file exists so Claude Code auto-loads project context, but it intentionally
 
 ## TL;DR for a new session
 
-- Package: `@ds-mo/icons` — 422 SVG icons (390 system + 32 country flags) as React components, SVG strings, sprite, and typed meta manifest. Figma-first pipeline.
+- Package: `@ds-mo/icons` — 429 SVG icons (397 system + 32 country flags) as React components, SVG strings, sprite, and typed meta manifest. Figma-first pipeline.
 - Canonical rules: **[`AGENTS.md`](./AGENTS.md)**.
 - Commit style: Conventional Commits, lowercase subject. PR titles are linted.
 - Releases: automated via `release-please` on `main`; auto-publishes to npm via OIDC.
