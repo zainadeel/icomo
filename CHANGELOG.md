@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.1.0](https://github.com/zainadeel/icomo/compare/v6.0.3...v6.1.0) (2026-07-03)
+
+
+### Added
+
+* **docs:** add package favicon with system dark mode ([#82](https://github.com/zainadeel/icomo/issues/82)) ([198e6f2](https://github.com/zainadeel/icomo/commit/198e6f2de8f4e1fcdba9364ef2d33f41a39f34dd))
+
 ## [6.0.3](https://github.com/zainadeel/icomo/compare/v6.0.2...v6.0.3) (2026-07-03)
 
 
