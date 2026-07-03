@@ -289,7 +289,7 @@ PRs use the **Downstream impact** checklist in [`.github/pull_request_template.m
 | `pr-title.yml` | PR opened/edited | Enforce conventional-commit PR titles |
 | `codeql.yml` | Push/PR to main, weekly Sunday | GitHub CodeQL JS/TS security scan |
 | `release-please.yml` | Push to main | Open release PR on feat/fix; publish to npm via OIDC when release PR merges |
-| `deploy.yml` | Push to main (docs/), manual | Build + deploy icon browser to GitHub Pages |
+| `deploy.yml` | After successful npm publish (release-please), manual | Build + deploy icon browser to GitHub Pages |
 | `dependabot.yml` | Monthly | Bump github-actions + npm devDependencies |
 
 ---
