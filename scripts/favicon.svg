@@ -5,5 +5,6 @@
       .logo-path { fill: #ffffff; }
     }
   </style>
-  <path class="logo-path" fill-rule="evenodd" d="M1 1h1v1h-1zM2 1h1v1h-1zM3 1h1v1h-1zM4 1h1v1h-1zM6 1h1v1h-1zM7 1h1v1h-1zM8 1h1v1h-1zM9 1h1v1h-1zM10 1h1v1h-1zM11 1h1v1h-1zM12 1h1v1h-1zM13 1h1v1h-1zM14 1h1v1h-1zM11 7h1v1h-1zM12 7h1v1h-1zM13 7h1v1h-1zM14 7h1v1h-1zM10 11h1v1h-1z"/>
+  <path class="logo-path" d="M5 15H1V1H5V15Z" />
+  <path class="logo-path" d="M15 7.5H11V5H10V11H11V8.5H15V15H6V1H15V7.5Z" />
 </svg>
