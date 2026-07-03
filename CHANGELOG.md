@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.0.3](https://github.com/zainadeel/icomo/compare/v6.0.2...v6.0.3) (2026-07-03)
+
+
+### Fixed
+
+* **ci:** use valid wretry.action tag for Pages deploy ([#80](https://github.com/zainadeel/icomo/issues/80)) ([2e0c9ff](https://github.com/zainadeel/icomo/commit/2e0c9ff66bee985b0364d9362542142027c902c6))
+
 ## [6.0.2](https://github.com/zainadeel/icomo/compare/v6.0.1...v6.0.2) (2026-07-03)
 
 
