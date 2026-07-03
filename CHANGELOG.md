@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.0.2](https://github.com/zainadeel/icomo/compare/v6.0.1...v6.0.2) (2026-07-03)
+
+
+### Documentation
+
+* update icon counts and alias review ([#78](https://github.com/zainadeel/icomo/issues/78)) ([38c04da](https://github.com/zainadeel/icomo/commit/38c04da0357b9e2035606daac268d641ae060164))
+
 ## [6.0.1](https://github.com/zainadeel/icomo/compare/v6.0.0...v6.0.1) (2026-07-03)
 
 
