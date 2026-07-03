@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.1.1](https://github.com/zainadeel/icomo/compare/v6.1.0...v6.1.1) (2026-07-03)
+
+
+### Fixed
+
+* **docs:** use vector SVG favicon instead of pixel trace ([#84](https://github.com/zainadeel/icomo/issues/84)) ([87d837a](https://github.com/zainadeel/icomo/commit/87d837a7077f498c256df505b96990dc779e8bce))
+
 ## [6.1.0](https://github.com/zainadeel/icomo/compare/v6.0.3...v6.1.0) (2026-07-03)
 
 
