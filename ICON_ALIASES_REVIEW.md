@@ -32,7 +32,7 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (393 icons)
+## Full list (397 system icons)
 
 ### A
 
