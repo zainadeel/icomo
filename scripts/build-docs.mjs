@@ -14,7 +14,7 @@
  *   npm run build && npm run build:docs
  */
 
-import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, mkdirSync, writeFileSync, copyFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -27,6 +27,9 @@ const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
 const packageLabel = `${pkg.name} v${pkg.version}`;
 
 mkdirSync(docsDir, { recursive: true });
+
+copyFileSync(join(__dirname, 'favicon.svg'), join(docsDir, 'favicon.svg'));
+console.log('  ✓ docs/favicon.svg');
 
 // ── Icon manifest (from dist/meta.json) ─────────────────────────────────────
 
