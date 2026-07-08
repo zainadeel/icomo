@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.1.2](https://github.com/zainadeel/icomo/compare/v6.1.1...v6.1.2) (2026-07-08)
+
+
+### Fixed
+
+* **icons:** rename WiFiTower/WiFiHorizontal to Wifi casing ([#86](https://github.com/zainadeel/icomo/issues/86)) ([a991116](https://github.com/zainadeel/icomo/commit/a991116496e1a2cb5c0065f5bda1b4038383450a))
+
 ## [6.1.1](https://github.com/zainadeel/icomo/compare/v6.1.0...v6.1.1) (2026-07-03)
 
 
