@@ -486,8 +486,8 @@ Please confirm these — I guessed from name alone:
 - `Waveform` → `audio-wave`, `sound-wave`, `signal-wave`
 - `Webhooks` → `webhook`, `api-hook`, `integration`
 - `Whistle` → `referee`, `warning-whistle`, `alarm-whistle`
-- `WiFiHorizontal` → `wifi`, `wireless-horizontal`, `internet-h`
-- `WiFiTower` → `cell-tower`, `wifi-antenna`, `broadcast-tower`
+- `WifiHorizontal` → `wifi`, `wireless-horizontal`, `internet-h`
+- `WifiTower` → `cell-tower`, `wifi-antenna`, `broadcast-tower`
 - `WifiVertical` → `wifi`, `wireless`, `internet`
 - `WifiVerticalFilled` → `wifi-filled`, `wireless-solid`, `wifi-selected`
 - `WifiVerticalFilledDisabled` → `wifi-off`, `no-wireless`, `wifi-disabled`
