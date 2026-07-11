@@ -3,5 +3,11 @@
     "next",
     "forward",
     "caret-right"
-  ]
+  ],
+  "concepts": ["next", "forward", "expand-right"],
+  "roles": ["navigation", "disclosure"],
+  "useWhen": ["Moving forward or expanding content toward the right."],
+  "avoidWhen": ["A directional arrow represents transfer, movement, or an external link."],
+  "related": ["ChevronLeft"],
+  "status": "stable"
 }

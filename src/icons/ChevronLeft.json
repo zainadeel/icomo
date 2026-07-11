@@ -3,5 +3,11 @@
     "back",
     "previous",
     "caret-left"
-  ]
+  ],
+  "concepts": ["previous", "back", "collapse-left"],
+  "roles": ["navigation", "disclosure"],
+  "useWhen": ["Moving backward or collapsing content toward the left."],
+  "avoidWhen": ["A directional arrow represents transfer, movement, or an external link."],
+  "related": ["ChevronRight"],
+  "status": "stable"
 }

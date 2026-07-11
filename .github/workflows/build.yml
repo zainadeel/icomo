@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '24.15.0'
           cache: 'npm'
 
       - name: Install dependencies
@@ -23,6 +23,9 @@ jobs:
 
       - name: Build icons
         run: npm run build
+
+      - name: Test
+        run: npm test
 
       - name: Build docs
         run: npm run build:docs
@@ -32,6 +35,11 @@ jobs:
           test -f dist/index.mjs
           test -f dist/index.d.ts
           test -f dist/meta.json
+          test -f dist/meta.mjs
+          test -f dist/meta.d.ts
+          test -f dist/agent.json
+          test -f dist/agent.mjs
+          test -f dist/agent.d.ts
           test -f dist/sprite.svg
           COUNT=$(node -e 'console.log(require("./dist/meta.json").count)')
           SYSTEM=$(node -e 'console.log(require("./dist/meta.json").categories.system.count)')

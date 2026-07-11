@@ -15,6 +15,7 @@ IcoMo is an npm package (`@ds-mo/icons`) that ships **429 SVG icons** (397 syste
 - An SVG sprite
 - TypeScript definitions
 - A machine-readable meta manifest (aliases, kebab names, categories)
+- Agent intent manifest (`dist/agent.json`, exported as `@ds-mo/icons/agent`)
 
 It's part of the **ds-mo** design-system trilogy: `@ds-mo/tokens` → `@ds-mo/icons` → `@ds-mo/ui` (CompoMo). IcoMo is Figma-first — source SVGs are exported from Figma, dropped into `src/`, and generator scripts produce the dist artifacts.
 
@@ -30,8 +31,8 @@ Shape:
   "version": "6.0.1",
   "count": 429,
   "categories": {
-    "system": { "count": 397, "themeable": true },
-    "flag":   { "count": 32,  "themeable": false }
+    "system": { "count": 397, "colorModel": "monochrome", "motion": "static", "themeable": true },
+    "flag":   { "count": 32,  "colorModel": "multicolor", "motion": "static", "themeable": false }
   },
   "icons": [
     { "name": "ArrowRight", "category": "system", "kebab": "arrow-right", "aliases": ["next", "forward"] },
@@ -108,7 +109,7 @@ npm run dev          # Watch mode — rebuilds on src changes
 npm run clean        # Remove dist/
 ```
 
-No separate test/lint commands — validation is done by the Build workflow on every PR (it re-runs the build and asserts `src/` was not mutated).
+`npm run validate` checks every SVG and category contract. `npm test` verifies generated metadata and framework-neutral SVG exports. CI runs both through the build and test steps.
 
 ---
 
@@ -134,7 +135,7 @@ Two categories today; adding a new one is an explicit, well-defined operation.
 | `system` | `src/icons/` | _(none)_ | ✅ `currentColor` | Strip style, `fill="black"` → `currentColor`, skip black/none fills |
 | `flag` | `src/flags/` | `Flag` | ❌ preserved | Keep every `fill` and inline `style` (hex + P3 wide-gamut) |
 
-**To add a category:** add an entry to `scripts/utils/categories.mjs` with its own `dir`, `prefix`, `distDir`, `themeable`, and `normalize` rules. Drop SVGs into `src/<dir>/`. No pipeline code changes needed.
+**To add a category:** add an entry to `scripts/utils/categories.mjs` with its own `dir`, `prefix`, `distDir`, `colorModel`, `motion`, and `normalize` rules. Drop SVGs into `src/<dir>/`. New color or motion models require an intentional factory and validation change; do not overload the existing static models.
 
 ---
 
@@ -170,7 +171,12 @@ When the user dumps an updated full export (e.g. `~/Downloads/icons`):
 
 ## Aliases convention
 
-Aliases are semantic synonyms — lucide-style, lowercase, hyphenated. Stored in per-icon `src/icons/<Name>.json` sidecars: `{ "aliases": ["alt1", "alt2"] }`. They're merged into `dist/meta.json` so the icon browser and consumers can search by intent.
+Aliases are semantic synonyms — lucide-style, lowercase, hyphenated. Stored in per-icon `src/icons/<Name>.json` sidecars and merged into `dist/meta.json` so the icon browser and consumers can search by intent.
+
+Sidecars may also define `concepts`, `roles`, `useWhen`, `avoidWhen`, `related`,
+`variantOf`, lifecycle `status`, and `replacedBy`. Relationships must use canonical
+IcoMo export names. The build rejects unknown fields and broken icon references;
+icons with intent guidance are also emitted through `@ds-mo/icons/agent`.
 
 **Direction-paired icons** (Left/Right, Up/Down, Top/Bottom): include the direction word so search can disambiguate. E.g. `LeftExpand` → `"expand-left"`, `RightExpand` → `"expand-right"`.
 
@@ -302,7 +308,7 @@ PRs use the **Downstream impact** checklist in [`.github/pull_request_template.m
 - **Do not `git push` to `main`** — always branch + PR.
 - **Do not delete an icon from `src/` without explicit user confirmation** — even if a Figma re-export omits it. It might be intentional or it might be a Figma filter accident.
 - **Do not rename SVG files outside `git mv`** — we want history preserved.
-- **Do not add a new category by editing `generate-*.mjs`** — add a config entry in `scripts/utils/categories.mjs`; the pipeline is already category-aware.
+- **Do not add a new category by editing `generate-*.mjs`** — add a supported config entry in `scripts/utils/categories.mjs`; add new rendering models only as an explicit pipeline feature.
 - **Do not commit `NPM_TOKEN` or any npm auth** — publishing uses OIDC, no secrets required.
 
 ---
