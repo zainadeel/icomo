@@ -1,9 +1,10 @@
 /**
- * Build script for @icomo/icons
+ * Build script for @ds-mo/icons
  *
  * 1. Generates React components from SVG icon sources
  * 2. Generates barrel index (re-exports all icons)
  * 3. Generates SVG sprite sheet
+ * 4. Generates framework-agnostic SVG strings and metadata
  */
 import { mkdirSync, existsSync, rmSync } from 'node:fs';
 import path from 'node:path';
@@ -26,7 +27,10 @@ function clean() {
 
 function build() {
   const startTime = Date.now();
-  console.log('\n🔨 Building @icomo/icons...\n');
+  console.log('\n🔨 Building @ds-mo/icons...\n');
+
+  console.log('  → Validating icon sources and category contracts...');
+  execSync('node scripts/validate-source.mjs', { cwd: PKG_ROOT, stdio: 'inherit' });
 
   // Step 1: Clean dist
   clean();
@@ -55,7 +59,7 @@ function build() {
   execSync('node scripts/generate-meta.mjs', { cwd: PKG_ROOT, stdio: 'inherit' });
 
   const elapsed = Date.now() - startTime;
-  console.log(`\n✅ @icomo/icons built in ${elapsed}ms\n`);
+  console.log(`\n✅ @ds-mo/icons built in ${elapsed}ms\n`);
 }
 
 build();

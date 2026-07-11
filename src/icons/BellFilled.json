@@ -1,1 +1,10 @@
-{ "aliases": ["bell-filled", "notification-filled", "alert-solid", "alarm-solid"] }
+{
+  "aliases": ["bell-filled", "notification-filled", "alert-solid", "alarm-solid"],
+  "concepts": ["notification"],
+  "roles": ["status", "selected-state"],
+  "useWhen": ["A notification affordance needs a filled or selected visual state."],
+  "avoidWhen": ["The unselected notification action is sufficient."],
+  "related": ["Bell", "BellRinging"],
+  "variantOf": "Bell",
+  "status": "stable"
+}

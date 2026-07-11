@@ -3,5 +3,11 @@
     "notification",
     "alert",
     "alarm"
-  ]
+  ],
+  "concepts": ["notification"],
+  "roles": ["action", "navigation"],
+  "useWhen": ["Opening or representing notifications and alerts."],
+  "avoidWhen": ["Representing validation warnings or errors."],
+  "related": ["BellFilled", "BellRinging"],
+  "status": "stable"
 }

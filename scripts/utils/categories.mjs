@@ -14,7 +14,8 @@
  *       · skipBlackAndNoneFills — drop fill="black" / fill="none" from React props
  *                                 (implies parent SVG's color flows through)
  *       · collapseWhitespace    — collapse `>\s+<` to `><` (cosmetic, safe)
- *   - themeable:  does the icon respond to a `color` prop? (system=yes, flag=no)
+ *   - colorModel: monochrome icons inherit currentColor; multicolor icons preserve fills
+ *   - motion:     static today; reserved so animated categories require an explicit contract
  *
  * Adding a new category = add a new entry here + drop SVGs into src/<dir>/.
  */
@@ -24,7 +25,8 @@ export const CATEGORIES = {
     dir: 'icons',
     prefix: '',
     distDir: 'icons',
-    themeable: true,
+    colorModel: 'monochrome',
+    motion: 'static',
     normalize: {
       stripStyle: true,
       blackToCurrentColor: true,
@@ -37,7 +39,8 @@ export const CATEGORIES = {
     dir: 'flags',
     prefix: 'Flag',
     distDir: 'flags',
-    themeable: false,
+    colorModel: 'multicolor',
+    motion: 'static',
     normalize: {
       // Preserve every fill (hex + P3 color(display-p3 ...) in style attrs)
       stripStyle: false,

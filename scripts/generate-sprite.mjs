@@ -24,7 +24,7 @@ let count = 0;
 
 for (const category of CATEGORY_LIST) {
   const manifest = getCategoryManifest(PKG_ROOT, category);
-  const defaultFill = category.themeable ? 'currentColor' : 'none';
+  const defaultFill = category.colorModel === 'monochrome' ? 'currentColor' : 'none';
 
   for (const { filename, kebab } of manifest) {
     const svgPath = path.join(PKG_ROOT, 'src', category.dir, filename);

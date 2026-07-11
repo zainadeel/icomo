@@ -116,9 +116,10 @@ for (const category of CATEGORY_LIST) {
   const outDir = path.join(DIST_DIR, category.distDir);
   mkdirSync(outDir, { recursive: true });
 
-  const factoryName = category.themeable ? 'createIcon' : 'createFlagIcon';
-  const factoryType = category.themeable ? 'IconComponent' : 'FlagIconComponent';
-  const factoryRelPath = category.themeable ? '../createIcon.mjs' : '../createFlagIcon.mjs';
+  const monochrome = category.colorModel === 'monochrome';
+  const factoryName = monochrome ? 'createIcon' : 'createFlagIcon';
+  const factoryType = monochrome ? 'IconComponent' : 'FlagIconComponent';
+  const factoryRelPath = monochrome ? '../createIcon.mjs' : '../createFlagIcon.mjs';
 
   for (const { filename, pascal, kebab } of manifest) {
     const svgPath = path.join(PKG_ROOT, 'src', category.dir, filename);

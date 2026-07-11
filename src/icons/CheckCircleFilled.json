@@ -3,5 +3,12 @@
     "success-filled",
     "verified-solid",
     "confirmed-selected"
-  ]
+  ],
+  "concepts": ["success", "verified", "complete"],
+  "roles": ["status", "selected-state"],
+  "useWhen": ["A success or completed status needs stronger filled emphasis."],
+  "avoidWhen": ["The user is toggling a selectable checkbox control."],
+  "related": ["CheckCircle"],
+  "variantOf": "CheckCircle",
+  "status": "stable"
 }
