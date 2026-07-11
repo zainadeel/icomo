@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.2.0](https://github.com/zainadeel/icomo/compare/v6.1.2...v6.2.0) (2026-07-11)
+
+
+### Added
+
+* harden icon metadata contracts ([#88](https://github.com/zainadeel/icomo/issues/88)) ([8100270](https://github.com/zainadeel/icomo/commit/8100270d864ee14a45ce0fbe7311e6ba21bb6164))
+
 ## [6.1.2](https://github.com/zainadeel/icomo/compare/v6.1.1...v6.1.2) (2026-07-08)
 
 
