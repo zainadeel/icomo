@@ -32,7 +32,7 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (397 system icons)
+## Full list (398 system icons)
 
 ### A
 
@@ -249,6 +249,7 @@ Please confirm these — I guessed from name alone:
 ### H
 
 - `Hamburger` → `menu`, `nav`, `lines`
+- `HandHeart` → `care`, `charity`, `giving`
 - `Headset` → `headphones`, `support`, `call-center`
 - `History` → `recent`, `past`, `timeline`
 - `HourGlass` → `time`, `waiting`, `loading`

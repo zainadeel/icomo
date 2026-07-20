@@ -93,6 +93,7 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ### Added
 
+* **icons:** add HandHeart icon
 * **icons:** add DeviceTablet icon
 
 ### Changed
