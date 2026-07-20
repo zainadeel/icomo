@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@ds-mo/icons.svg)](https://www.npmjs.com/package/@ds-mo/icons)
 
-IcoMo — **429 SVG icons** (397 system icons + 32 country flags) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
+IcoMo — **430 SVG icons** (398 system icons + 32 country flags) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
 
 Part of the **ds-mo design system trilogy**: [@ds-mo/tokens](https://www.npmjs.com/package/@ds-mo/tokens) → **@ds-mo/icons** → [@ds-mo/ui](https://www.npmjs.com/package/@ds-mo/ui) (CompoMo).
 
@@ -28,7 +28,7 @@ Icons are grouped into **categories** so the pipeline can treat them differently
 
 | Category | Count | Themeable | Description |
 |---|---|---|---|
-| `system` | 397 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
+| `system` | 398 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
 | `flag` | 32 | ❌ preserved | Multi-color country flags — hex + P3 wide-gamut colors kept verbatim |
 
 Flag component names are prefixed with `Flag` (e.g. `FlagFrance`, `FlagUnitedStates`) so every export is globally unique.
@@ -106,7 +106,7 @@ Generate a flat folder of vector PDFs — one per icon — for use in Xcode asse
 
 ```bash
 npm run build        # required first — generates dist/
-npm run build:pdf    # outputs dist/pdf/<Name>.pdf (429 files)
+npm run build:pdf    # outputs dist/pdf/<Name>.pdf (430 files)
 ```
 
 **Adding to Xcode:**
@@ -139,8 +139,8 @@ Machine-readable icon list (for docs, agents, search indexes):
 import meta from '@ds-mo/icons/meta';
 
 meta.version      // matches package version (e.g. "6.0.1")
-meta.count        // 429
-meta.categories   // { system: {count:397,themeable:true}, flag: {count:32,themeable:false} }
+meta.count        // 430
+meta.categories   // { system: {count:398,themeable:true}, flag: {count:32,themeable:false} }
 meta.icons        // [{ name, category, kebab, aliases }, ...]
 ```
 
