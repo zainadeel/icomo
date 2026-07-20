@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.3.0](https://github.com/zainadeel/icomo/compare/v6.2.0...v6.3.0) (2026-07-20)
+
+
+### Added
+
+* **icons:** add HandHeart icon ([#90](https://github.com/zainadeel/icomo/issues/90)) ([6a43874](https://github.com/zainadeel/icomo/commit/6a43874921135b4f6569f331b5dff3070f2a97e0))
+
 ## [6.2.0](https://github.com/zainadeel/icomo/compare/v6.1.2...v6.2.0) (2026-07-11)
 
 
