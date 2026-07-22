@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.4.0](https://github.com/zainadeel/icomo/compare/v6.3.0...v6.4.0) (2026-07-22)
+
+
+### Added
+
+* **icons:** add PersonGroupThree icon, refresh BuildingPublic artwork ([#92](https://github.com/zainadeel/icomo/issues/92)) ([a0e0caa](https://github.com/zainadeel/icomo/commit/a0e0caac9c9d139ec3c388cfcc63e7e88bd8b9eb))
+
 ## [Unreleased]
 
 ### Added
