@@ -32,7 +32,7 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (398 system icons)
+## Full list (399 system icons)
 
 ### A
 
@@ -353,6 +353,7 @@ Please confirm these — I guessed from name alone:
 - `PersonGear` → `user-settings`, `profile-config`, `account-settings`
 - `PersonGroup` → `team`, `users`, `people`
 - `PersonGroupArrows` → `team-sync`, `group-transfer`, `user-group-arrows`
+- `PersonGroupThree` → `team-three`, `three-people`, `trio`
 - `PersonManager` → `manager`, `supervisor`, `admin`
 - `PersonShield` → `admin`, `secure-user`, `protected-user`
 - `PersonStar` → `vip`, `favorite-user`, `starred-person`
