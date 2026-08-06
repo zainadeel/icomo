@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.5.0](https://github.com/zainadeel/icomo/compare/v6.4.0...v6.5.0) (2026-08-06)
+
+
+### Added
+
+* **icons:** add BracketsCircle, ShieldPerson icons ([#96](https://github.com/zainadeel/icomo/issues/96)) ([11c61f8](https://github.com/zainadeel/icomo/commit/11c61f87ff3b23cc189d3b963bfa5adcaebce823))
+
 ## [6.4.0](https://github.com/zainadeel/icomo/compare/v6.3.0...v6.4.0) (2026-07-22)
 
 
