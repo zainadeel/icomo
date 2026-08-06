@@ -32,7 +32,7 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (399 system icons)
+## Full list (401 system icons)
 
 ### A
 
@@ -78,6 +78,7 @@ Please confirm these — I guessed from name alone:
 - `Bookmark` → `save`, `favorite`, `ribbon`
 - `Box` → `package`, `container`, `carton`
 - `Braces` → `code`, `curly-brackets`, `json`
+- `BracketsCircle` → `code`, `developer`, `api`
 - `Bug` → `debug`, `defect`, `error`
 - `BuildingFacility` → `warehouse`, `plant`, `depot`
 - `BuildingHome` → `house`, `home`, `residence`
@@ -414,6 +415,7 @@ Please confirm these — I guessed from name alone:
 - `ShieldFilled` → `shield-filled`, `protection-solid`, `shield-selected`
 - `ShieldLock` → `secure-lock`, `encrypted`, `password-protected`
 - `ShieldLockFilled` → `secure-lock-filled`, `encrypted-solid`, `secured-selected`
+- `ShieldPerson` → `user-security`, `protected-profile`, `identity-protection`
 - `ShoppingBag` → `bag`, `purchase`, `shop`
 - `Snowflake` → `cold`, `winter`, `freeze`
 - `SpeakerPhone` → `loudspeaker`, `hands-free`, `speaker-on`

@@ -15,11 +15,7 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ### Added
 
-* **icons:** add PersonGroupThree icon
-
-### Changed
-
-* **icons:** refresh BuildingPublic artwork
+* **icons:** add BracketsCircle, ShieldPerson icons
 
 ## [6.3.0](https://github.com/zainadeel/icomo/compare/v6.2.0...v6.3.0) (2026-07-20)
 
