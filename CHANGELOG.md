@@ -22,7 +22,7 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ### Added
 
-* **icons:** add BracketsCircle, ShieldPerson icons
+* **icons:** add ChevronDownUp icon
 
 ## [6.3.0](https://github.com/zainadeel/icomo/compare/v6.2.0...v6.3.0) (2026-07-20)
 
