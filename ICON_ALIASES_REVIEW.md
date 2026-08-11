@@ -32,7 +32,7 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (401 system icons)
+## Full list (402 system icons)
 
 ### A
 
@@ -103,6 +103,7 @@ Please confirm these — I guessed from name alone:
 - `CheckCircleFilled` → `success-filled`, `verified-solid`, `confirmed-selected`
 - `CheckDouble` → `read-receipt`, `double-tick`, `delivered`
 - `ChevronDown` → `dropdown`, `expand`, `caret-down`
+- `ChevronDownUp` → `collapse`, `unfold-less`, `compress`
 - `ChevronLeft` → `back`, `previous`, `caret-left`
 - `ChevronLeftDouble` → `first`, `rewind`, `previous-all`
 - `ChevronRight` → `next`, `forward`, `caret-right`
