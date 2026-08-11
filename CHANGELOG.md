@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [6.6.0](https://github.com/zainadeel/icomo/compare/v6.5.0...v6.6.0) (2026-08-11)
+
+
+### Added
+
+* **icons:** add ChevronDownUp icon ([#98](https://github.com/zainadeel/icomo/issues/98)) ([b5b69c1](https://github.com/zainadeel/icomo/commit/b5b69c1d43906bec04b2bae074be90dc4e8f17ca))
+
 ## [6.5.0](https://github.com/zainadeel/icomo/compare/v6.4.0...v6.5.0) (2026-08-06)
 
 
