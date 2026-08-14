@@ -4,6 +4,16 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [Unreleased]
+
+### Breaking
+
+* **icons:** rename `GroupBy` → `SectionList` and refresh its SVG artwork — old name seeded as the `group-by` alias
+
+### Downstream
+
+* Bump CompoMo `peerDependencies["@ds-mo/icons"]` to `^7.0.0` and update any `ds-icon name="GroupBy"` usages to `name="SectionList"`
+
 ## [6.6.0](https://github.com/zainadeel/icomo/compare/v6.5.0...v6.6.0) (2026-08-11)
 
 
