@@ -245,7 +245,6 @@ Please confirm these — I guessed from name alone:
 - `GraphBars` → `bar-chart`, `histogram`, `columns`
 - `GraphDecreasing` → `downtrend`, `decline`, `decrease`
 - `GraphIncreasing` → `uptrend`, `growth`, `increase`
-- `GroupBy` → `group`, `cluster`, `categorize`
 - `GaugeTemperature` → `thermometer`, `temp`, `climate`
 
 ### H
@@ -402,6 +401,7 @@ Please confirm these — I guessed from name alone:
 - `Scope` → `target`, `crosshair`, `aim`
 - `Seatbelt` → `safety-belt`, `buckle-up`, `restraint`
 - `SeatbeltBuckle` → `buckle`, `belt-fastener`, `belt-clip`
+- `SectionList` → `group`, `cluster`, `categorize`, `group-by`
 - `Shapes` → `geometry`, `forms`, `primitives`
 - `ShareCircles` → `share`, `social-share`, `distribute`
 - `ShareCirclesFilled` → `share-filled`, `social-share-solid`, `share-selected`
