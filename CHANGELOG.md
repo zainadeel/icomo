@@ -4,6 +4,17 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [7.0.0](https://github.com/zainadeel/icomo/compare/v6.6.0...v7.0.0) (2026-08-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **icons:** rename GroupBy to SectionList and refresh artwork ([#100](https://github.com/zainadeel/icomo/issues/100))
+
+### Added
+
+* **icons:** rename GroupBy to SectionList and refresh artwork ([#100](https://github.com/zainadeel/icomo/issues/100)) ([93e46d3](https://github.com/zainadeel/icomo/commit/93e46d3d482d73412e94deed02efaf677f58e370))
+
 ## [Unreleased]
 
 ### Breaking
