@@ -18,6 +18,34 @@ pnpm add @ds-mo/icons
 
 React is a peer dependency for the React entry points — vanilla SVG / sprite consumers don't need it.
 
+## For shadcn/ui projects
+
+Use IcoMo exactly as you would the icon components in shadcn examples: install the package, import the icons you use, and place them directly in JSX. Every system icon forwards standard SVG props, including Tailwind `className`, `aria-*`, and `data-*` attributes.
+
+```tsx
+import { ArrowRight, CheckCircle } from '@ds-mo/icons';
+import { Button } from '@/components/ui/button';
+
+export function SaveButton() {
+  return (
+    <Button>
+      <CheckCircle data-icon="inline-start" className="size-4" aria-hidden />
+      Save changes
+    </Button>
+  );
+}
+
+export function ContinueButton() {
+  return (
+    <Button size="icon" aria-label="Continue">
+      <ArrowRight className="size-4" aria-hidden />
+    </Button>
+  );
+}
+```
+
+`data-icon="inline-start"` uses shadcn's automatic Button icon spacing. IcoMo system icons are tree-shakeable, so importing `ArrowRight` does not bundle the rest of the library. Use the package when you want versioned icon updates; use the [icon browser](https://zainadeel.github.io/icomo/) to find names and copy imports.
+
 ## Icon browser
 
 Browse and search all icons at the [GitHub Pages icon browser](https://zainadeel.github.io/icomo/). Live search (includes aliases), size toggle, light/dark theme, category tabs, click-to-copy imports.
