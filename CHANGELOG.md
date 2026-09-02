@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [7.0.1](https://github.com/zainadeel/icomo/compare/v7.0.0...v7.0.1) (2026-09-02)
+
+
+### Documentation
+
+* improve shadcn onboarding ([9fdd18b](https://github.com/zainadeel/icomo/commit/9fdd18b36331d900104f3101bf3a5e7735ac0b9f))
+
 ## [7.0.0](https://github.com/zainadeel/icomo/compare/v6.6.0...v7.0.0) (2026-08-14)
 
 
