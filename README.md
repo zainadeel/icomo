@@ -164,8 +164,8 @@ Machine-readable icon list (for docs, agents, search indexes):
 import meta from '@ds-mo/icons/meta';
 
 meta.version      // matches package version (e.g. "6.0.1")
-meta.count        // 430
-meta.categories   // { system: {count:398,themeable:true}, flag: {count:32,themeable:false} }
+meta.count        // 434
+meta.categories   // { system: {count:402,themeable:true}, flag: {count:32,themeable:false} }
 meta.icons        // [{ name, category, kebab, aliases }, ...]
 ```
 
