@@ -73,6 +73,7 @@ scripts/
   generate-sprite.mjs           # Single sprite.svg with <symbol> per icon
   generate-svg-strings.mjs      # Raw '<svg>...</svg>' string exports
   generate-meta.mjs             # dist/meta.json — aliases, kebab, category
+  generate-svg-files.mjs        # dist/svg-files/<Name>.svg — flat standalone SVGs for Xcode asset catalogs
   seed-aliases.mjs              # One-shot: ICON_ALIASES_REVIEW.md → src/icons/*.json
   build-docs.mjs                # Regenerates docs/index.html (GH Pages browser)
   docs-template.html            # Template for the icon browser
@@ -101,8 +102,9 @@ ICON_ALIASES_REVIEW.md          # Editable source for initial alias seeding + co
 ## Commands
 
 ```bash
-npm run build        # Full build — React + sprite + SVG strings + meta
+npm run build        # Full build — React + sprite + SVG strings + meta + standalone SVGs
 npm run build:docs   # Rebuild docs/index.html (GH Pages browser)
+npm run build:svg    # Rebuild dist/svg-files/ only (native/Xcode export; also part of build)
 npm run dev          # Watch mode — rebuilds on src changes
 npm run clean        # Remove dist/
 ```

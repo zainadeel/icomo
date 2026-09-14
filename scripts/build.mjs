@@ -5,6 +5,7 @@
  * 2. Generates barrel index (re-exports all icons)
  * 3. Generates SVG sprite sheet
  * 4. Generates framework-agnostic SVG strings and metadata
+ * 5. Generates standalone .svg files for native consumers (Xcode asset catalogs)
  */
 import { mkdirSync, existsSync, rmSync } from 'node:fs';
 import path from 'node:path';
@@ -57,6 +58,10 @@ function build() {
   // Step 6: Generate meta manifest (aliases + kebab names) for agents / docs
   console.log('  → Generating meta manifest...');
   execSync('node scripts/generate-meta.mjs', { cwd: PKG_ROOT, stdio: 'inherit' });
+
+  // Step 7: Generate standalone .svg files for native consumers (Xcode asset catalogs)
+  console.log('  → Generating standalone SVG files...');
+  execSync('node scripts/generate-svg-files.mjs', { cwd: PKG_ROOT, stdio: 'inherit' });
 
   const elapsed = Date.now() - startTime;
   console.log(`\n✅ @ds-mo/icons built in ${elapsed}ms\n`);

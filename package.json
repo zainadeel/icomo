@@ -60,6 +60,7 @@
       "types": "./dist/svg/*.d.ts"
     },
     "./sprite": "./dist/sprite.svg",
+    "./svg-files/*": "./dist/svg-files/*.svg",
     "./meta": {
       "import": "./dist/meta.mjs",
       "types": "./dist/meta.d.ts",
@@ -87,6 +88,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:docs": "node scripts/build-docs.mjs",
+    "build:svg": "node scripts/generate-svg-files.mjs",
     "validate": "node scripts/validate-source.mjs",
     "test": "node --test tests/*.test.mjs",
     "dev": "node scripts/build.mjs --watch",

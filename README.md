@@ -130,13 +130,21 @@ Sprite path: `node_modules/@ds-mo/icons/dist/sprite.svg` (or via the `./sprite` 
 
 ### iOS / Xcode asset catalog
 
-Xcode 12+ supports SVG directly in asset catalogs, so iOS consumes the same source SVGs as every other platform — no separate export format.
+Xcode 12+ supports SVG directly in asset catalogs, so iOS consumes the same vectors as every other platform — no separate export format.
 
-Source SVGs live in this repo under `src/icons/` and `src/flags/` (they are not part of the published npm package, which ships `dist/` only).
+The build emits a flat folder of standalone `.svg` files — one per icon, ready to drag into Xcode:
+
+```bash
+npm run build        # generates dist/svg-files/<Name>.svg (434 files)
+```
+
+These ship with the package, so an iOS project can pull them straight out of `node_modules/@ds-mo/icons/dist/svg-files/` (or the `./svg-files/*` subpath export) without cloning this repo. Flags are prefixed (`FlagFrance.svg`) so the folder stays collision-free and flat.
+
+Unlike the bundler-facing strings in `dist/svg/`, these keep a concrete `fill="black"` rather than `currentColor` — asset catalogs have no CSS cascade, and template rendering tints from the alpha channel regardless.
 
 **Adding to Xcode:**
 
-1. Drag the `.svg` files into your `.xcassets` asset catalog in Xcode.
+1. Drag `dist/svg-files/` into your `.xcassets` asset catalog in Xcode.
 2. For each icon, set **Scales → Single Scale** in the Attributes inspector — iOS scales the vector at runtime.
 3. For **system icons** (monochrome, e.g. `ArrowRight.svg`): set **Render As → Template Image** so the icon responds to tint color.
 4. For **flag icons** (e.g. `FlagFrance.svg`): set **Render As → Original Image** to preserve their colors.
@@ -229,8 +237,9 @@ Add a config entry to `scripts/utils/categories.mjs` with its own `dir`, `prefix
 ## Dev
 
 ```bash
-npm run build         # full build (React + sprite + SVG strings + meta)
+npm run build         # full build (React + sprite + SVG strings + meta + svg files)
 npm run build:docs    # regenerate docs/index.html
+npm run build:svg     # regenerate dist/svg-files/ only (also part of build)
 npm run dev           # watch mode
 ```
 
