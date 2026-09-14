@@ -11,6 +11,7 @@ import { mkdirSync, existsSync, rmSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
+import { CATEGORY_LIST } from './utils/categories.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,8 +37,9 @@ function build() {
   // Step 1: Clean dist
   clean();
   mkdirSync(DIST_DIR, { recursive: true });
-  mkdirSync(path.join(DIST_DIR, 'icons'), { recursive: true });
-  mkdirSync(path.join(DIST_DIR, 'flags'), { recursive: true });
+  for (const category of CATEGORY_LIST) {
+    mkdirSync(path.join(DIST_DIR, category.distDir), { recursive: true });
+  }
 
   // Step 2: Generate React components from SVG sources
   console.log('  → Generating React components from SVGs...');
@@ -75,12 +77,10 @@ if (isWatch) {
   const { watch } = await import('chokidar');
 
   const watcher = watch(
-    [
-      path.join(SRC_DIR, 'icons', '*.svg'),
-      path.join(SRC_DIR, 'icons', '*.json'),
-      path.join(SRC_DIR, 'flags', '*.svg'),
-      path.join(SRC_DIR, 'flags', '*.json'),
-    ],
+    CATEGORY_LIST.flatMap(category => [
+      path.join(SRC_DIR, category.dir, '*.svg'),
+      path.join(SRC_DIR, category.dir, '*.json'),
+    ]),
     { ignoreInitial: true }
   );
 

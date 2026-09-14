@@ -4,13 +4,21 @@
  * Emits:
  *   dist/createIcon.mjs + .d.ts        — shared factory for themeable icons
  *   dist/createFlagIcon.mjs + .d.ts    — factory for multi-color icons (no color prop)
+ *   dist/createMapIcon.mjs + .d.ts     — factory for map-marker glyphs (branded)
  *   dist/icons/{Pascal}.{mjs,d.ts}     — one file per system icon
  *   dist/flags/{FlagPascal}.{mjs,d.ts} — one file per flag icon
+ *   dist/map/{MapPascal}.{mjs,d.ts}    — one file per map icon
  *
  * Flag icons are multi-color and must preserve every source fill, so they:
  *   - don't accept a `color` prop
  *   - don't inject `fill={color}` on the root <svg>
  *   - keep inline `style="fill:...;fill:color(display-p3 ...)"` attrs intact
+ *
+ * Map icons render identically to system icons but carry an `iconCategory`
+ * brand so a marker component can require a map icon at the type level.
+ *
+ * Which factory a category uses is declared in its `factory` config — see
+ * scripts/utils/categories.mjs.
  */
 import { writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
@@ -98,11 +106,71 @@ export type FlagIconComponent = ForwardRefExoticComponent<FlagIconProps & RefAtt
 export declare function createFlagIcon(name: string, children: React.ReactNode[]): FlagIconComponent;
 `;
 
+// Map factory: same rendering contract as createIcon (monochrome, `color`
+// prop), plus an `iconCategory` brand. The brand is what makes a map icon
+// non-assignable to a plain IconComponent slot and vice versa — it is the only
+// way the package can express "this glyph belongs inside a marker shape".
+const createMapIconMjs = `import { forwardRef, createElement } from 'react';
+
+const createMapIcon = (name, children) => {
+  const Icon = forwardRef(({ size = 20, color = 'currentColor', className, ...rest }, ref) =>
+    createElement('svg', {
+      ref,
+      xmlns: 'http://www.w3.org/2000/svg',
+      width: size,
+      height: size,
+      viewBox: '0 0 16 16',
+      fill: color,
+      className,
+      'data-icon': name,
+      'data-category': 'map',
+      ...rest,
+    }, ...children)
+  );
+  Icon.iconCategory = 'map';
+  return Icon;
+};
+
+export { createMapIcon };
+`;
+
+const createMapIconDts = `import { ForwardRefExoticComponent, RefAttributes, SVGAttributes } from 'react';
+
+export interface MapIconProps extends SVGAttributes<SVGSVGElement> {
+  /** Icon size in pixels. Defaults to 20. */
+  size?: number | string;
+  /** Icon color. Defaults to 'currentColor'. */
+  color?: string;
+  /** Additional CSS class name. */
+  className?: string;
+}
+
+/**
+ * A map glyph. Themeable like a system icon, but intended only for composition
+ * inside a marker shape (pin, circle, cluster bubble) — never inline in UI.
+ *
+ * The \`iconCategory\` brand enforces that: a component prop typed as
+ * MapIconComponent rejects system and flag icons at compile time.
+ *
+ *   type MarkerProps = { icon: MapIconComponent };
+ *   <MapMarker icon={MapTruck} />     // ok
+ *   <MapMarker icon={ArrowRight} />   // type error
+ */
+export type MapIconComponent =
+  ForwardRefExoticComponent<MapIconProps & RefAttributes<SVGSVGElement>> & {
+    readonly iconCategory: 'map';
+  };
+
+export declare function createMapIcon(name: string, children: React.ReactNode[]): MapIconComponent;
+`;
+
 mkdirSync(DIST_DIR, { recursive: true });
 writeFileSync(path.join(DIST_DIR, 'createIcon.mjs'), createIconMjs);
 writeFileSync(path.join(DIST_DIR, 'createIcon.d.ts'), createIconDts);
 writeFileSync(path.join(DIST_DIR, 'createFlagIcon.mjs'), createFlagIconMjs);
 writeFileSync(path.join(DIST_DIR, 'createFlagIcon.d.ts'), createFlagIconDts);
+writeFileSync(path.join(DIST_DIR, 'createMapIcon.mjs'), createMapIconMjs);
+writeFileSync(path.join(DIST_DIR, 'createMapIcon.d.ts'), createMapIconDts);
 
 // --- Per-icon components -------------------------------------------------
 
@@ -116,10 +184,9 @@ for (const category of CATEGORY_LIST) {
   const outDir = path.join(DIST_DIR, category.distDir);
   mkdirSync(outDir, { recursive: true });
 
-  const monochrome = category.colorModel === 'monochrome';
-  const factoryName = monochrome ? 'createIcon' : 'createFlagIcon';
-  const factoryType = monochrome ? 'IconComponent' : 'FlagIconComponent';
-  const factoryRelPath = monochrome ? '../createIcon.mjs' : '../createFlagIcon.mjs';
+  const factoryName = category.factory.name;
+  const factoryType = category.factory.componentType;
+  const factoryRelPath = `../${category.factory.module}.mjs`;
 
   for (const { filename, pascal, kebab } of manifest) {
     const svgPath = path.join(PKG_ROOT, 'src', category.dir, filename);

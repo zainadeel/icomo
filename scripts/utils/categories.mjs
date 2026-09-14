@@ -8,6 +8,11 @@
  *                 for the default 'system' category so existing icon names
  *                 remain unchanged (ArrowRight stays ArrowRight).
  *   - distDir:    subdirectory under dist/ for per-icon artifacts
+ *   - factory:    which React factory the generated components are built from —
+ *                 { module, name, propsType, componentType }. Categories that
+ *                 share a rendering contract can share a factory; a category
+ *                 gets its own only when consumers need to tell it apart at the
+ *                 type level (see `map`).
  *   - normalize:  how the SVG pipeline should treat source markup
  *       · stripStyle            — remove inline style="..." (Figma artifact)
  *       · blackToCurrentColor   — replace fill="black" with fill="currentColor"
@@ -27,6 +32,12 @@ export const CATEGORIES = {
     distDir: 'icons',
     colorModel: 'monochrome',
     motion: 'static',
+    factory: {
+      module: 'createIcon',
+      name: 'createIcon',
+      propsType: 'IconProps',
+      componentType: 'IconComponent',
+    },
     normalize: {
       stripStyle: true,
       blackToCurrentColor: true,
@@ -41,6 +52,12 @@ export const CATEGORIES = {
     distDir: 'flags',
     colorModel: 'multicolor',
     motion: 'static',
+    factory: {
+      module: 'createFlagIcon',
+      name: 'createFlagIcon',
+      propsType: 'FlagIconProps',
+      componentType: 'FlagIconComponent',
+    },
     normalize: {
       // Preserve every fill (hex + P3 color(display-p3 ...) in style attrs)
       stripStyle: false,
@@ -49,7 +66,33 @@ export const CATEGORIES = {
       collapseWhitespace: true,
     },
   },
+  // Map icons are monochrome and take `color` exactly like system icons, but
+  // they are drawn for use *inside* a marker shape (pin, circle, cluster
+  // bubble) rather than inline in UI. IcoMo can't enforce that placement, so
+  // the enforcement point is the type: they build from their own factory and
+  // carry an `iconCategory: 'map'` brand, letting a downstream
+  // <MapMarker icon={...} /> accept map icons only.
+  map: {
+    id: 'map',
+    dir: 'map',
+    prefix: 'Map',
+    distDir: 'map',
+    colorModel: 'monochrome',
+    motion: 'static',
+    factory: {
+      module: 'createMapIcon',
+      name: 'createMapIcon',
+      propsType: 'MapIconProps',
+      componentType: 'MapIconComponent',
+    },
+    normalize: {
+      stripStyle: true,
+      blackToCurrentColor: true,
+      skipBlackAndNoneFills: true,
+      collapseWhitespace: true,
+    },
+  },
 };
 
 /** Ordered list for iteration — keeps output deterministic. */
-export const CATEGORY_LIST = [CATEGORIES.system, CATEGORIES.flag];
+export const CATEGORY_LIST = [CATEGORIES.system, CATEGORIES.flag, CATEGORIES.map];

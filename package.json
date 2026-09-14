@@ -12,6 +12,8 @@
     "typescript",
     "flags",
     "country-flags",
+    "map-icons",
+    "map-markers",
     "compomo",
     "ds-mo"
   ],
@@ -43,6 +45,14 @@
       "import": "./dist/flags/*.mjs",
       "types": "./dist/flags/*.d.ts"
     },
+    "./map": {
+      "import": "./dist/map/index.mjs",
+      "types": "./dist/map/index.d.ts"
+    },
+    "./map/*": {
+      "import": "./dist/map/*.mjs",
+      "types": "./dist/map/*.d.ts"
+    },
     "./svg": {
       "import": "./dist/svg/index.mjs",
       "types": "./dist/svg/index.d.ts"
@@ -54,6 +64,14 @@
     "./svg/flags/*": {
       "import": "./dist/svg/flags/*.mjs",
       "types": "./dist/svg/flags/*.d.ts"
+    },
+    "./svg/map": {
+      "import": "./dist/svg/map/index.mjs",
+      "types": "./dist/svg/map/index.d.ts"
+    },
+    "./svg/map/*": {
+      "import": "./dist/svg/map/*.mjs",
+      "types": "./dist/svg/map/*.d.ts"
     },
     "./svg/*": {
       "import": "./dist/svg/*.mjs",
@@ -80,6 +98,10 @@
     "./createFlagIcon": {
       "import": "./dist/createFlagIcon.mjs",
       "types": "./dist/createFlagIcon.d.ts"
+    },
+    "./createMapIcon": {
+      "import": "./dist/createMapIcon.mjs",
+      "types": "./dist/createMapIcon.d.ts"
     }
   },
   "files": [

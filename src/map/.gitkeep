@@ -1,0 +1,2 @@
+# Map icons live here — PascalCase SVG exports from Figma.
+# The build prefixes component names with `Map` (Truck.svg -> MapTruck).
