@@ -130,19 +130,16 @@ Sprite path: `node_modules/@ds-mo/icons/dist/sprite.svg` (or via the `./sprite` 
 
 ### iOS / Xcode asset catalog
 
-Generate a flat folder of vector PDFs — one per icon — for use in Xcode asset catalogs:
+Xcode 12+ supports SVG directly in asset catalogs, so iOS consumes the same source SVGs as every other platform — no separate export format.
 
-```bash
-npm run build        # required first — generates dist/
-npm run build:pdf    # outputs dist/pdf/<Name>.pdf (430 files)
-```
+Source SVGs live in this repo under `src/icons/` and `src/flags/` (they are not part of the published npm package, which ships `dist/` only).
 
 **Adding to Xcode:**
 
-1. Drag `dist/pdf/` into your `.xcassets` asset catalog in Xcode.
+1. Drag the `.svg` files into your `.xcassets` asset catalog in Xcode.
 2. For each icon, set **Scales → Single Scale** in the Attributes inspector — iOS scales the vector at runtime.
-3. For **system icons** (monochrome, e.g. `ArrowRight.pdf`): set **Render As → Template Image** so the icon responds to tint color.
-4. For **flag icons** (e.g. `FlagFrance.pdf`): set **Render As → Original Image** to preserve their colors.
+3. For **system icons** (monochrome, e.g. `ArrowRight.svg`): set **Render As → Template Image** so the icon responds to tint color.
+4. For **flag icons** (e.g. `FlagFrance.svg`): set **Render As → Original Image** to preserve their colors.
 
 Then use in SwiftUI or UIKit:
 
@@ -234,7 +231,6 @@ Add a config entry to `scripts/utils/categories.mjs` with its own `dir`, `prefix
 ```bash
 npm run build         # full build (React + sprite + SVG strings + meta)
 npm run build:docs    # regenerate docs/index.html
-npm run build:pdf     # iOS PDF export → dist/pdf/ (run after build)
 npm run dev           # watch mode
 ```
 
