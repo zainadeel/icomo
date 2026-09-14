@@ -1,6 +1,6 @@
 {
   "name": "@ds-mo/icons",
-  "version": "8.0.0",
+  "version": "8.1.0",
   "description": "IcoMo — 448 SVG icons (400 system icons + 32 country flags + 16 map icons) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and SVG sprite",
   "keywords": [
     "icons",

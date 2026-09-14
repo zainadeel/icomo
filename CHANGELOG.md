@@ -4,6 +4,15 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.1.0](https://github.com/zainadeel/icomo/compare/v8.0.0...v8.1.0) (2026-09-14)
+
+
+### Added
+
+* **icons:** add 16 map icons ([50c2b8d](https://github.com/zainadeel/icomo/commit/50c2b8d72ca4c6d55521de35a74a6f2d5d7edea8))
+* **icons:** add map icon category ([ddb9639](https://github.com/zainadeel/icomo/commit/ddb963961ff6f4a23e7f136b590aa0a43931023c))
+* **icons:** add map icon category with 16 icons ([fc8fb14](https://github.com/zainadeel/icomo/commit/fc8fb14eda6dbfe8d1fafe85820f2c61ef4102d4))
+
 ## [8.0.0](https://github.com/zainadeel/icomo/compare/v7.0.1...v8.0.0) (2026-09-14)
 
 
