@@ -1,9 +1,9 @@
 /**
  * Generate barrel index files (dist/index.mjs + dist/index.d.ts)
  *
- * Re-exports every icon (system + flags + any future category) alongside
- * the IconProps / FlagIconProps types. Names are globally unique thanks to
- * the category prefix (`Flag` on flag components).
+ * Re-exports every icon (system + flags + map + any future category) alongside
+ * each category factory and its prop/component types. Names are globally unique
+ * thanks to the category prefix (`Flag` on flags, `Map` on map icons).
  */
 import { writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -19,10 +19,15 @@ const allEntries = CATEGORY_LIST.flatMap(cat =>
   getCategoryManifest(PKG_ROOT, cat).map(entry => ({ ...entry, _cat: cat }))
 );
 
+// Factories, deduped in category order — categories may share one.
+const factories = [];
+for (const { factory } of CATEGORY_LIST) {
+  if (!factories.some(f => f.module === factory.module)) factories.push(factory);
+}
+
 // --- index.mjs ---
 const mjsLines = [
-  `export { createIcon } from './createIcon.mjs';`,
-  `export { createFlagIcon } from './createFlagIcon.mjs';`,
+  ...factories.map(f => `export { ${f.name} } from './${f.module}.mjs';`),
   '',
   ...allEntries.map(({ pascal, _cat }) =>
     `export { ${pascal} } from './${_cat.distDir}/${pascal}.mjs';`
@@ -33,10 +38,8 @@ writeFileSync(path.join(DIST_DIR, 'index.mjs'), mjsLines.join('\n'));
 
 // --- index.d.ts ---
 const dtsLines = [
-  `export type { IconProps, IconComponent } from './createIcon.mjs';`,
-  `export type { FlagIconProps, FlagIconComponent } from './createFlagIcon.mjs';`,
-  `export { createIcon } from './createIcon.mjs';`,
-  `export { createFlagIcon } from './createFlagIcon.mjs';`,
+  ...factories.map(f => `export type { ${f.propsType}, ${f.componentType} } from './${f.module}.mjs';`),
+  ...factories.map(f => `export { ${f.name} } from './${f.module}.mjs';`),
   '',
   ...allEntries.map(({ pascal, _cat }) =>
     `export { ${pascal} } from './${_cat.distDir}/${pascal}.mjs';`

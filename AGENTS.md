@@ -8,7 +8,7 @@ Keep this file as the single source of truth for project conventions. Update it 
 
 ## What this project is
 
-IcoMo is an npm package (`@ds-mo/icons`) that ships **432 SVG icons** (400 system + 32 country flags) as:
+IcoMo is an npm package (`@ds-mo/icons`) that ships **448 SVG icons** (400 system + 32 country flags + 16 map) as:
 
 - Tree-shakeable React components
 - Framework-agnostic SVG strings (for Angular/Vue/Svelte/vanilla/etc.)
@@ -29,10 +29,11 @@ Shape:
 ```json
 {
   "version": "6.0.1",
-  "count": 432,
+  "count": 448,
   "categories": {
     "system": { "count": 400, "colorModel": "monochrome", "motion": "static", "themeable": true },
-    "flag":   { "count": 32,  "colorModel": "multicolor", "motion": "static", "themeable": false }
+    "flag":   { "count": 32,  "colorModel": "multicolor", "motion": "static", "themeable": false },
+    "map":    { "count": 16,  "colorModel": "monochrome", "motion": "static", "themeable": true }
   },
   "icons": [
     { "name": "ArrowRight", "category": "system", "kebab": "arrow-right", "aliases": ["next", "forward"] },
@@ -66,6 +67,7 @@ const system = meta.icons.filter(i => i.category === 'system');
 src/
   icons/          # System icons — PascalCase.svg + optional PascalCase.json sidecar
   flags/          # Country flags — PascalCase.svg (build prefixes component name with `Flag`)
+  map/            # Map-marker glyphs — PascalCase.svg (build prefixes component name with `Map`)
 scripts/
   build.mjs                     # Orchestrates the whole build
   generate-react-components.mjs # SVGs → React .mjs + .d.ts per icon
@@ -78,7 +80,7 @@ scripts/
   build-docs.mjs                # Regenerates docs/index.html (GH Pages browser)
   docs-template.html            # Template for the icon browser
   utils/
-    categories.mjs  # Category config (system, flag) — add entry + drop SVGs to add a category
+    categories.mjs  # Category config (system, flag, map) — add entry + drop SVGs to add a category
     naming.mjs      # PascalCase / kebab-case / manifest helpers
     svg-parser.mjs  # SVG normalization rules
 docs/
@@ -142,7 +144,7 @@ then rewrites back.
 
 ## Build pipeline (what `npm run build` does)
 
-1. **Clean** — nuke `dist/`, recreate `dist/icons/` and `dist/flags/`
+1. **Clean** — nuke `dist/`, recreate one `dist/<distDir>/` per configured category
 2. **Generate React components** (`generate-react-components.mjs`) — for each SVG in `src/<category-dir>/`, emit `dist/<distDir>/<Name>.mjs` + `.d.ts`
 3. **Generate barrel** (`generate-barrel.mjs`) — re-export every icon from `dist/index.mjs`
 4. **Generate sprite** (`generate-sprite.mjs`) — consolidate into `dist/sprite.svg`
@@ -156,14 +158,15 @@ The pipeline is **category-aware** — category config lives in `scripts/utils/c
 
 ## Categories
 
-Two categories today; adding a new one is an explicit, well-defined operation.
+Three categories today; adding a new one is an explicit, well-defined operation.
 
-| Category | Dir | Prefix | Themeable | Normalization |
-|---|---|---|---|---|
-| `system` | `src/icons/` | _(none)_ | ✅ `currentColor` | Strip style, `fill="black"` → `currentColor`, skip black/none fills |
-| `flag` | `src/flags/` | `Flag` | ❌ preserved | Keep every `fill` and inline `style` (hex + P3 wide-gamut) |
+| Category | Dir | Prefix | Factory | Themeable | Normalization |
+|---|---|---|---|---|---|
+| `system` | `src/icons/` | _(none)_ | `createIcon` | ✅ `currentColor` | Strip style, `fill="black"` → `currentColor`, skip black/none fills |
+| `flag` | `src/flags/` | `Flag` | `createFlagIcon` | ❌ preserved | Keep every `fill` and inline `style` (hex + P3 wide-gamut) |
+| `map` | `src/map/` | `Map` | `createMapIcon` | ✅ `currentColor` | Same as `system` |
 
-**To add a category:** add an entry to `scripts/utils/categories.mjs` with its own `dir`, `prefix`, `distDir`, `colorModel`, `motion`, and `normalize` rules. Drop SVGs into `src/<dir>/`. New color or motion models require an intentional factory and validation change; do not overload the existing static models.
+**To add a category:** add an entry to `scripts/utils/categories.mjs` with its own `dir`, `prefix`, `distDir`, `factory`, `colorModel`, `motion`, and `normalize` rules. Drop SVGs into `src/<dir>/`. New color or motion models require an intentional factory and validation change; do not overload the existing static models.
 
 ---
 
@@ -181,6 +184,26 @@ Two categories today; adding a new one is an explicit, well-defined operation.
 1. Export from Figma at **16×16** with all fill colors baked in (hex + P3 `style`).
 2. Save as `src/flags/PascalCase.svg` using the country's PascalCase name — `NewZealand.svg` → exports as `FlagNewZealand`.
 3. Run `npm run build`.
+
+### Map icons
+
+Glyphs drawn for composition inside a map marker shape (pin, circle, cluster bubble). Monochrome and themeable exactly like system icons — they take `color` — so they also render fine standalone in a map legend. Marker shapes themselves are **not** IcoMo's job; they belong in CompoMo.
+
+1. Export from Figma at **16×16**, fill-based, with `fill="black"` (or no fill) — same contract as a system icon.
+2. Save as `src/map/PascalCase.svg` **without** the `Map` prefix — `Geofence.svg` → exports as `MapGeofence`.
+3. Run `npm run build`.
+
+Map components build from `createMapIcon`, which adds `data-category="map"` and an `iconCategory: 'map'` brand on the component. The brand is additive — a map icon is still assignable to any generic `IconComponent` slot — so it restricts nothing. It exists so a downstream marker component can *require* one:
+
+```tsx
+import type { MapIconComponent } from '@ds-mo/icons';
+
+type MarkerProps = { icon: MapIconComponent };
+<MapMarker icon={MapEntityVehicle} />   // ok
+<MapMarker icon={ArrowRight} />         // type error
+```
+
+IcoMo cannot and should not enforce *where* a map icon renders — legends are a legitimate standalone use. The type is the only signal it ships.
 
 ### Processing a Figma re-export (batch drop)
 
@@ -283,7 +306,7 @@ IcoMo (`@ds-mo/icons`) is consumed at runtime by CompoMo's `ds-icon` (after Comp
 | **SVG path refresh** (same export names) | **No** | Visual tweak only. |
 | CompoMo stories/docs reference renamed icon | **Yes** — update CompoMo story icon strings | Can be same PR as peer bump or follow-up. |
 
-### Agent checklist — run on every IcoMo PR that touches `src/icons/` or `src/flags/`
+### Agent checklist — run on every IcoMo PR that touches `src/icons/`, `src/flags/`, or `src/map/`
 
 1. **Classify the change:** add | rename | alias | remove | path-only
 2. **If any PascalCase export was removed or renamed:**

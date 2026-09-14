@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@ds-mo/icons.svg)](https://www.npmjs.com/package/@ds-mo/icons)
 
-IcoMo — **432 SVG icons** (400 system icons + 32 country flags) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
+IcoMo — **448 SVG icons** (400 system icons + 32 country flags + 16 map icons) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
 
 Part of the **ds-mo design system trilogy**: [@ds-mo/tokens](https://www.npmjs.com/package/@ds-mo/tokens) → **@ds-mo/icons** → [@ds-mo/ui](https://www.npmjs.com/package/@ds-mo/ui) (CompoMo).
 
@@ -58,8 +58,26 @@ Icons are grouped into **categories** so the pipeline can treat them differently
 |---|---|---|---|
 | `system` | 400 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
 | `flag` | 32 | ❌ preserved | Multi-color country flags — hex + P3 wide-gamut colors kept verbatim |
+| `map` | 16 | ✅ `currentColor` | Monochrome glyphs drawn for use inside a map marker shape |
 
-Flag component names are prefixed with `Flag` (e.g. `FlagFrance`, `FlagUnitedStates`) so every export is globally unique.
+Flag and map component names are prefixed with `Flag` / `Map` (e.g. `FlagFrance`, `MapEntityVehicle`) so every export is globally unique.
+
+### Map icons
+
+Map icons are themeable exactly like system icons — same `size` / `color` props — but they're drawn to sit inside a marker shape (pin, circle, cluster bubble). The shape is the consumer's (or CompoMo's); IcoMo ships only the glyph.
+
+They're also fine to render standalone, e.g. in a map legend. What sets them apart is a type-level brand, so a marker component can require one:
+
+```tsx
+import type { MapIconComponent } from '@ds-mo/icons';
+
+type MarkerProps = { icon: MapIconComponent };
+
+<MapMarker icon={MapEntityVehicle} />   // ok
+<MapMarker icon={ArrowRight} />         // type error — not a map icon
+```
+
+The brand is additive: a `MapIconComponent` still satisfies every generic icon slot, so nothing is restricted. Each map component also renders `data-category="map"` for styling and tooling.
 
 ## Usage
 
@@ -81,11 +99,11 @@ import { ArrowRight, CheckCircle, FlagFrance, FlagUnitedStates } from '@ds-mo/ic
 
 All standard SVG attributes are forwarded. Category-specific props:
 
-| Prop | System | Flag | Default | Description |
-|---|---|---|---|---|
-| `size` | ✅ | ✅ | `20` | Width and height |
-| `color` | ✅ | — | `'currentColor'` | Fill color (system only) |
-| `className` | ✅ | ✅ | — | CSS class |
+| Prop | System | Flag | Map | Default | Description |
+|---|---|---|---|---|---|
+| `size` | ✅ | ✅ | ✅ | `20` | Width and height |
+| `color` | ✅ | — | ✅ | `'currentColor'` | Fill color (monochrome categories only) |
+| `className` | ✅ | ✅ | ✅ | — | CSS class |
 
 ### Direct / subpath imports
 
@@ -100,6 +118,10 @@ import { FlagFrance } from '@ds-mo/icons/flags/FlagFrance';
 
 // Flag-only barrel
 import { FlagFrance, FlagGermany } from '@ds-mo/icons/flags';
+
+// Single map icon, or the map-only barrel
+import { MapEntityVehicle } from '@ds-mo/icons/map/MapEntityVehicle';
+import { MapGeofence, MapLockClosed } from '@ds-mo/icons/map';
 ```
 
 ### Framework-agnostic SVG strings
@@ -135,7 +157,7 @@ Xcode 12+ supports SVG directly in asset catalogs, so iOS consumes the same vect
 The build emits a flat folder of standalone `.svg` files — one per icon, ready to drag into Xcode:
 
 ```bash
-npm run build        # generates dist/svg-files/<Name>.svg (432 files)
+npm run build        # generates dist/svg-files/<Name>.svg (448 files)
 ```
 
 These ship with the package, so an iOS project can pull them straight out of `node_modules/@ds-mo/icons/dist/svg-files/` (or the `./svg-files/*` subpath export) without cloning this repo. Flags are prefixed (`FlagFrance.svg`) so the folder stays collision-free and flat.
@@ -172,8 +194,8 @@ Machine-readable icon list (for docs, agents, search indexes):
 import meta from '@ds-mo/icons/meta';
 
 meta.version      // matches package version (e.g. "6.0.1")
-meta.count        // 432
-meta.categories   // { system: {count:400,themeable:true}, flag: {count:32,themeable:false} }
+meta.count        // 448
+meta.categories   // { system: {count:400,themeable:true}, flag: {count:32,themeable:false}, map: {count:16,themeable:true} }
 meta.icons        // [{ name, category, kebab, aliases }, ...]
 ```
 
@@ -185,7 +207,7 @@ IcoMo icons work with [CompoMo (@ds-mo/ui)](https://www.npmjs.com/package/@ds-mo
 icon?: React.ComponentType<{ size?: number | string }>
 ```
 
-Both system and flag components satisfy this interface:
+System, flag, and map components all satisfy this interface:
 
 ```tsx
 import { Button } from '@ds-mo/ui';
@@ -230,9 +252,15 @@ The build preserves **both**: modern browsers use the P3 style; older browsers f
 2. Drop into `src/flags/` — filename is the country name in PascalCase (e.g. `NewZealand.svg` → exports as `FlagNewZealand`)
 3. Run the build
 
+### Map icons
+
+1. Export SVG from Figma as 16×16 with `fill="black"` (same contract as a system icon)
+2. Drop into `src/map/` **without** the `Map` prefix (e.g. `Geofence.svg` → exports as `MapGeofence`)
+3. Run the build
+
 ### Adding a new category
 
-Add a config entry to `scripts/utils/categories.mjs` with its own `dir`, `prefix`, and `normalize` rules. Drop SVGs into `src/<dir>/`.
+Add a config entry to `scripts/utils/categories.mjs` with its own `dir`, `prefix`, `factory`, and `normalize` rules. Drop SVGs into `src/<dir>/`.
 
 ## Dev
 
