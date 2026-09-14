@@ -4,6 +4,25 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.0.0](https://github.com/zainadeel/icomo/compare/v7.0.1...v8.0.0) (2026-09-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **icons:** 68 icons renamed and 4 removed. Consumers using ds-icon name="OldName" or importing the old PascalCase exports must update. MarkRead -> ParagraphCheck, SharePaperplane -> PaperplaneSend, OverviewAI removed with no replacement, WifiVerticalFilled -> WifiVertical. WifiVertical consumers get no build error but will see changed artwork. DOWNSTREAM: bump @ds-mo/ui peerDependency @ds-mo/icons to >=8.0.0 and update src/wc/components/Icon/system-icon-catalog.ts + public/r/icon.json, which hardcode every icon name.
+* **icons:** the `@ds-mo/icons/pdf/*` subpath export and the `build:pdf` script are removed. Use the source SVGs in an Xcode asset catalog instead.
+
+### Added
+
+* **icons:** add standalone svg export for native consumers ([a3d85e0](https://github.com/zainadeel/icomo/commit/a3d85e03acf220041f79452040b8cd5dea049736))
+* **icons:** figma naming pass — rename 68 icons, remove 4, add 2 ([09c3271](https://github.com/zainadeel/icomo/commit/09c3271d7076661aeed4b68b97a58b0dfdd8cdb3))
+* **icons:** remove pdf export pipeline ([5a2947b](https://github.com/zainadeel/icomo/commit/5a2947b61caa5d725be0d470838db26156f7b5ca))
+
+
+### Documentation
+
+* correct stale icon counts in readme meta example ([34e9a15](https://github.com/zainadeel/icomo/commit/34e9a15a6b4789a1428dc678ddb43cf7315e2a3d))
+
 ## [Unreleased]
 
 ### ⚠ Breaking
