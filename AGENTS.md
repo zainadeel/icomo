@@ -8,7 +8,7 @@ Keep this file as the single source of truth for project conventions. Update it 
 
 ## What this project is
 
-IcoMo is an npm package (`@ds-mo/icons`) that ships **432 SVG icons** (400 system + 32 country flags) as:
+IcoMo is an npm package (`@ds-mo/icons`) that ships **448 SVG icons** (400 system + 32 country flags + 16 map) as:
 
 - Tree-shakeable React components
 - Framework-agnostic SVG strings (for Angular/Vue/Svelte/vanilla/etc.)
@@ -29,11 +29,11 @@ Shape:
 ```json
 {
   "version": "6.0.1",
-  "count": 432,
+  "count": 448,
   "categories": {
     "system": { "count": 400, "colorModel": "monochrome", "motion": "static", "themeable": true },
     "flag":   { "count": 32,  "colorModel": "multicolor", "motion": "static", "themeable": false },
-    "map":    { "count": 0,   "colorModel": "monochrome", "motion": "static", "themeable": true }
+    "map":    { "count": 16,  "colorModel": "monochrome", "motion": "static", "themeable": true }
   },
   "icons": [
     { "name": "ArrowRight", "category": "system", "kebab": "arrow-right", "aliases": ["next", "forward"] },
@@ -190,7 +190,7 @@ Three categories today; adding a new one is an explicit, well-defined operation.
 Glyphs drawn for composition inside a map marker shape (pin, circle, cluster bubble). Monochrome and themeable exactly like system icons — they take `color` — so they also render fine standalone in a map legend. Marker shapes themselves are **not** IcoMo's job; they belong in CompoMo.
 
 1. Export from Figma at **16×16**, fill-based, with `fill="black"` (or no fill) — same contract as a system icon.
-2. Save as `src/map/PascalCase.svg` **without** the `Map` prefix — `Truck.svg` → exports as `MapTruck`.
+2. Save as `src/map/PascalCase.svg` **without** the `Map` prefix — `Geofence.svg` → exports as `MapGeofence`.
 3. Run `npm run build`.
 
 Map components build from `createMapIcon`, which adds `data-category="map"` and an `iconCategory: 'map'` brand on the component. The brand is additive — a map icon is still assignable to any generic `IconComponent` slot — so it restricts nothing. It exists so a downstream marker component can *require* one:
@@ -199,8 +199,8 @@ Map components build from `createMapIcon`, which adds `data-category="map"` and 
 import type { MapIconComponent } from '@ds-mo/icons';
 
 type MarkerProps = { icon: MapIconComponent };
-<MapMarker icon={MapTruck} />     // ok
-<MapMarker icon={ArrowRight} />   // type error
+<MapMarker icon={MapEntityVehicle} />   // ok
+<MapMarker icon={ArrowRight} />         // type error
 ```
 
 IcoMo cannot and should not enforce *where* a map icon renders — legends are a legitimate standalone use. The type is the only signal it ships.
