@@ -2,6 +2,9 @@
   "aliases": [
     "send",
     "submit",
-    "deliver"
+    "deliver",
+    "share-send",
+    "forward",
+    "share-paperplane"
   ]
 }

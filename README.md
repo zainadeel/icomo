@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@ds-mo/icons.svg)](https://www.npmjs.com/package/@ds-mo/icons)
 
-IcoMo — **434 SVG icons** (402 system icons + 32 country flags) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
+IcoMo — **432 SVG icons** (400 system icons + 32 country flags) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
 
 Part of the **ds-mo design system trilogy**: [@ds-mo/tokens](https://www.npmjs.com/package/@ds-mo/tokens) → **@ds-mo/icons** → [@ds-mo/ui](https://www.npmjs.com/package/@ds-mo/ui) (CompoMo).
 
@@ -56,7 +56,7 @@ Icons are grouped into **categories** so the pipeline can treat them differently
 
 | Category | Count | Themeable | Description |
 |---|---|---|---|
-| `system` | 402 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
+| `system` | 400 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
 | `flag` | 32 | ❌ preserved | Multi-color country flags — hex + P3 wide-gamut colors kept verbatim |
 
 Flag component names are prefixed with `Flag` (e.g. `FlagFrance`, `FlagUnitedStates`) so every export is globally unique.
@@ -135,7 +135,7 @@ Xcode 12+ supports SVG directly in asset catalogs, so iOS consumes the same vect
 The build emits a flat folder of standalone `.svg` files — one per icon, ready to drag into Xcode:
 
 ```bash
-npm run build        # generates dist/svg-files/<Name>.svg (434 files)
+npm run build        # generates dist/svg-files/<Name>.svg (432 files)
 ```
 
 These ship with the package, so an iOS project can pull them straight out of `node_modules/@ds-mo/icons/dist/svg-files/` (or the `./svg-files/*` subpath export) without cloning this repo. Flags are prefixed (`FlagFrance.svg`) so the folder stays collision-free and flat.
@@ -172,8 +172,8 @@ Machine-readable icon list (for docs, agents, search indexes):
 import meta from '@ds-mo/icons/meta';
 
 meta.version      // matches package version (e.g. "6.0.1")
-meta.count        // 434
-meta.categories   // { system: {count:402,themeable:true}, flag: {count:32,themeable:false} }
+meta.count        // 432
+meta.categories   // { system: {count:400,themeable:true}, flag: {count:32,themeable:false} }
 meta.icons        // [{ name, category, kebab, aliases }, ...]
 ```
 

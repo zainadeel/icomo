@@ -8,7 +8,7 @@ Keep this file as the single source of truth for project conventions. Update it 
 
 ## What this project is
 
-IcoMo is an npm package (`@ds-mo/icons`) that ships **429 SVG icons** (397 system + 32 country flags) as:
+IcoMo is an npm package (`@ds-mo/icons`) that ships **432 SVG icons** (400 system + 32 country flags) as:
 
 - Tree-shakeable React components
 - Framework-agnostic SVG strings (for Angular/Vue/Svelte/vanilla/etc.)
@@ -29,9 +29,9 @@ Shape:
 ```json
 {
   "version": "6.0.1",
-  "count": 429,
+  "count": 432,
   "categories": {
-    "system": { "count": 397, "colorModel": "monochrome", "motion": "static", "themeable": true },
+    "system": { "count": 400, "colorModel": "monochrome", "motion": "static", "themeable": true },
     "flag":   { "count": 32,  "colorModel": "multicolor", "motion": "static", "themeable": false }
   },
   "icons": [
@@ -148,6 +148,7 @@ then rewrites back.
 4. **Generate sprite** (`generate-sprite.mjs`) — consolidate into `dist/sprite.svg`
 5. **Generate SVG strings** (`generate-svg-strings.mjs`) — framework-agnostic raw-string exports under `dist/svg/`
 6. **Generate meta** (`generate-meta.mjs`) — `dist/meta.json` + typed `meta.mjs` with `{version, count, categories, icons: [{name, category, kebab, aliases}]}`
+7. **Generate standalone SVGs** (`generate-svg-files.mjs`) — flat `dist/svg-files/<Name>.svg`, one per icon, for Xcode asset catalogs and other native consumers
 
 The pipeline is **category-aware** — category config lives in `scripts/utils/categories.mjs`.
 

@@ -4,6 +4,106 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [Unreleased]
+
+### ⚠ Breaking
+
+* **icons:** Figma naming pass — 68 icons renamed to a consistent noun-first convention (`SquareCheck` → `CheckSquare`, `CircleExclamation` → `ExclamationCircle`, `Subtract*` → `Minus*`, `Volume*` → `Speaker*`, `*Disabled` → `*Strikethrough`). Every old name is seeded as an alias on its new icon, so alias/kebab search keeps resolving — but the PascalCase exports are gone.
+* **icons:** removed 4 icons. `MarkRead` and `SharePaperplane` were duplicates; use `ParagraphCheck` and `PaperplaneSend` instead. `OverviewAI` is removed with no replacement.
+* **icons:** `WifiVertical` keeps its name but now carries the former `WifiVerticalFilled` artwork; the old outline drawing is retired and the `WifiVerticalFilled` export is gone. **Consumers of `WifiVertical` will not see a build error — the icon silently changes appearance.**
+* **pdf:** removed the per-icon PDF export, the `./pdf/*` subpath export, and the `build:pdf` script. Xcode 12+ reads SVG natively — use the new `./svg-files/*` export instead.
+
+### Added
+
+* **icons:** `Android` (outline counterpart to `AndroidFilled`) and `Triangle` (outline counterpart to `TriangleFilled`)
+* **svg-files:** standalone `dist/svg-files/<Name>.svg` — a flat, collision-free file per icon for Xcode asset catalogs and other native tools, exposed as `./svg-files/*` and regenerable via `npm run build:svg`
+
+### Changed
+
+* **icons:** refreshed artwork (same names, no action needed) — `Bookmark`, `Cloud`, `Folder`, `FolderFilled`, `FuelPump`, `GaugeTemperature`, `HandHeart`, `List`, `Pencil`, `Printer`, `PunchCard`
+* Icon count: **432** (400 system + 32 flags)
+
+### Downstream
+
+* Bump CompoMo `peerDependencies["@ds-mo/icons"]` to `^8.0.0`.
+* CompoMo's `src/wc/components/Icon/system-icon-catalog.ts` hardcodes every icon name as a lazy import and `public/r/icon.json` mirrors it — **all 68 renames and 4 removals must be applied there**, or those entries fail to resolve at runtime.
+* Update any `ds-icon name="OldName"` usages in stories, registry, and PanelNav samples.
+
+<details>
+<summary>Full rename list (68)</summary>
+
+* `AI` → `AIAsterisk`
+* `AINew` → `AICompass`
+* `ArrowPath` → `PathArrow`
+* `ArrowsDiffDisabled` → `ArrowsDiffStrikethrough`
+* `AUX` → `AUX1`
+* `Avatar` → `PersonCircle`
+* `BellCircle` → `BellDot`
+* `BellExclamation` → `ExclamationBell`
+* `CameraA` → `DeviceCameraCeiling`
+* `CameraB` → `Camera`
+* `CircleArrow` → `ArrowCircle`
+* `CircleArrowsDiff` → `ArrowsDiffCircle`
+* `CircleArrowsDiffDisabled` → `ArrowsDiffCircleStrikethrough`
+* `CircleExclamation` → `ExclamationCircle`
+* `CircleExclamationFilled` → `ExclamationCircleFilled`
+* `CircleFastForward` → `FastForwardCircle`
+* `CirclePlay` → `PlayCircle`
+* `CircleQuestion` → `QuestionCircle`
+* `Cluster` → `CircleDiamond`
+* `DotPath` → `PathDot`
+* `Drag` → `DragDots`
+* `Engine` → `CombustionEngine`
+* `Enter` → `KeyEnter`
+* `EntityDriver` → `EntityPerson`
+* `EntityDriverFilled` → `EntityPersonFilled`
+* `ErrorTriangle` → `ExclamationTriangle`
+* `ErrorTriangleFilled` → `ExclamationTriangleFilled`
+* `ErrorTriangleSimpleFilled` → `TriangleFilled`
+* `EyeDisabled` → `EyeStrikethrough`
+* `LeftTurnSignal` → `TurnSignalLeft`
+* `LetterB` → `LetterBCircle`
+* `LetterC` → `LetterCCircle`
+* `LetterI` → `LetterICircle`
+* `License` → `LicenseCard`
+* `LocationPinDisabled` → `LocationPinStrikethrough`
+* `Logs` → `DocumentLogs`
+* `LogsMagnifyingGlass` → `DocumentLogsMagnifyingGlass`
+* `Messaging` → `MailMessage`
+* `MicMute` → `MicStrikethrough`
+* `OctagonSubtract` → `MinusOctagon`
+* `PersonFrame` → `PersonSquare`
+* `PhoneDisconnect` → `PhoneStrikethrough`
+* `PuzzleJoined` → `PuzzleTwo`
+* `RightTurnSignal` → `TurnSignalRight`
+* `ShareCircles` → `Share`
+* `ShareCirclesFilled` → `ShareFilled`
+* `SquareArrowTopRight` → `ArrowTopRightSquare`
+* `SquareCheck` → `CheckSquare`
+* `SquareCheckFilled` → `CheckSquareFilled`
+* `SquareDollar` → `DollarSquare`
+* `SquareDollarFilled` → `DollarSquareFilled`
+* `SquarePencil` → `PencilSquare`
+* `SquarePlus` → `PlusSquare`
+* `SquareSubtract` → `MinusSquare`
+* `SquareSubtractFilled` → `MinusSquareFilled`
+* `Street` → `MapStreet`
+* `Subtract` → `Minus`
+* `SubtractCircle` → `MinusCircle`
+* `SubtractCircleFilled` → `MinusCircleFilled`
+* `Volume` → `Speaker`
+* `VolumeFilled` → `SpeakerFilled`
+* `VolumeMute` → `SpeakerStrikethrough`
+* `VolumeMuteFilled` → `SpeakerStrikethroughFilled`
+* `WifiVerticalFilled` → `WifiVertical`
+* `WifiVerticalFilledDisabled` → `WifiVerticalStrikethrough`
+* `WorkflowA` → `PathNodes`
+* `WorkflowB` → `Workflow`
+* `ZoomBackOut` → `ArrowZoomBack`
+
+</details>
+
+
 ## [7.0.1](https://github.com/zainadeel/icomo/compare/v7.0.0...v7.0.1) (2026-09-02)
 
 
