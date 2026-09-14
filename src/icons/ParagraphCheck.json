@@ -2,6 +2,10 @@
   "aliases": [
     "text-verified",
     "content-approved",
-    "paragraph-verified"
+    "paragraph-verified",
+    "read",
+    "seen",
+    "envelope-open",
+    "mark-read"
   ]
 }

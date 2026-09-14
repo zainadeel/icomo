@@ -2,6 +2,10 @@
   "aliases": [
     "wifi",
     "wireless",
-    "internet"
+    "internet",
+    "wifi-filled",
+    "wireless-solid",
+    "wifi-selected",
+    "wifi-vertical-filled"
   ]
 }

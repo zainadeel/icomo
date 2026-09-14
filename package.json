@@ -1,7 +1,7 @@
 {
   "name": "@ds-mo/icons",
   "version": "7.0.1",
-  "description": "IcoMo — 434 SVG icons (402 system icons + 32 country flags) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and SVG sprite",
+  "description": "IcoMo — 432 SVG icons (400 system icons + 32 country flags) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and SVG sprite",
   "keywords": [
     "icons",
     "svg",
@@ -60,7 +60,7 @@
       "types": "./dist/svg/*.d.ts"
     },
     "./sprite": "./dist/sprite.svg",
-    "./pdf/*": "./dist/pdf/*.pdf",
+    "./svg-files/*": "./dist/svg-files/*.svg",
     "./meta": {
       "import": "./dist/meta.mjs",
       "types": "./dist/meta.d.ts",
@@ -88,7 +88,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:docs": "node scripts/build-docs.mjs",
-    "build:pdf": "node scripts/generate-pdfs.mjs",
+    "build:svg": "node scripts/generate-svg-files.mjs",
     "validate": "node scripts/validate-source.mjs",
     "test": "node --test tests/*.test.mjs",
     "dev": "node scripts/build.mjs --watch",
@@ -103,9 +103,7 @@
     }
   },
   "devDependencies": {
-    "chokidar": "^5.0.0",
-    "pdfkit": "^0.20.1",
-    "svg-to-pdfkit": "^0.1.8"
+    "chokidar": "^5.0.0"
   },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"

@@ -8,7 +8,7 @@ Keep this file as the single source of truth for project conventions. Update it 
 
 ## What this project is
 
-IcoMo is an npm package (`@ds-mo/icons`) that ships **429 SVG icons** (397 system + 32 country flags) as:
+IcoMo is an npm package (`@ds-mo/icons`) that ships **432 SVG icons** (400 system + 32 country flags) as:
 
 - Tree-shakeable React components
 - Framework-agnostic SVG strings (for Angular/Vue/Svelte/vanilla/etc.)
@@ -29,9 +29,9 @@ Shape:
 ```json
 {
   "version": "6.0.1",
-  "count": 429,
+  "count": 432,
   "categories": {
-    "system": { "count": 397, "colorModel": "monochrome", "motion": "static", "themeable": true },
+    "system": { "count": 400, "colorModel": "monochrome", "motion": "static", "themeable": true },
     "flag":   { "count": 32,  "colorModel": "multicolor", "motion": "static", "themeable": false }
   },
   "icons": [
@@ -73,7 +73,7 @@ scripts/
   generate-sprite.mjs           # Single sprite.svg with <symbol> per icon
   generate-svg-strings.mjs      # Raw '<svg>...</svg>' string exports
   generate-meta.mjs             # dist/meta.json — aliases, kebab, category
-  generate-pdfs.mjs             # dist/pdf/<Name>.pdf — one PDF per icon for iOS asset catalogs
+  generate-svg-files.mjs        # dist/svg-files/<Name>.svg — flat standalone SVGs for Xcode asset catalogs
   seed-aliases.mjs              # One-shot: ICON_ALIASES_REVIEW.md → src/icons/*.json
   build-docs.mjs                # Regenerates docs/index.html (GH Pages browser)
   docs-template.html            # Template for the icon browser
@@ -102,9 +102,9 @@ ICON_ALIASES_REVIEW.md          # Editable source for initial alias seeding + co
 ## Commands
 
 ```bash
-npm run build        # Full build — React + sprite + SVG strings + meta
+npm run build        # Full build — React + sprite + SVG strings + meta + standalone SVGs
 npm run build:docs   # Rebuild docs/index.html (GH Pages browser)
-npm run build:pdf    # iOS export — dist/pdf/<Name>.pdf (one per icon; run after build)
+npm run build:svg    # Rebuild dist/svg-files/ only (native/Xcode export; also part of build)
 npm run dev          # Watch mode — rebuilds on src changes
 npm run clean        # Remove dist/
 ```
@@ -148,6 +148,7 @@ then rewrites back.
 4. **Generate sprite** (`generate-sprite.mjs`) — consolidate into `dist/sprite.svg`
 5. **Generate SVG strings** (`generate-svg-strings.mjs`) — framework-agnostic raw-string exports under `dist/svg/`
 6. **Generate meta** (`generate-meta.mjs`) — `dist/meta.json` + typed `meta.mjs` with `{version, count, categories, icons: [{name, category, kebab, aliases}]}`
+7. **Generate standalone SVGs** (`generate-svg-files.mjs`) — flat `dist/svg-files/<Name>.svg`, one per icon, for Xcode asset catalogs and other native consumers
 
 The pipeline is **category-aware** — category config lives in `scripts/utils/categories.mjs`.
 
