@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.1.1](https://github.com/zainadeel/icomo/compare/v8.1.0...v8.1.1) (2026-09-16)
+
+
+### Fixed
+
+* **icons:** refine MapEntityAsset glyph ([763db2e](https://github.com/zainadeel/icomo/commit/763db2efc3e979e009c09e55564da3ca451af559))
+* **icons:** refine MapEntityAsset glyph ([8110ce9](https://github.com/zainadeel/icomo/commit/8110ce90a53a2fa9ee4430a6793ed63709bb3611))
+
 ## [8.1.0](https://github.com/zainadeel/icomo/compare/v8.0.0...v8.1.0) (2026-09-14)
 
 
