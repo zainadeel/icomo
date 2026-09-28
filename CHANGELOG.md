@@ -4,6 +4,13 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.1.2](https://github.com/zainadeel/icomo/compare/v8.1.1...v8.1.2) (2026-09-28)
+
+
+### Fixed
+
+* **docs:** align header layout and theme preferences ([#112](https://github.com/zainadeel/icomo/issues/112)) ([fb4a262](https://github.com/zainadeel/icomo/commit/fb4a2629854969836a897541ecf49cbd8d3c133d))
+
 ## [8.1.1](https://github.com/zainadeel/icomo/compare/v8.1.0...v8.1.1) (2026-09-16)
 
 
