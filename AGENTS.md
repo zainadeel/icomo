@@ -113,6 +113,15 @@ npm run clean        # Remove dist/
 
 `npm run validate` checks every SVG and category contract. `npm test` verifies generated metadata and framework-neutral SVG exports. CI runs both through the build and test steps.
 
+The icon browser's chrome lives in `scripts/site.css`, its saved Light / Dark /
+System preference controller in `scripts/theme.js`, and its markup in
+`scripts/docs-template.html`. The docs build inlines both assets. Match TokoMo's
+header spacing and white / #161616 palette with opacity-derived grays. System
+is the default; explicit preferences persist under `icomo-theme`. Categories
+occupy the primary header, with sizes and right-aligned search in the second
+row. Search remains global; selecting a category clears the query. Source icon
+colors and exported black/white PNGs retain their existing contracts.
+
 ---
 
 ## Toolchain

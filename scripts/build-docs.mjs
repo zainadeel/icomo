@@ -61,6 +61,8 @@ console.log(`  ✓ sprite inlined  (${Math.round(spriteContent.length / 1024)}KB
 
 let html = readFileSync(join(__dirname, 'docs-template.html'), 'utf8');
 html = html.replaceAll('@@PACKAGE_LABEL@@', packageLabel);
+html = html.replace('/* @@SITE_CSS@@ */', readFileSync(join(__dirname, 'site.css'), 'utf8'));
+html = html.replace('/* @@THEME_SCRIPT@@ */', readFileSync(join(__dirname, 'theme.js'), 'utf8'));
 html = html.replace('/* @@ICONS_DATA@@ */', iconsDataJs);
 html = html.replace('<!-- @@SPRITE@@ -->', inlineSprite);
 
