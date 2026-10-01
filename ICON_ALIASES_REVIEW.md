@@ -32,7 +32,7 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (402 system icons)
+## Full list (401 system icons)
 
 ### A
 
@@ -79,6 +79,7 @@ Please confirm these — I guessed from name alone:
 - `Box` → `package`, `container`, `carton`
 - `Braces` → `code`, `curly-brackets`, `json`
 - `BracketsCircle` → `code`, `developer`, `api`
+- `BracketsDocument` → `document-scan`, `scan-document`, `file-scan`, `ocr`
 - `Bug` → `debug`, `defect`, `error`
 - `BuildingFacility` → `warehouse`, `plant`, `depot`
 - `BuildingHome` → `house`, `home`, `residence`
