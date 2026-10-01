@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.2.0](https://github.com/zainadeel/icomo/compare/v8.1.2...v8.2.0) (2026-10-01)
+
+
+### Added
+
+* **icons:** add brackets document icon ([ffa10a2](https://github.com/zainadeel/icomo/commit/ffa10a2ea737fbf6fc71076a54a5e88722631e5b))
+* **icons:** add brackets document icon ([2bd39de](https://github.com/zainadeel/icomo/commit/2bd39de88bc6c3d324c235f9d37448ca94fa1f48))
+
 ## [8.1.2](https://github.com/zainadeel/icomo/compare/v8.1.1...v8.1.2) (2026-09-28)
 
 
