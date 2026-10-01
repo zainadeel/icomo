@@ -58,6 +58,8 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ### Added
 
+* **icons:** `BracketsDocument` — document inside scan brackets, with `document-scan`, `scan-document`, `file-scan`, and `ocr` search aliases. Total: **449 icons** (401 system + 32 flags + 16 map).
+
 * **icons:** `Android` (outline counterpart to `AndroidFilled`) and `Triangle` (outline counterpart to `TriangleFilled`)
 * **svg-files:** standalone `dist/svg-files/<Name>.svg` — a flat, collision-free file per icon for Xcode asset catalogs and other native tools, exposed as `./svg-files/*` and regenerable via `npm run build:svg`
 
