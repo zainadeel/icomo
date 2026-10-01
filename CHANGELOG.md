@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.2.1](https://github.com/zainadeel/icomo/compare/v8.2.0...v8.2.1) (2026-10-01)
+
+
+### Fixed
+
+* **icons:** refresh entity person icons ([7691941](https://github.com/zainadeel/icomo/commit/76919416d6cb7a5f7e80029e4473ae0b4613353e))
+* **icons:** refresh entity person icons ([121e875](https://github.com/zainadeel/icomo/commit/121e875de3409ec1cd82a8d09b1e1a9bbc214395))
+
 ## [8.2.0](https://github.com/zainadeel/icomo/compare/v8.1.2...v8.2.0) (2026-10-01)
 
 
