@@ -73,6 +73,7 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ### Changed
 
+* **icons:** refreshed artwork for `EntityPerson` and `EntityPersonFilled`.
 * **icons:** refreshed artwork (same names, no action needed) — `Bookmark`, `Cloud`, `Folder`, `FolderFilled`, `FuelPump`, `GaugeTemperature`, `HandHeart`, `List`, `Pencil`, `Printer`, `PunchCard`
 * Icon count: **432** (400 system + 32 flags)
 
