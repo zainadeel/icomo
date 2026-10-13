@@ -11,7 +11,7 @@
 import { writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getCategoryManifest, CATEGORY_LIST } from './utils/naming.mjs';
+import { getCategoryExportManifest, CATEGORY_LIST } from './utils/naming.mjs';
 import { parseSvgFile } from './utils/svg-parser.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,7 +23,7 @@ const symbols = [];
 let count = 0;
 
 for (const category of CATEGORY_LIST) {
-  const manifest = getCategoryManifest(PKG_ROOT, category);
+  const manifest = getCategoryExportManifest(PKG_ROOT, category);
   const defaultFill = category.colorModel === 'monochrome' ? 'currentColor' : 'none';
 
   for (const { filename, kebab } of manifest) {

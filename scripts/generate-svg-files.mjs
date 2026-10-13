@@ -28,7 +28,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getCategoryManifest, CATEGORY_LIST } from './utils/naming.mjs';
+import { getCategoryExportManifest, CATEGORY_LIST } from './utils/naming.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -51,7 +51,7 @@ function normalizeSvg(raw, normalize) {
 let total = 0;
 
 for (const category of CATEGORY_LIST) {
-  const manifest = getCategoryManifest(PKG_ROOT, category);
+  const manifest = getCategoryExportManifest(PKG_ROOT, category);
   if (!manifest.length) continue;
 
   for (const { filename, pascal } of manifest) {

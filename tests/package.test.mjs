@@ -10,6 +10,7 @@ import * as flagSvg from '../dist/svg/flags/index.mjs';
 
 const PKG_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SVG_FILES_DIR = path.join(PKG_ROOT, 'dist', 'svg-files');
+const expectedExportNames = [...meta.icons.map(i => i.name), 'AUX1'].sort();
 
 test('metadata counts and category contracts match generated SVG exports', () => {
   assert.equal(meta.categories.system.colorModel, 'monochrome');
@@ -18,11 +19,11 @@ test('metadata counts and category contracts match generated SVG exports', () =>
   assert.equal(meta.categories.system.motion, 'static');
   assert.equal(meta.categories.flag.count, Object.keys(flagSvg).length);
 
-  // Category counts must add up to the total, and the top-level SVG barrel
-  // must expose exactly one export per icon across every category.
+  // Canonical icon counts exclude compatibility names, but every export
+  // must still be accounted for so collisions and unexpected extras fail.
   const summed = Object.values(meta.categories).reduce((total, c) => total + c.count, 0);
   assert.equal(meta.count, summed);
-  assert.equal(Object.keys(allSvg).length, meta.count);
+  assert.deepEqual(Object.keys(allSvg).sort(), expectedExportNames);
 });
 
 // React is an optional peer dep and isn't installed here, so the generated
@@ -48,15 +49,63 @@ test('every framework-neutral export is an SVG string', () => {
   }
 });
 
-test('standalone SVG files cover every icon exactly once', () => {
+test('standalone SVG files cover canonical icons and compatibility names', () => {
   const files = readdirSync(SVG_FILES_DIR).filter(f => f.endsWith('.svg'));
 
-  // One flat file per icon — a collision would silently shrink this count.
-  assert.equal(files.length, meta.count);
+  assert.deepEqual(files.map(f => path.basename(f, '.svg')).sort(), expectedExportNames);
 
   const present = new Set(files.map(f => path.basename(f, '.svg')));
   for (const { name } of meta.icons) {
     assert.ok(present.has(name), `missing dist/svg-files/${name}.svg`);
+  }
+});
+
+test('AUX is the canonical auxiliary icon and AUX1 resolves as a search alias', () => {
+  const aux = meta.icons.find(i => i.name === 'AUX');
+  assert.ok(aux, 'AUX must match the Figma component name');
+  assert.equal(aux.kebab, 'aux');
+  assert.ok(aux.aliases.includes('aux1'));
+  assert.equal(meta.icons.some(i => i.name === 'AUX1'), false,
+    'the compatibility name must not appear as an additional icon');
+});
+
+test('AUX1 imports and SVG assets remain compatible with canonical AUX', async () => {
+  assert.equal(typeof allSvg.AUX, 'string');
+  assert.equal(allSvg.AUX1, allSvg.AUX);
+  const canonical = await import('../dist/svg/AUX.mjs');
+  const compatibility = await import('../dist/svg/AUX1.mjs');
+  assert.equal(canonical.AUX, allSvg.AUX);
+  assert.equal(compatibility.AUX1, allSvg.AUX);
+
+  assert.equal(
+    readFileSync(path.join(SVG_FILES_DIR, 'AUX1.svg'), 'utf8'),
+    readFileSync(path.join(SVG_FILES_DIR, 'AUX.svg'), 'utf8')
+  );
+  const sprite = readFileSync(path.join(PKG_ROOT, 'dist', 'sprite.svg'), 'utf8');
+  const aux = sprite.match(/<symbol id="aux"[^>]*>([\s\S]*?)<\/symbol>/);
+  const aux1 = sprite.match(/<symbol id="aux1"[^>]*>([\s\S]*?)<\/symbol>/);
+  assert.ok(aux, 'canonical aux sprite ID is missing');
+  assert.ok(aux1, 'legacy aux1 sprite ID is missing');
+  assert.equal(aux1[1], aux[1]);
+});
+
+test('React AUX exports and declarations retain the AUX1 compatibility import', () => {
+  const component = readFileSync(path.join(PKG_ROOT, 'dist', 'icons', 'AUX.mjs'), 'utf8');
+  assert.match(component, /createIcon\('aux',/);
+  assert.match(component, /AUX\.displayName = 'AUX'/);
+  const legacyComponent = readFileSync(path.join(PKG_ROOT, 'dist', 'icons', 'AUX1.mjs'), 'utf8');
+  assert.match(legacyComponent, /createIcon\('aux1',/,
+    'legacy consumers must keep their existing data-icon attribute');
+  assert.match(legacyComponent, /AUX1\.displayName = 'AUX1'/);
+  const legacyTypes = readFileSync(path.join(PKG_ROOT, 'dist', 'icons', 'AUX1.d.ts'), 'utf8');
+  assert.match(legacyTypes, /@deprecated Use AUX/);
+  assert.match(legacyTypes, /export declare const AUX1: IconComponent/);
+  for (const extension of ['mjs', 'd.ts']) {
+    for (const barrel of ['index', 'icons/index']) {
+      const source = readFileSync(path.join(PKG_ROOT, 'dist', `${barrel}.${extension}`), 'utf8');
+      assert.match(source, /export \{ AUX \} from '[^']*\/AUX\.mjs'/);
+      assert.match(source, /export \{ AUX1 \} from '[^']*\/AUX1\.mjs'/);
+    }
   }
 });
 

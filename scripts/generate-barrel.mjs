@@ -8,7 +8,7 @@
 import { writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getCategoryManifest, CATEGORY_LIST } from './utils/naming.mjs';
+import { getCategoryExportManifest, CATEGORY_LIST } from './utils/naming.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,7 +16,7 @@ const PKG_ROOT = path.resolve(__dirname, '..');
 const DIST_DIR = path.join(PKG_ROOT, 'dist');
 
 const allEntries = CATEGORY_LIST.flatMap(cat =>
-  getCategoryManifest(PKG_ROOT, cat).map(entry => ({ ...entry, _cat: cat }))
+  getCategoryExportManifest(PKG_ROOT, cat).map(entry => ({ ...entry, _cat: cat }))
 );
 
 // Factories, deduped in category order — categories may share one.
@@ -51,7 +51,7 @@ writeFileSync(path.join(DIST_DIR, 'index.d.ts'), dtsLines.join('\n'));
 // --- Per-category barrels (dist/flags/index.mjs etc.) ---
 // Lets consumers import from '@ds-mo/icons/flags' for just the flag set.
 for (const category of CATEGORY_LIST) {
-  const manifest = getCategoryManifest(PKG_ROOT, category);
+  const manifest = getCategoryExportManifest(PKG_ROOT, category);
   if (!manifest.length) continue;
 
   const catMjs = manifest

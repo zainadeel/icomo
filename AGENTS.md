@@ -161,6 +161,15 @@ then rewrites back.
 6. **Generate meta** (`generate-meta.mjs`) — `dist/meta.json` + typed `meta.mjs` with `{version, count, categories, icons: [{name, category, kebab, aliases}]}`
 7. **Generate standalone SVGs** (`generate-svg-files.mjs`) — flat `dist/svg-files/<Name>.svg`, one per icon, for Xcode asset catalogs and other native consumers
 
+Categories may define `compatibilityExports` as legacy PascalCase name →
+canonical PascalCase name. Artifact generators use `getCategoryExportManifest`
+to include these names; metadata and docs use the canonical source manifest.
+SVG string compatibility modules re-export the canonical value. React
+compatibility components retain their legacy `displayName` and `data-icon`.
+Sprite IDs and standalone SVG filenames also retain the legacy name. Today
+`AUX1` forwards to `AUX`; it is not an additional icon in the 449-icon count.
+Removing a compatibility export is a breaking change.
+
 The pipeline is **category-aware** — category config lives in `scripts/utils/categories.mjs`.
 
 ---

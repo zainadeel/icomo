@@ -24,7 +24,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getCategoryManifest, CATEGORY_LIST } from './utils/naming.mjs';
+import { getCategoryExportManifest, CATEGORY_LIST } from './utils/naming.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -50,7 +50,7 @@ const topBarrelDts = [];
 let total = 0;
 
 for (const category of CATEGORY_LIST) {
-  const manifest = getCategoryManifest(PKG_ROOT, category);
+  const manifest = getCategoryExportManifest(PKG_ROOT, category);
   if (!manifest.length) continue;
 
   // System icons live flat in dist/svg/, flags (and future categories) nest.
@@ -61,19 +61,20 @@ for (const category of CATEGORY_LIST) {
   const catBarrelMjs = [];
   const catBarrelDts = [];
 
-  for (const { filename, pascal } of manifest) {
-    const raw = readFileSync(path.join(PKG_ROOT, 'src', category.dir, filename), 'utf8');
-    const normalized = normalizeSvg(raw, category.normalize);
-    const escaped = JSON.stringify(normalized);
-
-    writeFileSync(
-      path.join(outDir, `${pascal}.mjs`),
-      `export const ${pascal} = ${escaped};\n`
-    );
-    writeFileSync(
-      path.join(outDir, `${pascal}.d.ts`),
-      `export declare const ${pascal}: string;\n`
-    );
+  for (const { filename, pascal, aliasOf } of manifest) {
+    if (aliasOf) {
+      const reExport = `export { ${aliasOf} as ${pascal} } from './${aliasOf}.mjs';\n`;
+      writeFileSync(path.join(outDir, `${pascal}.mjs`), reExport);
+      writeFileSync(path.join(outDir, `${pascal}.d.ts`),
+        `/** @deprecated Use ${aliasOf}. */\n${reExport}`);
+    } else {
+      const raw = readFileSync(path.join(PKG_ROOT, 'src', category.dir, filename), 'utf8');
+      const escaped = JSON.stringify(normalizeSvg(raw, category.normalize));
+      writeFileSync(path.join(outDir, `${pascal}.mjs`),
+        `export const ${pascal} = ${escaped};\n`);
+      writeFileSync(path.join(outDir, `${pascal}.d.ts`),
+        `export declare const ${pascal}: string;\n`);
+    }
 
     const subpath = isDefault ? `./${pascal}.mjs` : `./${category.distDir}/${pascal}.mjs`;
     topBarrelMjs.push(`export { ${pascal} } from '${subpath}';`);

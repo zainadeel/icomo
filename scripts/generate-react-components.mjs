@@ -23,7 +23,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getCategoryManifest, CATEGORY_LIST } from './utils/naming.mjs';
+import { getCategoryExportManifest, CATEGORY_LIST } from './utils/naming.mjs';
 import { parseSvgFile } from './utils/svg-parser.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -178,7 +178,7 @@ let totalGenerated = 0;
 const warnings = [];
 
 for (const category of CATEGORY_LIST) {
-  const manifest = getCategoryManifest(PKG_ROOT, category);
+  const manifest = getCategoryExportManifest(PKG_ROOT, category);
   if (!manifest.length) continue;
 
   const outDir = path.join(DIST_DIR, category.distDir);
@@ -188,7 +188,7 @@ for (const category of CATEGORY_LIST) {
   const factoryType = category.factory.componentType;
   const factoryRelPath = `../${category.factory.module}.mjs`;
 
-  for (const { filename, pascal, kebab } of manifest) {
+  for (const { filename, pascal, kebab, aliasOf } of manifest) {
     const svgPath = path.join(PKG_ROOT, 'src', category.dir, filename);
     const { elements } = parseSvgFile(svgPath, category.normalize);
 
@@ -209,7 +209,7 @@ export { ${pascal} };
 `;
 
     const componentDts = `import { ${factoryType} } from '${factoryRelPath}';
-export declare const ${pascal}: ${factoryType};
+${aliasOf ? `/** @deprecated Use ${aliasOf}. */\n` : ''}export declare const ${pascal}: ${factoryType};
 `;
 
     writeFileSync(path.join(outDir, `${pascal}.mjs`), componentMjs);
@@ -219,4 +219,4 @@ export declare const ${pascal}: ${factoryType};
 }
 
 if (warnings.length > 0) console.warn(warnings.join('\n'));
-console.log(`    Generated ${totalGenerated} React icon components`);
+console.log(`    Generated ${totalGenerated} React icon exports`);
