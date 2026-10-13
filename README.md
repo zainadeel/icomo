@@ -62,6 +62,12 @@ Icons are grouped into **categories** so the pipeline can treat them differently
 
 Flag and map component names are prefixed with `Flag` / `Map` (e.g. `FlagFrance`, `MapEntityVehicle`) so every export is globally unique.
 
+`AUX` is the canonical auxiliary icon name, matching Figma. The accidental
+`AUX1` name from 8.0.0 remains available as a compatibility export for React,
+SVG strings, sprite ID `aux1`, and standalone `AUX1.svg`. Metadata and the
+icon browser list only `AUX`; searching `aux1` resolves to it. Compatibility
+names do not add to the 449-icon count.
+
 ### Map icons
 
 Map icons are themeable exactly like system icons — same `size` / `color` props — but they're drawn to sit inside a marker shape (pin, circle, cluster bubble). The shape is the consumer's (or CompoMo's); IcoMo ships only the glyph.

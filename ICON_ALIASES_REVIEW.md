@@ -40,7 +40,7 @@ Please confirm these — I guessed from name alone:
 - `AIChip` → `ai-processor`, `neural-chip`, `smart-chip`
 - `AINew` → `new-ai`, `ai-badge`, `ai-feature`
 - `AISparkle` → `ai-magic`, `ai-shine`, `smart-sparkle`
-- `AUX` → `auxiliary`, `extra`, `secondary`
+- `AUX` → `auxiliary`, `extra`, `secondary`, `aux`, `aux1`
 - `AUXFilled` → `auxiliary-filled`, `extra-solid`, `secondary-selected`
 - `AndroidFilled` → `android`, `robot`, `google-os`
 - `ArrowDown` → `down`, `south`, `descend`

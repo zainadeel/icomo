@@ -21,6 +21,8 @@
  *       · collapseWhitespace    — collapse `>\s+<` to `><` (cosmetic, safe)
  *   - colorModel: monochrome icons inherit currentColor; multicolor icons preserve fills
  *   - motion:     static today; reserved so animated categories require an explicit contract
+ *   - compatibilityExports: optional legacy export name → canonical export name;
+ *                 emitted in package artifacts, excluded from canonical metadata
  *
  * Adding a new category = add a new entry here + drop SVGs into src/<dir>/.
  */
@@ -30,6 +32,7 @@ export const CATEGORIES = {
     dir: 'icons',
     prefix: '',
     distDir: 'icons',
+    compatibilityExports: { AUX1: 'AUX' },
     colorModel: 'monochrome',
     motion: 'static',
     factory: {

@@ -67,6 +67,28 @@ export function getCategoryManifest(pkgRoot, category) {
 }
 
 /**
+ * Include compatibility names in distributable artifacts without counting
+ * them as additional icons in metadata or the icon browser.
+ */
+export function getCategoryExportManifest(pkgRoot, category) {
+  const manifest = getCategoryManifest(pkgRoot, category);
+  const byName = new Map(manifest.map(entry => [entry.pascal, entry]));
+  const compatibility = Object.entries(category.compatibilityExports ?? {}).map(
+    ([pascal, aliasOf]) => {
+      if (byName.has(pascal)) {
+        throw new Error(`Compatibility export ${pascal} collides with a canonical icon`);
+      }
+      const canonical = byName.get(aliasOf);
+      if (!canonical) {
+        throw new Error(`Compatibility export ${pascal} references unknown icon ${aliasOf}`);
+      }
+      return { ...canonical, pascal, kebab: toKebabCase(pascal), aliasOf };
+    }
+  );
+  return [...manifest, ...compatibility];
+}
+
+/**
  * Full manifest across every configured category. Deterministic ordering:
  * categories in CATEGORY_LIST order, then alphabetical within each.
  *

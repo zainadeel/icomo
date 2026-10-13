@@ -4,6 +4,18 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [Unreleased]
+
+### Fixed
+
+- Restore `AUX` as the canonical icon name to match Figma, correcting the
+  accidental `AUX` → `AUX1` rename in 8.0.0. Keep `AUX1` as a compatibility
+  export for React and SVG strings, including direct imports, sprite ID `aux1`,
+  and standalone `AUX1.svg`. The icon browser and metadata list only `AUX`,
+  with `aux1` retained as a search alias. Icon count remains 449.
+- **Downstream:** Existing CompoMo `AUX1` imports continue to work; no peer
+  dependency bump is required. New consumers should use `AUX`.
+
 ## [8.2.1](https://github.com/zainadeel/icomo/compare/v8.2.0...v8.2.1) (2026-10-01)
 
 
