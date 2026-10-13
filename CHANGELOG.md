@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.2.2](https://github.com/zainadeel/icomo/compare/v8.2.1...v8.2.2) (2026-10-13)
+
+
+### Fixed
+
+* **icons:** restore canonical AUX name ([002b186](https://github.com/zainadeel/icomo/commit/002b186a6ef69ef45a0b38f0a48225174d08e115))
+* **icons:** restore canonical AUX name ([68c84fc](https://github.com/zainadeel/icomo/commit/68c84fcaab10c7e4cf258d63f83a91adbbb84828))
+
 ## [Unreleased]
 
 ### Fixed
