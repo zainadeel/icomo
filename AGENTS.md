@@ -87,6 +87,9 @@ docs/
   index.html        # Built GitHub Pages browser (do NOT edit by hand — regenerate)
 .github/
   pull_request_template.md  # PR checklist incl. downstream impact (CompoMo / apps)
+  actions/
+    setup-toolchain/   # Node from .nvmrc + exact npm check, shared by all npm workflows
+    retry-deploy-pages/ # Retries the Pages deploy step on transient failures
   workflows/
     build.yml          # PR: npm ci, build, build:docs, verify artifacts + src unchanged
     codeql.yml         # JS/TS security scan — PR + push + weekly Sunday cron
@@ -130,8 +133,13 @@ Node and npm are both pinned, and CI uses exactly these:
 
 | | Version | Pinned by |
 |---|---|---|
-| Node | `24.15.0` | `.nvmrc` |
-| npm | `11.12.1` | `packageManager` (Corepack) |
+| Node | `24.22.1` | `.nvmrc` |
+| npm | `11.19.1` | `packageManager` (Corepack) |
+
+`.nvmrc` is the only Node pin. Every workflow that runs npm uses the local
+`.github/actions/setup-toolchain` action, which reads `.nvmrc` and fails unless
+the bundled npm equals `packageManager`. To upgrade, choose a Node release
+whose bundled npm you want, then update both pins together.
 
 Interactive shells with an `.nvmrc` hook pick Node up on `cd`. **Agent and CI
 shells usually do not** — they inherit whatever Node started the session. Select
@@ -379,6 +387,10 @@ PRs use the **Downstream impact** checklist in [`.github/pull_request_template.m
 - **Do not rename SVG files outside `git mv`** — we want history preserved.
 - **Do not add a new category by editing `generate-*.mjs`** — add a supported config entry in `scripts/utils/categories.mjs`; add new rendering models only as an explicit pipeline feature.
 - **Do not commit `NPM_TOKEN` or any npm auth** — publishing uses OIDC, no secrets required.
+- **Do not install a floating npm in the publish job** — Trusted Publisher requires npm ≥ 11.5.1, which the pinned `packageManager` version satisfies and `setup-toolchain` verifies.
+- **Do not use mutable action tags** — pin external actions to a full commit SHA with a version comment.
+- **Do not widen workflow permissions** — workflows default to `contents: read`; only the release-please, publish, and Pages jobs request write or OIDC access. Checkouts set `persist-credentials: false` because no job pushes with Git.
+- **Do not add a job without `timeout-minutes`** — GitHub's default is 6 hours, so a hung step runs that long. PR workflows also cancel superseded runs; release and Pages runs are never cancelled mid-flight.
 
 ---
 
