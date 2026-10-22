@@ -89,7 +89,6 @@ docs/
   pull_request_template.md  # PR checklist incl. downstream impact (CompoMo / apps)
   actions/
     setup-toolchain/   # Node from .nvmrc + exact npm check, shared by all npm workflows
-    retry-deploy-pages/ # Retries the Pages deploy step on transient failures
   workflows/
     build.yml          # PR: npm ci, build, build:docs, verify artifacts + src unchanged
     codeql.yml         # JS/TS security scan — PR + push + weekly Sunday cron
@@ -388,7 +387,7 @@ PRs use the **Downstream impact** checklist in [`.github/pull_request_template.m
 - **Do not add a new category by editing `generate-*.mjs`** — add a supported config entry in `scripts/utils/categories.mjs`; add new rendering models only as an explicit pipeline feature.
 - **Do not commit `NPM_TOKEN` or any npm auth** — publishing uses OIDC, no secrets required.
 - **Do not install a floating npm in the publish job** — Trusted Publisher requires npm ≥ 11.5.1, which the pinned `packageManager` version satisfies and `setup-toolchain` verifies.
-- **Do not use mutable action tags** — pin external actions to a full commit SHA with a version comment.
+- **Do not use mutable action tags** — pin external actions to a full commit SHA with a version comment. Avoid wrapper actions that call other actions by tag internally (a SHA pin on the wrapper doesn't pin what it runs); the Pages deploy retries with native steps for this reason.
 - **Do not widen workflow permissions** — workflows default to `contents: read`; only the release-please, publish, and Pages jobs request write or OIDC access. Checkouts set `persist-credentials: false` because no job pushes with Git.
 - **Do not add a job without `timeout-minutes`** — GitHub's default is 6 hours, so a hung step runs that long. PR workflows also cancel superseded runs; release and Pages runs are never cancelled mid-flight.
 
