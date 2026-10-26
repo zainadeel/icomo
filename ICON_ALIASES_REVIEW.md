@@ -32,7 +32,7 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (401 system icons)
+## Full list (403 system icons)
 
 ### A
 
@@ -77,6 +77,8 @@ Please confirm these — I guessed from name alone:
 - `BoltFilled` → `lightning-filled`, `fast-solid`, `lightning-selected`
 - `Bookmark` → `save`, `favorite`, `ribbon`
 - `Box` → `package`, `container`, `carton`
+- `BoxArrowDown` → `archive`, `pack`, `store`, `box-down`
+- `BoxArrowUp` → `unarchive`, `unpack`, `restore`, `box-up`
 - `Braces` → `code`, `curly-brackets`, `json`
 - `BracketsCircle` → `code`, `developer`, `api`
 - `BracketsDocument` → `document-scan`, `scan-document`, `file-scan`, `ocr`
