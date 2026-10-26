@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.3.0](https://github.com/zainadeel/icomo/compare/v8.2.2...v8.3.0) (2026-10-26)
+
+
+### Added
+
+* **icons:** add box arrow up and down icons ([e18e65f](https://github.com/zainadeel/icomo/commit/e18e65f89ad1c8b462b32d344a1bee0edbd3e956))
+* **icons:** add box arrow up and down icons ([f07f87a](https://github.com/zainadeel/icomo/commit/f07f87a56b1c996ee23cbdfd4ccfd86b2db88653))
+
 ## [8.2.2](https://github.com/zainadeel/icomo/compare/v8.2.1...v8.2.2) (2026-10-13)
 
 
