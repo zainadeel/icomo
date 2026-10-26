@@ -14,6 +14,10 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- **icons:** `BoxArrowDown` and `BoxArrowUp` — archive box with a down / up arrow, with `archive` / `unarchive`, `pack` / `unpack`, `store` / `restore`, and `box-down` / `box-up` search aliases. Total: **451 icons** (403 system + 32 flags + 16 map).
+
 ### Fixed
 
 - Restore `AUX` as the canonical icon name to match Figma, correcting the
