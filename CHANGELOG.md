@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.4.0](https://github.com/zainadeel/icomo/compare/v8.3.0...v8.4.0) (2026-10-27)
+
+
+### Added
+
+* **icons:** add map check, circle, and fuel pump icons ([0ecdfd1](https://github.com/zainadeel/icomo/commit/0ecdfd1d90a65e17f84bd78f5c0d9131b5b6dd30))
+* **icons:** add map check, circle, and fuel pump icons ([dc79c5c](https://github.com/zainadeel/icomo/commit/dc79c5c06e8e6757bdf4b65cdf48d03d27313472))
+
 ## [8.3.0](https://github.com/zainadeel/icomo/compare/v8.2.2...v8.3.0) (2026-10-26)
 
 
