@@ -76,12 +76,16 @@ if (isWatch) {
 
   const { watch } = await import('chokidar');
 
+  // chokidar v4+ dropped glob support — watch each category directory (top level only)
+  // and ignore any file that isn't an icon SVG or its alias sidecar JSON.
+  const WATCHED_EXT = /\.(svg|json)$/;
   const watcher = watch(
-    CATEGORY_LIST.flatMap(category => [
-      path.join(SRC_DIR, category.dir, '*.svg'),
-      path.join(SRC_DIR, category.dir, '*.json'),
-    ]),
-    { ignoreInitial: true }
+    CATEGORY_LIST.map(category => path.join(SRC_DIR, category.dir)),
+    {
+      ignoreInitial: true,
+      depth: 0,
+      ignored: (filePath, stats) => Boolean(stats?.isFile()) && !WATCHED_EXT.test(filePath),
+    }
   );
 
   let debounceTimer = null;
@@ -89,7 +93,12 @@ if (isWatch) {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
       console.log('♻️  Change detected, rebuilding...');
-      build();
+      try {
+        build();
+      } catch {
+        // Step output (e.g. validation errors) is already printed via stdio: 'inherit'.
+        console.error('❌ Build failed — fix the source and save again.\n');
+      }
     }, 200);
   };
 
