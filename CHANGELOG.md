@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.5.0](https://github.com/zainadeel/icomo/compare/v8.4.0...v8.5.0) (2026-11-04)
+
+
+### Added
+
+* **icons:** add paragraph mic icon ([31f525b](https://github.com/zainadeel/icomo/commit/31f525b271ad9f1cb2e55aecb9fa8b0e316b1131))
+* **icons:** add paragraph mic icon ([9d558b1](https://github.com/zainadeel/icomo/commit/9d558b1dbb9245b132a7c2c96d7d38a9d2d94710))
+
 ## [8.4.0](https://github.com/zainadeel/icomo/compare/v8.3.0...v8.4.0) (2026-10-27)
 
 
