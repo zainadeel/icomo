@@ -346,6 +346,7 @@ Please confirm these — I guessed from name alone:
 - `Paragraph` → `text-block`, `pilcrow`, `paragraph-mark`
 - `ParagraphCheck` → `text-verified`, `content-approved`, `paragraph-verified`
 - `ParagraphPencil` → `edit-text`, `text-edit`, `paragraph-edit`
+- `ParagraphMic` → `transcript`, `transcription`, `dictation`, `voice-to-text`, `speech-to-text`, `paragraph-audio`
 - `Pause` → `stop-playback`, `pause-media`, `hold`
 - `PauseFilled` → `pause-filled`, `hold-solid`, `pause-selected`
 - `Pencil` → `edit`, `write`, `modify`

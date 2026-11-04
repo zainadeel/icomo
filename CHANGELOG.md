@@ -32,6 +32,7 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ### Added
 
+- **icons:** `ParagraphMic` — text lines with a microphone, with `transcript` / `transcription`, `dictation`, and `voice-to-text` / `speech-to-text` search aliases. Total: **455 icons** (404 system + 32 flags + 19 map).
 - **map:** `MapCheck`, `MapCircle`, and `MapFuelPump` — checkmark, ring, and fuel-pump marker glyphs, with `done` / `complete`, `ring` / `stop`, and `gas-station` / `fuel-stop` search aliases. Total: **454 icons** (403 system + 32 flags + 19 map).
 - **icons:** `BoxArrowDown` and `BoxArrowUp` — archive box with a down / up arrow, with `archive` / `unarchive`, `pack` / `unpack`, `store` / `restore`, and `box-down` / `box-up` search aliases. Total: **451 icons** (403 system + 32 flags + 16 map).
 
