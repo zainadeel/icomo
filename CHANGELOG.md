@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.5.1](https://github.com/zainadeel/icomo/compare/v8.5.0...v8.5.1) (2026-11-05)
+
+
+### Fixed
+
+* **icons:** center workflow icon in its frame ([b424028](https://github.com/zainadeel/icomo/commit/b42402865a82be1a551cb7afcb2ebaaed50b2d19))
+* **icons:** center workflow icon in its frame ([5f6841d](https://github.com/zainadeel/icomo/commit/5f6841d78c901b65bcf5b73997ed836e79b17bb2))
+
 ## [8.5.0](https://github.com/zainadeel/icomo/compare/v8.4.0...v8.5.0) (2026-11-04)
 
 
