@@ -32,7 +32,7 @@ Please confirm these — I guessed from name alone:
 
 ---
 
-## Full list (403 system icons)
+## Full list (405 system icons)
 
 ### A
 
@@ -453,6 +453,7 @@ Please confirm these — I guessed from name alone:
 ### T
 
 - `Table` → `grid`, `spreadsheet`, `rows`
+- `TableAsterisk` → `freeze-columns`, `pin-columns`, `frozen-columns`, `lock-columns`, `sticky-columns`, `table-freeze`
 - `Tag` → `label`, `price-tag`, `category`
 - `Target` → `goal`, `bullseye`, `aim`
 - `TargetDollar` → `price-target`, `goal-money`, `revenue-target`

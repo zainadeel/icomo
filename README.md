@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@ds-mo/icons.svg)](https://www.npmjs.com/package/@ds-mo/icons)
 
-IcoMo — **455 SVG icons** (404 system icons + 32 country flags + 19 map icons) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
+IcoMo — **456 SVG icons** (405 system icons + 32 country flags + 19 map icons) as tree-shakeable React components, framework-agnostic SVG strings, TypeScript definitions, and an SVG sprite.
 
 Part of the **ds-mo design system trilogy**: [@ds-mo/tokens](https://www.npmjs.com/package/@ds-mo/tokens) → **@ds-mo/icons** → [@ds-mo/ui](https://www.npmjs.com/package/@ds-mo/ui) (CompoMo).
 
@@ -56,9 +56,9 @@ Icons are grouped into **categories** so the pipeline can treat them differently
 
 | Category | Count | Themeable | Description |
 |---|---|---|---|
-| `system` | 401 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
+| `system` | 405 | ✅ `currentColor` | Monochrome UI icons — respond to CSS `color` and the `color` prop |
 | `flag` | 32 | ❌ preserved | Multi-color country flags — hex + P3 wide-gamut colors kept verbatim |
-| `map` | 16 | ✅ `currentColor` | Monochrome glyphs drawn for use inside a map marker shape |
+| `map` | 19 | ✅ `currentColor` | Monochrome glyphs drawn for use inside a map marker shape |
 
 Flag and map component names are prefixed with `Flag` / `Map` (e.g. `FlagFrance`, `MapEntityVehicle`) so every export is globally unique.
 
@@ -163,7 +163,7 @@ Xcode 12+ supports SVG directly in asset catalogs, so iOS consumes the same vect
 The build emits a flat folder of standalone `.svg` files — one per icon, ready to drag into Xcode:
 
 ```bash
-npm run build        # generates dist/svg-files/<Name>.svg (455 files)
+npm run build        # generates dist/svg-files/<Name>.svg (456 files)
 ```
 
 These ship with the package, so an iOS project can pull them straight out of `node_modules/@ds-mo/icons/dist/svg-files/` (or the `./svg-files/*` subpath export) without cloning this repo. Flags are prefixed (`FlagFrance.svg`) so the folder stays collision-free and flat.
@@ -200,8 +200,8 @@ Machine-readable icon list (for docs, agents, search indexes):
 import meta from '@ds-mo/icons/meta';
 
 meta.version      // matches package version (e.g. "6.0.1")
-meta.count        // 455
-meta.categories   // { system: {count:404,themeable:true}, flag: {count:32,themeable:false}, map: {count:19,themeable:true} }
+meta.count        // 456
+meta.categories   // { system: {count:405,themeable:true}, flag: {count:32,themeable:false}, map: {count:19,themeable:true} }
 meta.icons        // [{ name, category, kebab, aliases }, ...]
 ```
 
