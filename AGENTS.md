@@ -8,7 +8,7 @@ Keep this file as the single source of truth for project conventions. Update it 
 
 ## What this project is
 
-IcoMo is an npm package (`@ds-mo/icons`) that ships **455 SVG icons** (404 system + 32 country flags + 19 map) as:
+IcoMo is an npm package (`@ds-mo/icons`) that ships **456 SVG icons** (405 system + 32 country flags + 19 map) as:
 
 - Tree-shakeable React components
 - Framework-agnostic SVG strings (for Angular/Vue/Svelte/vanilla/etc.)
@@ -29,9 +29,9 @@ Shape:
 ```json
 {
   "version": "6.0.1",
-  "count": 455,
+  "count": 456,
   "categories": {
-    "system": { "count": 404, "colorModel": "monochrome", "motion": "static", "themeable": true },
+    "system": { "count": 405, "colorModel": "monochrome", "motion": "static", "themeable": true },
     "flag":   { "count": 32,  "colorModel": "multicolor", "motion": "static", "themeable": false },
     "map":    { "count": 19,  "colorModel": "monochrome", "motion": "static", "themeable": true }
   },
