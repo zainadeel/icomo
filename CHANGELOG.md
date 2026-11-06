@@ -4,6 +4,14 @@ All notable changes to `@ds-mo/icons` are documented here.
 
 ---
 
+## [8.6.0](https://github.com/zainadeel/icomo/compare/v8.5.1...v8.6.0) (2026-11-06)
+
+
+### Added
+
+* **icons:** add table asterisk icon ([3232d8a](https://github.com/zainadeel/icomo/commit/3232d8a0ea3d3cf1dc3095828bf3d5b3178a5eaa))
+* **icons:** add table asterisk icon ([c862b98](https://github.com/zainadeel/icomo/commit/c862b9854f54e76442b11bf8b424aee32ab588f4))
+
 ## [8.5.1](https://github.com/zainadeel/icomo/compare/v8.5.0...v8.5.1) (2026-11-05)
 
 
